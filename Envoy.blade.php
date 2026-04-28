@@ -13,11 +13,16 @@
     git commit -m "{{ $message }}"
     git push origin main
 @endtask
-
 @task('deploy', ['on' => 'beget'])
     cd /home/h/human2xn/journalmh.org
     set -e
     echo "Deploying..."
+    
+    # Включаем подробный вывод
+    set -x
+    
+    # Добавляем директорию в безопасные для Git
+    git config --global --add safe.directory /home/h/human2xn/journalmh.org
     
     PHP84="/usr/local/php/cgi/8.4/bin/php"
     
@@ -27,22 +32,40 @@
     git fetch origin
     git reset --hard origin/main
     
-    $PHP84 artisan down
+    # Проверяем наличие .env
+    if [ ! -f .env ]; then
+        echo "Creating .env file..."
+        cp .env.example .env
+        $PHP84 artisan key:generate
+    fi
+    
+    $PHP84 artisan down || echo "Artisan down failed"
     
     # Свежий composer без обертки
     rm -f composer.phar
     curl -sS https://getcomposer.org/installer | $PHP84 -- --install-dir=/tmp --filename=composer.phar
     mv /tmp/composer.phar .
-    $PHP84 composer.phar install --no-dev --optimize-autoloader
     
-    # Только view:clear (component:clear не существует в этой версии Laravel)
-    $PHP84 artisan view:clear
+    # Composer install с подробным выводом
+    echo "Running composer install..."
+    $PHP84 composer.phar install --no-dev --optimize-autoloader -vvv || {
+        echo "Composer install failed with exit code $?"
+        exit 1
+    }
     
-    $PHP84 artisan migrate --force
-    $PHP84 artisan config:cache
-    $PHP84 artisan event:cache
-    $PHP84 artisan route:cache
-    $PHP84 artisan view:cache
+    $PHP84 artisan view:clear || true
+    
+    echo "Running migrations..."
+    $PHP84 artisan migrate --force || {
+        echo "Migrations failed"
+        exit 1
+    }
+    
+    $PHP84 artisan config:cache || true
+    $PHP84 artisan event:cache || true
+    $PHP84 artisan route:cache || true
+    $PHP84 artisan view:cache || true
+    
     $PHP84 artisan up
     echo "Done!"
 @endtask
