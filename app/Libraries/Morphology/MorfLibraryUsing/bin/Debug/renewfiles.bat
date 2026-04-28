@@ -1,0 +1,5 @@
+copy /y "C:\Users\Cheetah\Source\Workspaces\Workspace\MorfLibraryUsing\MorfLibraryUsing\bin\Debug\AffInfo.txt" "C:\Users\Cheetah\Source\Workspaces\Workspace\SyntaxAnalysis\SyntaxAnalysis\bin\Debug"
+copy /y "C:\Users\Cheetah\Source\Workspaces\Workspace\MorfLibraryUsing\MorfLibraryUsing\bin\Debug\Affixes.txt" "C:\Users\Cheetah\Source\Workspaces\Workspace\SyntaxAnalysis\SyntaxAnalysis\bin\Debug" 
+copy /y "C:\Users\Cheetah\Source\Workspaces\Workspace\MorfLibraryUsing\MorfLibraryUsing\bin\Debug\DICT.txt" "C:\Users\Cheetah\Source\Workspaces\Workspace\SyntaxAnalysis\SyntaxAnalysis\bin\Debug" 
+copy /y "C:\Users\Cheetah\Source\Workspaces\Workspace\MorfLibraryUsing\MorfLibraryUsing\bin\Debug\Exceptions.txt" "C:\Users\Cheetah\Source\Workspaces\Workspace\SyntaxAnalysis\SyntaxAnalysis\bin\Debug" 
+copy /y "C:\Users\Cheetah\Source\Workspaces\Workspace\MorfLibraryUsing\MorfLibraryUsing\bin\Debug\Rules.txt" "C:\Users\Cheetah\Source\Workspaces\Workspace\SyntaxAnalysis\SyntaxAnalysis\bin\Debug"

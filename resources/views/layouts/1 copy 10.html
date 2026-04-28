@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Современная гуманитаристика • Научный журнал</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c5048;
+            --primary-dark: #1d3530;
+            --primary-light: #3e6b61;
+            --primary-soft: #e5f0ed;
+            --accent: #d98c5f;
+            --accent-dark: #bf6e40;
+            --accent-light: #e8aa85;
+            --accent-soft: #feefe6;
+            --text: #1e2b2a;
+            --text-light: #3f534f;
+            --text-soft: #6f847f;
+            --bg: #ffffff;
+            --bg-light: #fad399;
+            --bg-soft: #f9f3ec;
+            --border: #e0d6cc;
+            --border-light: #ece3db;
+            --shadow-sm: 0 4px 12px rgba(44, 80, 72, 0.08);
+            --shadow: 0 8px 24px rgba(44, 80, 72, 0.12);
+            --shadow-md: 0 16px 32px rgba(44, 80, 72, 0.16);
+            --shadow-lg: 0 24px 48px rgba(44, 80, 72, 0.2);
+            --shadow-accent: 0 4px 16px rgba(217, 140, 95, 0.25);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.7;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+        }
+
+        /* Декоративные элементы */
+        .decor-line {
+            position: relative;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), var(--accent-light), var(--accent), transparent);
+            margin: 2rem 0;
+        }
+
+        .decor-wave {
+            position: relative;
+            width: 100%;
+            height: 20px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" opacity="0.15"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23d98c5f"></path></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+        }
+
+        /* Навигация */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary) !important;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .navbar-brand span {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.7rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1.2rem !important;
+            margin: 0 0.1rem;
+            transition: var(--transition);
+            position: relative;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 1.2rem;
+            right: 1.2rem;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), var(--accent-light), var(--accent), transparent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Hero секция */
+        .hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(217,140,95,0.05) 0%, rgba(217,140,95,0) 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            left: -200px;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(44,80,72,0.05) 0%, rgba(44,80,72,0) 70%);
+            border-radius: 50%;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+            font-weight: 700;
+            font-style: italic;
+            display: inline-block;
+            position: relative;
+        }
+
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            /* background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0,5 Q20,0 40,5 T80,5 T120,5" stroke="%23d98c5f" fill="none" stroke-width="2"/></svg>'); */
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 550px;
+            font-weight: 400;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: left;
+            position: relative;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 3"><path d="M0,1.5 Q15,0 30,1.5 T60,1.5" stroke="%23d98c5f" fill="none" stroke-width="2"/></svg>');
+            background-size: cover;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-soft);
+            font-weight: 600;
+        }
+
+        /* Кнопки */
+        .btn-custom {
+            padding: 0.9rem 2.5rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            border-radius: 40px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .btn-primary-custom:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-accent);
+        }
+
+        .btn-outline-custom {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Основной контент */
+        .section {
+            padding: 70px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light), transparent);
+        }
+
+        .section-title::after {
+            content: '✧';
+            position: absolute;
+            bottom: -22px;
+            left: 130px;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .section-title.text-center::before {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+        }
+
+        .section-title.text-center::after {
+            left: 50%;
+            transform: translateX(75px);
+        }
+
+        /* Карточки статей */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .article-card {
+            background: var(--bg-light);
+            border: 2px solid var(--border-light);
+            padding: 2rem;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border-radius: 30px 30px 30px 0;
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 60px;
+            height: 60px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" opacity="0.15"><path d="M0,60 L60,0 L60,60 Z" fill="%23d98c5f"/></svg>');
+            background-size: cover;
+        }
+
+        .article-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-accent);
+            transform: translateY(-4px);
+        }
+
+        .article-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: inline-block;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .article-category::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 2"><path d="M0,1 Q7.5,0 15,1 T30,1" stroke="%23d98c5f" fill="none" stroke-width="1.5"/></svg>');
+            background-size: cover;
+        }
+
+        .article-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .article-title a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .article-title a:hover {
+            color: var(--accent);
+        }
+
+        .article-authors {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        .article-excerpt {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-soft);
+            border-top: 2px dashed var(--border);
+            padding-top: 1rem;
+            margin-top: auto;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        .article-meta i {
+            margin-right: 0.3rem;
+            color: var(--accent);
+        }
+
+        /* Сайдбар */
+        .sidebar {
+            position: sticky;
+            top: 90px;
+        }
+
+        .sidebar-widget {
+            background: var(--bg-light);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid var(--border-light);
+            position: relative;
+            border-radius: 30px 0 30px 0;
+        }
+
+        .sidebar-widget::before {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" opacity="0.15"><path d="M25,5 L45,25 L25,45 L5,25 Z" fill="%23d98c5f"/></svg>');
+            background-size: cover;
+        }
+
+        .widget-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        /* Текущий выпуск */
+        .issue-card {
+            background: var(--bg);
+            padding: 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 20px 20px 20px 0;
+        }
+
+        .issue-volume {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .issue-date {
+            color: var(--accent);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .issue-stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 1.2rem 0;
+            padding: 1rem 0;
+            border-top: 2px dashed var(--border);
+            border-bottom: 2px dashed var(--border);
+        }
+
+        .issue-stat {
+            text-align: center;
+        }
+
+        .issue-stat-value {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .issue-stat-label {
+            font-size: 0.7rem;
+            color: var(--text-soft);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Теги */
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: var(--bg);
+            padding: 0.5rem 1.2rem;
+            border: 2px solid var(--border);
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            letter-spacing: 0.05em;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+
+        .tag:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-color: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Архив выпусков */
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .archive-item {
+            background: var(--bg-light);
+            border: 2px solid var(--border-light);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px 30px 30px 0;
+        }
+
+        .archive-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .archive-item:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-accent);
+            transform: translateY(-4px);
+        }
+
+        .archive-item:hover::before {
+            opacity: 0.4;
+        }
+
+        .archive-volume {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .archive-date {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .archive-theme {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* Редакционная коллегия */
+        .editors-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .editor-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: var(--bg-light);
+            border: 2px solid var(--border-light);
+            transition: var(--transition);
+            position: relative;
+            border-radius: 40px 40px 40px 0;
+        }
+
+        .editor-card::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" opacity="0.2"><circle cx="20" cy="20" r="12" fill="none" stroke="%23d98c5f" stroke-width="2"/></svg>');
+            background-size: cover;
+        }
+
+        .editor-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-accent);
+            transform: translateY(-4px);
+        }
+
+        .editor-avatar {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 1.2rem;
+            background: linear-gradient(135deg, var(--accent-soft) 0%, var(--bg) 100%);
+            color: var(--accent);
+            border-radius: 50% 50% 50% 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            border: 3px solid var(--accent);
+        }
+
+        .editor-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .editor-role {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* Темы */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1rem;
+        }
+
+        .topic-card {
+            background: var(--bg-light);
+            padding: 1.5rem 0.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            border: 2px solid var(--border-light);
+            border-radius: 30px 30px 30px 0;
+        }
+
+        .topic-card:hover {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-light) 100%);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-accent);
+        }
+
+        .topic-icon {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* Подписка */
+        .subscribe-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subscribe-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+
+        .subscribe-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(217,140,95,0.2) 0%, rgba(217,140,95,0) 70%);
+            border-radius: 50%;
+        }
+
+        .subscribe-title {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .subscribe-text {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 450px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.15);
+            color: white;
+            font-size: 0.95rem;
+            font-family: 'Quicksand', sans-serif;
+            border-radius: 40px;
+            font-weight: 500;
+        }
+
+        .subscribe-form input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .subscribe-form input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.25);
+        }
+
+        .subscribe-form button {
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: white;
+            border: 2px solid var(--accent);
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            border-radius: 40px;
+        }
+
+        .subscribe-form button:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Футер */
+        .footer {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: rgba(255,255,255,0.8);
+            padding: 50px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 4" preserveAspectRatio="none"><path d="M0,2 Q300,0 600,2 T1200,2" stroke="%23d98c5f" fill="none" stroke-width="2"/></svg>');
+            background-size: cover;
+            opacity: 0.4;
+        }
+
+        .footer h5 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links i {
+            margin-right: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--accent-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 2px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .topics-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .editors-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .archive-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                margin-top: 2rem;
+                position: static;
+            }
+            
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .archive-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .topics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .subscribe-form {
+                flex-direction: column;
+            }
+            
+            .d-flex.gap-3 {
+                flex-direction: column;
+            }
+            
+            .btn-custom {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                Современная гуманитаристика
+                <span>Academic Journal • Est. 2009</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">О журнале</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Архив</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Авторам</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Редколлегия</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero секция -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="hero-title"><span>Современная</span> гуманитаристика</h1>
+                    <p class="hero-subtitle">Междисциплинарный научный журнал открытого доступа. Публикуем оригинальные исследования в области гуманитарных наук.</p>
+                    
+                    <div class="d-flex gap-3 mb-5">
+                        <a href="#" class="btn btn-custom btn-primary-custom">
+                            <i class="bi bi-journal"></i> Текущий выпуск
+                        </a>
+                        <a href="#" class="btn btn-custom btn-outline-custom">
+                            <i class="bi bi-search"></i> Поиск статей
+                        </a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">2.8</div>
+                            <div class="stat-label">Импакт-фактор</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">Лет издания</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">450+</div>
+                            <div class="stat-label">Статей в год</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">85%</div>
+                            <div class="stat-label">Прием статей</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <main>
+        <!-- Свежие статьи -->
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h2 class="section-title">Новые исследования</h2>
+                        
+                        <div class="article-grid">
+                            <!-- Статья 1 -->
+                            <div class="article-card">
+                                <span class="article-category">Философия</span>
+                                <h3 class="article-title">
+                                    <a href="#">Феномен цифровой субъективности</a>
+                                </h3>
+                                <div class="article-authors">Александр Кузнецов, Мария Петрова</div>
+                                <p class="article-excerpt">Исследование трансформации концепта субъективности в условиях цифровизации и развития искусственного интеллекта...</p>
+                                <div class="article-meta">
+                                    <span><i class="bi bi-eye"></i> 234</span>
+                                    <span><i class="bi bi-download"></i> 56</span>
+                                    <span><i class="bi bi-calendar"></i> 15 сен 2024</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Статья 2 -->
+                            <div class="article-card">
+                                <span class="article-category">Лингвистика</span>
+                                <h3 class="article-title">
+                                    <a href="#">Корпусный анализ дискурсивных маркеров</a>
+                                </h3>
+                                <div class="article-authors">Елена Соколова</div>
+                                <p class="article-excerpt">Анализ частотных паттернов дискурсивных маркеров в научной коммуникации...</p>
+                                <div class="article-meta">
+                                    <span><i class="bi bi-eye"></i> 187</span>
+                                    <span><i class="bi bi-download"></i> 42</span>
+                                    <span><i class="bi bi-calendar"></i> 10 сен 2024</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Статья 3 -->
+                            <div class="article-card">
+                                <span class="article-category">История</span>
+                                <h3 class="article-title">
+                                    <a href="#">Интеллектуальная миграция XX века</a>
+                                </h3>
+                                <div class="article-authors">Дмитрий Волков, Анна Морозова</div>
+                                <p class="article-excerpt">Новые архивные материалы по истории русской эмиграции...</p>
+                                <div class="article-meta">
+                                    <span><i class="bi bi-eye"></i> 312</span>
+                                    <span><i class="bi bi-download"></i> 89</span>
+                                    <span><i class="bi bi-calendar"></i> 5 сен 2024</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Статья 4 -->
+                            <div class="article-card">
+                                <span class="article-category">Культурология</span>
+                                <h3 class="article-title">
+                                    <a href="#">Цифровая память и наследие</a>
+                                </h3>
+                                <div class="article-authors">Иван Смирнов</div>
+                                <p class="article-excerpt">Анализ цифровизации культурного наследия...</p>
+                                <div class="article-meta">
+                                    <span><i class="bi bi-eye"></i> 156</span>
+                                    <span><i class="bi bi-download"></i> 34</span>
+                                    <span><i class="bi bi-calendar"></i> 1 сен 2024</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Статья 5 -->
+                            <div class="article-card">
+                                <span class="article-category">Социология</span>
+                                <h3 class="article-title">
+                                    <a href="#">Соцсети в научной коммуникации</a>
+                                </h3>
+                                <div class="article-authors">Наталья Козлова, Павел Новиков</div>
+                                <p class="article-excerpt">Роль социальных сетей в науке...</p>
+                                <div class="article-meta">
+                                    <span><i class="bi bi-eye"></i> 198</span>
+                                    <span><i class="bi bi-download"></i> 45</span>
+                                    <span><i class="bi bi-calendar"></i> 28 авг 2024</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Статья 6 -->
+                            <div class="article-card">
+                                <span class="article-category">Психология</span>
+                                <h3 class="article-title">
+                                    <a href="#">Когнитивные стили в цифровой среде</a>
+                                </h3>
+                                <div class="article-authors">Ольга Мороз</div>
+                                <p class="article-excerpt">Влияние цифровых технологий на когнитивные процессы...</p>
+                                <div class="article-meta">
+                                    <span><i class="bi bi-eye"></i> 167</span>
+                                    <span><i class="bi bi-download"></i> 38</span>
+                                    <span><i class="bi bi-calendar"></i> 25 авг 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-5">
+                            <a href="#" class="btn btn-custom btn-outline-custom">
+                                Все статьи <i class="bi bi-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Сайдбар -->
+                    <div class="col-lg-4">
+                        <div class="sidebar">
+                            <!-- Текущий выпуск -->
+                            <div class="sidebar-widget">
+                                <h5 class="widget-title">Текущий выпуск</h5>
+                                <div class="issue-card">
+                                    <div class="issue-volume">Том 15, № 3</div>
+                                    <div class="issue-date">Сентябрь 2024</div>
+                                    
+                                    <div class="issue-stats">
+                                        <div class="issue-stat">
+                                            <div class="issue-stat-value">24</div>
+                                            <div class="issue-stat-label">статьи</div>
+                                        </div>
+                                        <div class="issue-stat">
+                                            <div class="issue-stat-value">48</div>
+                                            <div class="issue-stat-label">авторы</div>
+                                        </div>
+                                        <div class="issue-stat">
+                                            <div class="issue-stat-value">312</div>
+                                            <div class="issue-stat-label">страниц</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <a href="#" class="btn btn-custom btn-primary-custom w-100 mb-2">
+                                        <i class="bi bi-download"></i> Скачать PDF
+                                    </a>
+                                    <a href="#" class="btn btn-custom btn-outline-custom w-100">
+                                        <i class="bi bi-list"></i> Содержание
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Популярные темы -->
+                            <div class="sidebar-widget">
+                                <h5 class="widget-title">Популярные темы</h5>
+                                <div class="tags-cloud">
+                                    <a href="#" class="tag">философия сознания</a>
+                                    <a href="#" class="tag">цифровая культура</a>
+                                    <a href="#" class="tag">корпусная лингвистика</a>
+                                    <a href="#" class="tag">интеллектуальная история</a>
+                                    <a href="#" class="tag">биоэтика</a>
+                                    <a href="#" class="tag">феноменология</a>
+                                    <a href="#" class="tag">медиаисследования</a>
+                                    <a href="#" class="tag">культурная память</a>
+                                    <a href="#" class="tag">дискурс-анализ</a>
+                                    <a href="#" class="tag">герменевтика</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Индексация -->
+                            <div class="sidebar-widget">
+                                <h5 class="widget-title">Индексация</h5>
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <div style="font-weight: 600;">Scopus</div>
+                                        <small class="text-muted">Q2</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <div style="font-weight: 600;">Web of Science</div>
+                                        <small class="text-muted">ESCI</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <div style="font-weight: 600;">РИНЦ</div>
+                                        <small class="text-muted">ядро</small>
+                                    </div>
+                                    <div class="col-6">
+                                        <div style="font-weight: 600;">DOAJ</div>
+                                        <small class="text-muted">open access</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Новости -->
+                            <div class="sidebar-widget">
+                                <h5 class="widget-title">Новости</h5>
+                                <div class="mb-3">
+                                    <small class="text-muted">20 сентября 2024</small>
+                                    <p class="mb-0">Прием статей в спецвыпуск "Цифровые методы в гуманитарных исследованиях"</p>
+                                </div>
+                                <div class="mb-3">
+                                    <small class="text-muted">15 сентября 2024</small>
+                                    <p class="mb-0">Новый импакт-фактор журнала: 2.8</p>
+                                </div>
+                                <div>
+                                    <small class="text-muted">10 сентября 2024</small>
+                                    <p class="mb-0">Журнал включен в базу данных Scopus</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Архив выпусков -->
+        <section class="section bg-light">
+            <div class="container">
+                <h2 class="section-title">Архив выпусков</h2>
+                
+                <div class="archive-grid">
+                    <a href="#" class="archive-item">
+                        <div class="archive-volume">Том 15, № 2</div>
+                        <div class="archive-date">Июнь 2024</div>
+                        <div class="archive-theme">Цифровые методы</div>
+                    </a>
+                    <a href="#" class="archive-item">
+                        <div class="archive-volume">Том 15, № 1</div>
+                        <div class="archive-date">Март 2024</div>
+                        <div class="archive-theme">Философия технологий</div>
+                    </a>
+                    <a href="#" class="archive-item">
+                        <div class="archive-volume">Том 14, № 4</div>
+                        <div class="archive-date">Декабрь 2023</div>
+                        <div class="archive-theme">Когнитивные исследования</div>
+                    </a>
+                    <a href="#" class="archive-item">
+                        <div class="archive-volume">Том 14, № 3</div>
+                        <div class="archive-date">Сентябрь 2023</div>
+                        <div class="archive-theme">Медиафилософия</div>
+                    </a>
+                    <a href="#" class="archive-item">
+                        <div class="archive-volume">Том 14, № 2</div>
+                        <div class="archive-date">Июнь 2023</div>
+                        <div class="archive-theme">Культурная память</div>
+                    </a>
+                    <a href="#" class="archive-item">
+                        <div class="archive-volume">Том 14, № 1</div>
+                        <div class="archive-date">Март 2023</div>
+                        <div class="archive-theme">Биоэтика</div>
+                    </a>
+                </div>
+                
+                <div class="text-center mt-5">
+                    <a href="#" class="btn btn-custom btn-outline-custom">
+                        Все выпуски <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Редакционная коллегия -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Редакционная коллегия</h2>
+                
+                <div class="editors-grid">
+                    <div class="editor-card">
+                        <div class="editor-avatar">АК</div>
+                        <h4 class="editor-name">Александр Кузнецов</h4>
+                        <div class="editor-role">главный редактор</div>
+                    </div>
+                    <div class="editor-card">
+                        <div class="editor-avatar">ЕП</div>
+                        <h4 class="editor-name">Елена Петрова</h4>
+                        <div class="editor-role">зам. главного редактора</div>
+                    </div>
+                    <div class="editor-card">
+                        <div class="editor-avatar">ДС</div>
+                        <h4 class="editor-name">Дмитрий Соколов</h4>
+                        <div class="editor-role">отв. секретарь</div>
+                    </div>
+                    <div class="editor-card">
+                        <div class="editor-avatar">МВ</div>
+                        <h4 class="editor-name">Мария Васильева</h4>
+                        <div class="editor-role">член редколлегии</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Основные направления -->
+        <section class="section bg-light">
+            <div class="container">
+                <h2 class="section-title text-center">Основные направления</h2>
+                
+                <div class="topics-grid">
+                    <a href="#" class="topic-card">
+                        <div class="topic-icon"><i class="bi bi-pencil"></i></div>
+                        <div class="topic-name">Философия</div>
+                    </a>
+                    <a href="#" class="topic-card">
+                        <div class="topic-icon"><i class="bi bi-chat"></i></div>
+                        <div class="topic-name">Филология</div>
+                    </a>
+                    <a href="#" class="topic-card">
+                        <div class="topic-icon"><i class="bi bi-clock-history"></i></div>
+                        <div class="topic-name">История</div>
+                    </a>
+                    <a href="#" class="topic-card">
+                        <div class="topic-icon"><i class="bi bi-brush"></i></div>
+                        <div class="topic-name">Культурология</div>
+                    </a>
+                    <a href="#" class="topic-card">
+                        <div class="topic-icon"><i class="bi bi-globe"></i></div>
+                        <div class="topic-name">Социология</div>
+                    </a>
+                    <a href="#" class="topic-card">
+                        <div class="topic-icon"><i class="bi bi-book"></i></div>
+                        <div class="topic-name">Психология</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Подписка -->
+        <section class="subscribe-section">
+            <div class="container text-center">
+                <h2 class="subscribe-title">Будьте в курсе</h2>
+                <p class="subscribe-text">Подпишитесь на уведомления о выходе новых выпусков</p>
+                
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Ваш email" required>
+                    <button type="submit">Подписаться</button>
+                </form>
+                <small class="d-block mt-3 text-white-50">Без спама, только уведомления</small>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>Современная гуманитаристика</h5>
+                    <p style="opacity: 0.7;">Academic Journal • Est. 2009</p>
+                    <p style="opacity: 0.6; font-size: 0.9rem;">
+                        ISSN: 1234-5678 (Print)<br>
+                        ISSN: 2345-6789 (Online)
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="bi bi-telegram"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 mb-4">
+                    <h5>Журнал</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> О журнале</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Редакция</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Этические нормы</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 mb-4">
+                    <h5>Авторам</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Правила</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Подача</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Рецензирование</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5>Контакты</h5>
+                    <ul class="footer-links">
+                        <li><i class="bi bi-geo-alt"></i> 119991, Москва, ул. Академика Хохлова, 15</li>
+                        <li><i class="bi bi-envelope"></i> journal@humanitaristics.ru</li>
+                        <li><i class="bi bi-telephone"></i> +7 (495) 123-45-67</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2024 Современная гуманитаристика. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

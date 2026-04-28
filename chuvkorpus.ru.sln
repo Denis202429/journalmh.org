@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{F95F473B-E98A-ACD6-1986-755F447BE36F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{548449A5-CF42-F4D6-6B31-6F57CBC2CD19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MorfParsingLibrary", "app\Libraries\Morphology\MorfParsingLibrary.csproj", "{79323D69-7DC9-C7E4-0E24-244D18CE1DB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79323D69-7DC9-C7E4-0E24-244D18CE1DB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79323D69-7DC9-C7E4-0E24-244D18CE1DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79323D69-7DC9-C7E4-0E24-244D18CE1DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79323D69-7DC9-C7E4-0E24-244D18CE1DB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{548449A5-CF42-F4D6-6B31-6F57CBC2CD19} = {F95F473B-E98A-ACD6-1986-755F447BE36F}
+		{79323D69-7DC9-C7E4-0E24-244D18CE1DB2} = {548449A5-CF42-F4D6-6B31-6F57CBC2CD19}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82F35A7E-1329-47F4-B0CC-E3E00F79C0D8}
+	EndGlobalSection
+EndGlobal
