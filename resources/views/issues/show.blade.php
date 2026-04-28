@@ -119,94 +119,131 @@
     </div>
 
     <!-- Список статей в выпуске -->
+    <!-- Список статей в выпуске -->
     <div class="mt-4">
         <h2 class="h4 mb-3">Статьи выпуска</h2>
 
         @if($issue->articles->isEmpty())
         <div class="alert alert-info">В этом выпуске пока нет статей.</div>
         @else
-        <div class="articles-list">
-            @foreach($issue->articles as $index => $article)
-            <div class="card mb-3">
-                <div class="card-body">
-                    <div class="d-flex">
-                        <div class="me-3 text-center" style="min-width: 50px;">
-                            <span class="badge bg-secondary rounded-circle p-2">{{ $index + 1 }}</span>
+        @foreach($issue->articles as $index => $article)
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row g-3">
+                    <!-- Номер статьи -->
+                    <div class="col-auto">
+                        <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            {{ $index + 1 }}
                         </div>
-                        <div class="flex-grow-1">
-                            <h3 class="h5 mb-1">{{ $article->title_ru ?? $article->title }}</h3>
+                    </div>
 
-                            @if($article->title_en && $article->title_en != ($article->title_ru ?? $article->title))
-                            <div class="text-muted small mb-2"><i>{{ $article->title_en }}</i></div>
-                            @endif
+                    <!-- Содержание статьи -->
+                    <div class="col">
+                        <h3 class="h5 mb-1 text-break">{{ $article->title_ru ?? $article->title }}</h3>
 
-                            <!-- Авторы -->
-                            <div class="mb-2">
-                                <strong>Авторы:</strong>
-                                <span class="text-muted">
-                                    @php
-                                    $authorsString = '-';
-                                    $authorsList = \App\Models\ArticleAuthor::where('article_id', $article->id)->orderBy('author_num')->get();
-                                    if ($authorsList->count() > 0) {
-                                    $authorNames = [];
-                                    foreach ($authorsList as $author) {
-                                    $name = $author->surname_ru ?? $author->surname_en ?? '';
-                                    if ($name) $authorNames[] = $name;
-                                    }
-                                    $authorsString = implode(', ', $authorNames);
-                                    }
-                                    @endphp
-                                    {{ $authorsString }}
-                                </span>
-                            </div>
+                        @if($article->title_en && $article->title_en != ($article->title_ru ?? $article->title))
+                        <div class="text-muted small mb-2 text-break">
+                            <i>{{ $article->title_en }}</i>
+                        </div>
+                        @endif
 
-                            <!-- Метаданные статьи -->
-                            <div class="row small text-muted mt-2">
-                                <div class="col-md-6">
-                                    @if($article->pages)<span><i class="bi bi-file-text"></i> Страницы: {{ $article->pages }}</span><br>@endif
-                                    @if($article->art_type)<span><i class="bi bi-tag"></i> Тип: @switch($article->art_type) @case('RAR') Научная статья @break @case('REV') Обзорная статья @break @case('SCO') Краткое сообщение @break @case('BRV') Рецензия @break @default {{ $article->art_type }} @endswitch</span><br>@endif
-                                    @if($article->lang_publ)<span><i class="bi bi-globe"></i> Язык: @switch($article->lang_publ) @case('RUS') Русский @break @case('ENG') English @break @case('CHV') Чăваш @break @default {{ $article->lang_publ }} @endswitch</span>@endif
+                        <!-- Авторы -->
+                        <div class="mb-2">
+                            <strong>Авторы:</strong>
+                            <span class="text-muted text-break">
+                                @php
+                                $authorsString = '-';
+                                $authorsList = \App\Models\ArticleAuthor::where('article_id', $article->id)->orderBy('author_num')->get();
+                                if ($authorsList->count() > 0) {
+                                $authorNames = [];
+                                foreach ($authorsList as $author) {
+                                $name = $author->surname_ru ?? $author->surname_en ?? '';
+                                if ($name) $authorNames[] = $name;
+                                }
+                                $authorsString = implode(', ', $authorNames);
+                                }
+                                @endphp
+                                {{ $authorsString }}
+                            </span>
+                        </div>
+
+                        <!-- Метаданные -->
+                        <div class="row row-cols-1 row-cols-md-2 g-2 small text-muted">
+                            <div class="col">
+                                @if($article->pages)
+                                <div class="text-truncate"><i class="bi bi-file-text"></i> Страницы: {{ $article->pages }}</div>
+                                @endif
+                                @if($article->art_type)
+                                <div><i class="bi bi-tag"></i> Тип:
+                                    @switch($article->art_type)
+                                    @case('RAR') Научная статья @break
+                                    @case('REV') Обзорная статья @break
+                                    @case('SCO') Краткое сообщение @break
+                                    @case('BRV') Рецензия @break
+                                    @default {{ $article->art_type }}
+                                    @endswitch
                                 </div>
-                                <div class="col-md-6">
-                                    @if($article->doi)<span><i class="bi bi-link-45deg"></i> DOI: <code>{{ $article->doi }}</code></span><br>@endif
-                                    @if($article->udk)<span><i class="bi bi-hash"></i> УДК: {{ is_array($article->udk) ? implode(', ', $article->udk) : $article->udk }}</span><br>@endif
-                                    @if($article->keywords_ru)<span><i class="bi bi-tags"></i> Ключевые слова: {{ Str::limit($article->keywords_ru, 80) }}</span>@endif
+                                @endif
+                                @if($article->lang_publ)
+                                <div><i class="bi bi-globe"></i> Язык:
+                                    @switch($article->lang_publ)
+                                    @case('RUS') Русский @break
+                                    @case('ENG') English @break
+                                    @case('CHV') Чăваш @break
+                                    @default {{ $article->lang_publ }}
+                                    @endswitch
                                 </div>
+                                @endif
                             </div>
-
-                            <!-- Аннотация -->
-                            @if($article->abstract_ru)
-                            <div class="mt-2 small">
-                                <strong>Аннотация:</strong>
-                                <p class="text-muted mb-0">{{ Str::limit($article->abstract_ru, 200) }}</p>
+                            <div class="col">
+                                @if($article->doi)
+                                <div class="text-break"><i class="bi bi-link-45deg"></i> DOI: <code class="small text-break">{{ $article->doi }}</code></div>
+                                @endif
+                                @if($article->udk)
+                                <div><i class="bi bi-hash"></i> УДК: {{ is_array($article->udk) ? implode(', ', $article->udk) : $article->udk }}</div>
+                                @endif
+                                @if($article->keywords_ru)
+                                <div class="text-break"><i class="bi bi-tags"></i> Ключевые слова: {{ Str::limit($article->keywords_ru, 80) }}</div>
+                                @endif
                             </div>
-                            @endif
+                        </div>
 
-                            <!-- Полный текст статьи -->
-                            @if($article->text_ru)
-                            <div class="mt-3">
-                                <strong>Текст статьи:</strong>
-                                <div class="article-text mt-2" style="max-height: 400px; overflow-y: auto;">
+                        <!-- Аннотация -->
+                        @if($article->abstract_ru)
+                        <div class="mt-2 small">
+                            <strong>Аннотация:</strong>
+                            <p class="text-muted mb-0 text-break">{{ Str::limit($article->abstract_ru, 200) }}</p>
+                        </div>
+                        @endif
+
+                        <!-- Текст статьи - ТОЛЬКО BOOTSTRAP КЛАССЫ -->
+                        @if($article->text_ru)
+                        <div class="mt-3">
+                            <strong>Текст статьи:</strong>
+                            <div class="mt-2 p-3 border rounded bg-light overflow-auto" style="max-height: 300px;">
+                                <div class="text-break">
                                     {!! $article->text_ru !!}
                                 </div>
                             </div>
-                            @endif
-
-                            <!-- Кнопка скачивания PDF статьи -->
-                            @if($article->pdf_file_path)
-                            <div class="mt-3">
-                                <a href="{{ route('download.pdf', $article) }}" class="btn btn-sm btn-success">
-                                    <i class="bi bi-file-pdf"></i> Скачать PDF статьи
-                                </a>
-                            </div>
-                            @endif
                         </div>
+                        @endif
+
+                        <!-- PDF -->
+                        @if($article->pdf_file_path)
+                        <div class="mt-3">
+                            <a href="{{ route('download.pdf', $article) }}" class="btn btn-sm btn-success">
+                                <i class="bi bi-file-pdf"></i> Скачать PDF статьи
+                            </a>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
+        @endforeach
         @endif
     </div>
+
+
 </div>
 @endsection
