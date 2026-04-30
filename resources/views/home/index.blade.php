@@ -203,50 +203,49 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
 
 
                     <!-- Кнопки действий -->
-                    <div class="d-flex gap-2 flex-wrap mt-3">
-
-                        <!-- Обложка выпуска (уменьшенная) -->
-                        <!-- Обложка выпуска (уменьшенная) -->
+                    <div class="card h-100 shadow-sm">
+                        <!-- Обложка (широкая, сверху) -->
                         @if($issue->cover_image_path)
                         <div class="text-center pt-3">
                             <img src="{{ route('issue.cover', $issue) }}?t={{ $issue->updated_at->timestamp }}"
                                 alt="Обложка выпуска"
                                 class="img-fluid"
-                                style="max-width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                        </div>
-                        @elseif($issue->cover_image)
-                        <div class="text-center pt-3">
-                            <img src="{{ $issue->cover_image }}?t={{ $issue->updated_at->timestamp }}"
-                                alt="Обложка выпуска"
-                                class="img-fluid"
-                                style="max-width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                style="max-height: 200px; object-fit: cover;">
                         </div>
                         @endif
 
-                        <a href="{{ route('issues.show', $issue) }}" class="btn btn-sm btn-outline-primary">
-                            <i class="bi bi-list"></i> Содержание
-                        </a>
-                        <!-- PDF выпуска -->
-                        @if($issue->pdf_file_path)
-                        <a href="{{ route('download.issue.pdf', $issue) }}" class="btn btn-sm btn-success">
-                            <i class="bi bi-file-pdf"></i> PDF
-                        </a>
-                        @elseif($issue->pdf_url)
-                        <a href="{{ $issue->pdf_url }}" target="_blank" class="btn btn-sm btn-success">
-                            <i class="bi bi-file-pdf"></i> PDF
-                        </a>
-                        @endif
+                        <div class="card-body">
+                            <!-- Заголовок -->
+                            <div class="mb-3">
+                                <span class="badge bg-primary mb-2">{{ $issue->issue_type_label }}</span>
+                                <h3 class="card-title h5 mb-1">
+                                    Том {{ $issue->volume }}, № {{ $issue->number }}
+                                </h3>
+                                <div class="text-muted small">
+                                    {{ $issue->year }}
+                                </div>
+                            </div>
+
+                            <!-- Кнопки -->
+                            <div class="d-flex gap-2 flex-wrap">
+                                <a href="{{ route('issues.show', $issue) }}" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-list"></i> Содержание
+                                </a>
+                                @if($issue->pdf_file_path)
+                                <a href="{{ route('download.issue.pdf', $issue) }}" class="btn btn-sm btn-success">
+                                    <i class="bi bi-file-pdf"></i> PDF
+                                </a>
+                                @endif
+                            </div>
+                        </div>
                     </div>
-
-
                 </div>
+                @endforeach
             </div>
-            @endforeach
+            @else
+            <p style="color: var(--text-light); margin-bottom: 0;">Пока нет опубликованных выпусков. Добавьте их в админке.</p>
+            @endif
         </div>
-        @else
-        <p style="color: var(--text-light); margin-bottom: 0;">Пока нет опубликованных выпусков. Добавьте их в админке.</p>
-        @endif
-    </div>
 </section>
 
 
