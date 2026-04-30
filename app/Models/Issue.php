@@ -109,4 +109,22 @@ class Issue extends Model
     {
         return !empty($this->cover_image_path) && file_exists(storage_path('app/public/' . $this->cover_image_path));
     }
+
+    // Добавьте этот метод в модель Issue
+    public function getCoverUrlAttribute()
+    {
+        if ($this->cover_image_path && file_exists(storage_path('app/public/' . $this->cover_image_path))) {
+            return asset('storage/' . $this->cover_image_path);
+        }
+        if ($this->cover_image) {
+            return $this->cover_image;
+        }
+        return null;
+    }
+
+    // Проверяет, есть ли обложка
+    public function hasCover()
+    {
+        return !is_null($this->getCoverUrlAttribute());
+    }
 }

@@ -206,16 +206,22 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                     <div class="d-flex gap-2 flex-wrap mt-3">
 
                         <!-- Обложка выпуска (уменьшенная) -->
+                        <!-- Обложка выпуска (уменьшенная) -->
                         @if($issue->cover_image_path)
                         <div class="text-center pt-3">
-                            <img src="{{ route('issue.cover', $issue) }}" alt="Обложка выпуска" class="img-fluid" style="max-width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <img src="{{ route('issue.cover', $issue) }}?t={{ $issue->updated_at->timestamp }}"
+                                alt="Обложка выпуска"
+                                class="img-fluid"
+                                style="max-width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                         </div>
                         @elseif($issue->cover_image)
                         <div class="text-center pt-3">
-                            <img src="{{ $issue->cover_image }}" alt="Обложка выпуска" class="img-fluid" style="max-width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <img src="{{ $issue->cover_image }}?t={{ $issue->updated_at->timestamp }}"
+                                alt="Обложка выпуска"
+                                class="img-fluid"
+                                style="max-width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                         </div>
                         @endif
-
 
                         <a href="{{ route('issues.show', $issue) }}" class="btn btn-sm btn-outline-primary">
                             <i class="bi bi-list"></i> Содержание
