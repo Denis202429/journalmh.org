@@ -402,7 +402,7 @@
 
         tinymce.init({
 
-            selector: 'textarea[name="text_ru"], textarea[name="text_en"], textarea[name="text_cv"]',
+            selector: 'textarea[name="text_ru"], textarea[name="text_en"], textarea[name="text_cv"], textarea[name="abstract_ru"], textarea[name="abstract_en"],  textarea[name="abstract_cv"]',
             height: 720,
             plugins: "advlist anchor autolink autosave charmap code codesample directionality emoticons fullscreen help image importcss insertdatetime link lists media nonbreaking pagebreak preview quickbars save searchreplace table visualblocks visualchars wordcount",
             toolbar: 'undo redo | cut copy paste | formatselect | fontfamily fontsize | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | code fullscreen | chuvash_CС_ chuvash_c_ chuvash_AA_ chuvash_a_ chuvash_EE_ chuvash_e_ chuvash_UU_ chuvash_u_ Img_transform | S1 S2 S3 S4',
