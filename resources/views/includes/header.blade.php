@@ -58,7 +58,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="authorsDropdown">
                         <li><a class="dropdown-item" href="{{ route('journal.page', 'general-order-of-publication') }}">Общий порядок публикации</a></li>
-                        <li><a class="dropdown-item" href="{{ route('journal.page', 'requirements-for-articles') }}">Требования к статьям, представляемым для публикации в журнале</a></li>
+                        <li><a class="dropdown-item" href="{{ route('journal.page', 'requirements-for-articles') }}">Требования к статьям</a></li>
                         <li><a class="dropdown-item" href="{{ route('journal.page', 'instructions-for-reviewing') }}">Инструкция по отзыву и исправлению статей</a></li>
                         <!-- <li><a class="dropdown-item" href="{{ route('journal.page', 'references-generator') }}">Генератор списка литературы</a></li> -->
                     </ul>
