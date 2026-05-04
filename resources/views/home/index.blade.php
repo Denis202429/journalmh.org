@@ -173,10 +173,10 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
     </div>
 </section>
 
-
 <section class="section" id="archive">
     <div class="container">
         <h2 style="font-size: 2.6rem; margin-bottom: 1.2rem;">Для читателей</h2>
+
         @if(isset($issues) && $issues->count())
         <p style="color: var(--text-light); margin-bottom: 2rem;">Опубликованные выпуски.</p>
         <div class="row g-3">
@@ -192,60 +192,50 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                         Выпуск
                         @endif
                     </div>
+
                     <div style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">
                         {{ $issue->month ? $issue->month . ' ' : '' }}{{ $issue->year }}
                     </div>
+
                     @if($issue->title)
                     <div class="mt-2" style="color: var(--text-light); font-style: italic;">
                         {{ $issue->title }}
                     </div>
                     @endif
 
+                    <!-- Обложка (если есть) -->
+                    @if($issue->cover_image_path)
+                    <div class="text-center mt-3">
+                        <img src="{{ route('issue.cover', $issue) }}?t={{ $issue->updated_at->timestamp }}"
+                            alt="Обложка выпуска"
+                            class="img-fluid"
+                            style="max-height: 200px; object-fit: cover;">
+                    </div>
+                    @endif
 
-                    <!-- Кнопки действий -->
-                    <div class="card h-100 shadow-sm">
-                        <!-- Обложка (широкая, сверху) -->
-                        @if($issue->cover_image_path)
-                        <div class="text-center pt-3">
-                            <img src="{{ route('issue.cover', $issue) }}?t={{ $issue->updated_at->timestamp }}"
-                                alt="Обложка выпуска"
-                                class="img-fluid"
-                                style="max-height: 200px; object-fit: cover;">
-                        </div>
-                        @endif
+                    <!-- Тип выпуска и кнопки -->
+                    <div class="mt-3">
+                        <span class="badge bg-primary mb-2">{{ $issue->issue_type_label }}</span>
 
-                        <div class="card-body">
-                            <!-- Заголовок -->
-                            <div class="mb-3">
-                                <span class="badge bg-primary mb-2">{{ $issue->issue_type_label }}</span>
-                                <h3 class="card-title h5 mb-1">
-                                    Том {{ $issue->volume }}, № {{ $issue->number }}
-                                </h3>
-                                <div class="text-muted small">
-                                    {{ $issue->year }}
-                                </div>
-                            </div>
-
-                            <!-- Кнопки -->
-                            <div class="d-flex gap-2 flex-wrap">
-                                <a href="{{ route('issues.show', $issue) }}" class="btn btn-sm btn-outline-primary">
-                                    <i class="bi bi-list"></i> Содержание
-                                </a>
-                                @if($issue->pdf_file_path)
-                                <a href="{{ route('download.issue.pdf', $issue) }}" class="btn btn-sm btn-success">
-                                    <i class="bi bi-file-pdf"></i> PDF
-                                </a>
-                                @endif
-                            </div>
+                        <div class="d-flex gap-2 flex-wrap mt-2">
+                            <a href="{{ route('issues.show', $issue) }}" class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-list"></i> Содержание
+                            </a>
+                            @if($issue->pdf_file_path)
+                            <a href="{{ route('download.issue.pdf', $issue) }}" class="btn btn-sm btn-success">
+                                <i class="bi bi-file-pdf"></i> PDF
+                            </a>
+                            @endif
                         </div>
                     </div>
                 </div>
-                @endforeach
             </div>
-            @else
-            <p style="color: var(--text-light); margin-bottom: 0;">Пока нет опубликованных выпусков. Добавьте их в админке.</p>
-            @endif
+            @endforeach
         </div>
+        @else
+        <p style="color: var(--text-light); margin-bottom: 0;">Пока нет опубликованных выпусков. Добавьте их в админке.</p>
+        @endif
+    </div>
 </section>
 
 

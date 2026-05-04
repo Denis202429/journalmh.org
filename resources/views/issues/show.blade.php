@@ -175,13 +175,23 @@
                                 @endif
                                 @if($article->art_type)
                                 <div><i class="bi bi-tag"></i> Тип:
+                                   
                                     @switch($article->art_type)
                                     @case('RAR') Научная статья @break
-                                    @case('REV') Обзорная статья @break
-                                    @case('SCO') Краткое сообщение @break
+                                    @case('EDI') Редакторская заметка @break
                                     @case('BRV') Рецензия @break
+                                    @case('CNF') Материалы конференции @break
+                                    @case('SCO') Краткое сообщение @break
+                                    @case('REV') Обзорная статья @break
+                                    @case('ABS') Аннотация @break
+                                    @case('REP') Научный отчет @break
+                                    @case('RPR') Репринт @break
+                                    @case('COR') Переписка @break
+                                    @case('PER') Персоналии @break
+                                    @case('MIS') Разное @break
                                     @default {{ $article->art_type }}
                                     @endswitch
+
                                 </div>
                                 @endif
                                 @if($article->lang_publ)
