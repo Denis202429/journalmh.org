@@ -239,7 +239,7 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
 </section>
 
 
-<section class="section" id="editors">
+<!-- <section class="section" id="editors">
     <div class="container">
         <h2 style="font-size: 2.6rem; margin-bottom: 2rem;">Для авторов</h2>
 
@@ -308,10 +308,10 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 
-<section class="section py-5" id="for-authors">
+<!-- <section class="section py-5" id="for-authors">
     <div class="container">
 
         <div class="text-center mb-5">
@@ -404,7 +404,7 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
             </a>
         </div>
     </div>
-</section>
+</section> -->
 
 
 <!-- <section class="section" id="contacts">
