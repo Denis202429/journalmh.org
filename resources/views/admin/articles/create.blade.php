@@ -123,7 +123,7 @@
                                     <label>Фамилия (CV)</label>
                                     <input type="text" name="authors[0][surname_cv]" class="form-control" value="{{ old('authors.0.surname_cv') }}">
                                 </div>
-
+                                 <hr class="mt-3 mb-3">
                                 <div class="col-md-4 mt-2">
                                     <label>Имя (RU)</label>
                                     <input type="text" name="authors[0][name_ru]" class="form-control" value="{{ old('authors.0.name_ru') }}">
@@ -136,7 +136,7 @@
                                     <label>Имя (CV)</label>
                                     <input type="text" name="authors[0][name_cv]" class="form-control" value="{{ old('authors.0.name_cv') }}">
                                 </div>
-
+                                 <hr class="mt-3 mb-3">
                                 <div class="col-md-4 mt-2">
                                     <label>Отчество (RU)</label>
                                     <input type="text" name="authors[0][patronymic_ru]" class="form-control" value="{{ old('authors.0.patronymic_ru') }}">
@@ -149,7 +149,7 @@
                                     <label>Отчество (CV)</label>
                                     <input type="text" name="authors[0][patronymic_cv]" class="form-control" value="{{ old('authors.0.patronymic_cv') }}">
                                 </div>
-
+                                 <hr class="mt-3 mb-3">
                                 <div class="col-md-6 mt-2">
                                     <label>Организация (RU)</label>
                                     <input type="text" name="authors[0][org_name_ru]" class="form-control" value="{{ old('authors.0.org_name_ru') }}">
@@ -158,7 +158,7 @@
                                     <label>Организация (EN)</label>
                                     <input type="text" name="authors[0][org_name_en]" class="form-control" value="{{ old('authors.0.org_name_en') }}">
                                 </div>
-
+                                 <hr class="mt-3 mb-3">
                                 <div class="col-md-4 mt-2">
                                     <label>Город (RU)</label>
                                     <input type="text" name="authors[0][town_ru]" class="form-control" value="{{ old('authors.0.town_ru') }}">
@@ -178,15 +178,39 @@
                                     <label>Должность (RU)</label>
                                     <input type="text" name="authors[0][position_ru]" class="form-control" value="{{ old('authors.0.position_ru') }}">
                                 </div>
+
+
+                                 <hr class="mt-3 mb-3">
+
                                 <div class="col-md-4 mt-2">
-                                    <label>Ученая степень</label>
-                                    <input type="text" name="authors[0][degree]" class="form-control" placeholder="кандидат наук, доктор наук" value="{{ old('authors.0.degree') }}">
+                                    <label>Ученая степень (RU)</label>
+                                    <input type="text" name="authors[0][degree_ru]" class="form-control" placeholder="кандидат наук, доктор наук" value="{{ old('authors.0.degree_ru') }}">
                                 </div>
                                 <div class="col-md-4 mt-2">
-                                    <label>Звание</label>
-                                    <input type="text" name="authors[0][rank]" class="form-control" placeholder="доцент, профессор" value="{{ old('authors.0.rank') }}">
+                                    <label>Ученая степень (EN)</label>
+                                    <input type="text" name="authors[0][degree_en]" class="form-control" placeholder="PhD, Doctor of Sciences" value="{{ old('authors.0.degree_en') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Ученая степень (CV)</label>
+                                    <input type="text" name="authors[0][degree_cv]" class="form-control" placeholder="ăслăхсен кандидачĕ, ăслăхсен докторĕ" value="{{ old('authors.0.degree_cv') }}">
                                 </div>
 
+                                 <hr class="mt-3 mb-3">
+
+                                <div class="col-md-4 mt-2">
+                                    <label>Звание (RU)</label>
+                                    <input type="text" name="authors[0][rank_ru]" class="form-control" placeholder="доцент, профессор" value="{{ old('authors.0.rank_ru') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Звание (EN)</label>
+                                    <input type="text" name="authors[0][rank_en]" class="form-control" placeholder="Associate Professor, Professor" value="{{ old('authors.0.rank_en') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Звание (CV)</label>
+                                    <input type="text" name="authors[0][rank_cv]" class="form-control" placeholder="доцент, профессор" value="{{ old('authors.0.rank_cv') }}">
+                                </div>
+
+                                <hr class="mt-3 mb-3">
                                 <div class="col-md-4 mt-2">
                                     <label>ORCID</label>
                                     <input type="text" name="authors[0][orcid]" class="form-control" placeholder="0000-0000-0000-0000" value="{{ old('authors.0.orcid') }}">
@@ -226,7 +250,7 @@
                         <textarea name="abstract_cv" class="form-control" rows="4">{{ old('abstract_cv') }}</textarea>
                     </div>
                 </div>
-                                    <!-- abstract_ru abstract_en abstract_cv -->
+                <!-- abstract_ru abstract_en abstract_cv -->
                 <hr class="my-4">
 
                 <!-- Ключевые слова -->
@@ -371,7 +395,7 @@
             console.error('TinyMCE script not loaded');
             return;
         }
-           
+
         tinymce.init({
             selector: 'textarea[name="text_ru"], textarea[name="text_en"], textarea[name="text_cv"], textarea[name="abstract_ru"], textarea[name="abstract_en"],  textarea[name="abstract_cv"]',
             height: 720,
@@ -695,14 +719,35 @@
                                 <label>Должность (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][position_ru]" class="form-control">
                             </div>
-                            <div class="col-md-4 mt-2">
-                                <label>Ученая степень</label>
-                                <input type="text" name="authors[${authorIndex}][degree]" class="form-control" placeholder="кандидат наук, доктор наук">
-                            </div>
-                            <div class="col-md-4 mt-2">
-                                <label>Звание</label>
-                                <input type="text" name="authors[${authorIndex}][rank]" class="form-control" placeholder="доцент, профессор">
-                            </div>
+
+
+
+<div class="col-md-4 mt-2">
+    <label>Ученая степень (RU)</label>
+    <input type="text" name="authors[${authorIndex}][degree_ru]" class="form-control" placeholder="кандидат наук, доктор наук">
+</div>
+<div class="col-md-4 mt-2">
+    <label>Ученая степень (EN)</label>
+    <input type="text" name="authors[${authorIndex}][degree_en]" class="form-control" placeholder="PhD, Doctor of Sciences">
+</div>
+<div class="col-md-4 mt-2">
+    <label>Ученая степень (CV)</label>
+    <input type="text" name="authors[${authorIndex}][degree_cv]" class="form-control" placeholder="ăслăхсен кандидачĕ, ăслăхсен докторĕ">
+</div>
+
+<div class="col-md-4 mt-2">
+    <label>Звание (RU)</label>
+    <input type="text" name="authors[${authorIndex}][rank_ru]" class="form-control" placeholder="доцент, профессор">
+</div>
+<div class="col-md-4 mt-2">
+    <label>Звание (EN)</label>
+    <input type="text" name="authors[${authorIndex}][rank_en]" class="form-control" placeholder="Associate Professor, Professor">
+</div>
+<div class="col-md-4 mt-2">
+    <label>Звание (CV)</label>
+    <input type="text" name="authors[${authorIndex}][rank_cv]" class="form-control" placeholder="доцент, профессор">
+</div>
+
 
                             <div class="col-md-4 mt-2">
                                 <label>ORCID</label>

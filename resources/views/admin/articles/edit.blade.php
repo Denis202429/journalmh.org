@@ -134,6 +134,8 @@
                                     <label>Фамилия (CV)</label>
                                     <input type="text" name="authors[{{ $index }}][surname_cv]" class="form-control" value="{{ old("authors.{$index}.surname_cv", $author->surname_cv ?? '') }}">
                                 </div>
+                                
+                                <hr class="mt-3 mb-3">
 
                                 <div class="col-md-4 mt-2">
                                     <label>Имя (RU)</label>
@@ -147,6 +149,9 @@
                                     <label>Имя (CV)</label>
                                     <input type="text" name="authors[{{ $index }}][name_cv]" class="form-control" value="{{ old("authors.{$index}.name_cv", $author->name_cv ?? '') }}">
                                 </div>
+                                <hr class="mt-3 mb-3">
+
+                                <hr class="mt-3 mb-3">
 
                                 <div class="col-md-4 mt-2">
                                     <label>Отчество (RU)</label>
@@ -161,6 +166,9 @@
                                     <input type="text" name="authors[{{ $index }}][patronymic_cv]" class="form-control" value="{{ old("authors.{$index}.patronymic_cv", $author->patronymic_cv ?? '') }}">
                                 </div>
 
+                                <hr class="mt-3 mb-3">
+
+                                <hr class="mt-3 mb-3">
                                 <div class="col-md-6 mt-2">
                                     <label>Организация (RU)</label>
                                     <input type="text" name="authors[{{ $index }}][org_name_ru]" class="form-control" value="{{ old("authors.{$index}.org_name_ru", $author->org_name_ru ?? '') }}">
@@ -169,6 +177,8 @@
                                     <label>Организация (EN)</label>
                                     <input type="text" name="authors[{{ $index }}][org_name_en]" class="form-control" value="{{ old("authors.{$index}.org_name_en", $author->org_name_en ?? '') }}">
                                 </div>
+
+                                <hr class="mt-3 mb-3">
 
                                 <div class="col-md-4 mt-2">
                                     <label>Город (RU)</label>
@@ -184,23 +194,13 @@
                                         <label class="form-check-label">Автор-корреспондент</label>
                                     </div>
                                 </div>
+                                <hr class="mt-3 mb-3">
 
                                 <div class="col-md-4 mt-2">
                                     <label>Должность (RU)</label>
                                     <input type="text" name="authors[{{ $index }}][position_ru]" class="form-control" value="{{ old("authors.{$index}.position_ru", $author->position_ru ?? '') }}">
                                 </div>
-
-                                <!-- <div class="col-md-4 mt-2">
-                                    <label>Ученая степень</label>
-                                    <input type="text" name="authors[{{ $index }}][degree]" class="form-control" placeholder="кандидат наук, доктор наук" value="{{ old("authors.{$index}.degree", $author->degree ?? '') }}">
-                                </div>
-                                <div class="col-md-4 mt-2">
-                                    <label>Звание</label>
-                                    <input type="text" name="authors[{{ $index }}][rank]" class="form-control" placeholder="доцент, профессор" value="{{ old("authors.{$index}.rank", $author->rank ?? '') }}">
-                                </div>
-
-                                 -->
-
+                                <hr class="mt-3 mb-3">
 
                                 <div class="col-md-4 mt-2">
                                     <label>Ученая степень (RU)</label>
@@ -215,6 +215,8 @@
                                     <input type="text" name="authors[{{ $index }}][degree_cv]" class="form-control" placeholder="ăслăхсен кандидачĕ, ăслăхсен докторĕ" value="{{ old("authors.{$index}.degree_cv", $author->degree_cv ?? '') }}">
                                 </div>
 
+                                 <hr class="mt-3 mb-3">
+
                                 <div class="col-md-4 mt-2">
                                     <label>Звание (RU)</label>
                                     <input type="text" name="authors[{{ $index }}][rank_ru]" class="form-control" placeholder="доцент, профессор" value="{{ old("authors.{$index}.rank_ru", $author->rank_ru ?? '') }}">
@@ -227,8 +229,7 @@
                                     <label>Звание (CV)</label>
                                     <input type="text" name="authors[{{ $index }}][rank_cv]" class="form-control" placeholder="доцент, профессор" value="{{ old("authors.{$index}.rank_cv", $author->rank_cv ?? '') }}">
                                 </div>
-
-
+                                <hr class="mt-3 mb-3">
 
                                 <div class="col-md-4 mt-2">
                                     <label>ORCID</label>
