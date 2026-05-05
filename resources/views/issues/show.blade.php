@@ -175,7 +175,7 @@
                                 @endif
                                 @if($article->art_type)
                                 <div><i class="bi bi-tag"></i> Тип:
-                                   
+
                                     @switch($article->art_type)
                                     @case('RAR') Научная статья @break
                                     @case('EDI') Редакторская заметка @break
@@ -212,9 +212,7 @@
                                 @if($article->udk)
                                 <div><i class="bi bi-hash"></i> УДК: {{ is_array($article->udk) ? implode(', ', $article->udk) : $article->udk }}</div>
                                 @endif
-                                @if($article->keywords_ru)
-                                <div class="text-break"><i class="bi bi-tags"></i> Ключевые слова: {{ Str::limit($article->keywords_ru, 80) }}</div>
-                                @endif
+
                             </div>
                         </div>
 
@@ -224,6 +222,10 @@
                             <strong>Аннотация:</strong>
                             <p class="text-muted mb-0 text-break">{!! Str::limit($article->abstract_ru, 200) !!}</p>
                         </div>
+                        @endif
+
+                        @if($article->keywords_ru)
+                        <div class="text-break"><i class="bi bi-tags"></i> Ключевые слова: {{ Str::limit($article->keywords_ru, 680) }}</div>
                         @endif
 
                         <!-- Текст статьи - ТОЛЬКО BOOTSTRAP КЛАССЫ -->
