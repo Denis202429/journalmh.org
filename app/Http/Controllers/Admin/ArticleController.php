@@ -7,7 +7,7 @@ use App\Models\Article;
 use App\Models\ArticleAuthor;
 use App\Models\Issue;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage; 
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -70,7 +70,7 @@ class ArticleController extends Controller
             'date_received' => 'nullable|date',
             'date_accepted' => 'nullable|date',
             'date_publication' => 'nullable|date',
-            'pdf_url' => 'nullable|url|max:2048',
+            // 'pdf_url' => 'nullable|url|max:2048',
             'pdf_file' => 'nullable|file|mimes:pdf|max:10240', // 10MB max
             'is_published' => 'boolean',
             'sort_order' => 'nullable|integer',
@@ -88,7 +88,7 @@ class ArticleController extends Controller
             $validated['pdf_file_path'] = $filePath;
             $validated['pdf_original_name'] = $file->getClientOriginalName();
             $validated['pdf_file_size'] = $file->getSize();
-            $validated['pdf_url'] = null; // Очищаем внешнюю ссылку, если загружен файл
+            // $validated['pdf_url'] = null; // Очищаем внешнюю ссылку, если загружен файл
         }
 
         // Создаем статью
@@ -199,7 +199,7 @@ class ArticleController extends Controller
             'date_received' => 'nullable|date',
             'date_accepted' => 'nullable|date',
             'date_publication' => 'nullable|date',
-            'pdf_url' => 'nullable|url|max:2048',
+            // 'pdf_url' => 'nullable|url|max:2048',
             'pdf_file' => 'nullable|file|mimes:pdf|max:10240',
             'delete_pdf' => 'nullable|boolean',
             'is_published' => 'boolean',
@@ -209,11 +209,34 @@ class ArticleController extends Controller
         $validated['is_published'] = $request->boolean('is_published');
 
         // Обработка удаления PDF
-        if ($request->boolean('delete_pdf') && $article->pdf_file_path) {
-            Storage::disk('public')->delete($article->pdf_file_path);
-            $validated['pdf_file_path'] = null;
-            $validated['pdf_original_name'] = null;
-            $validated['pdf_file_size'] = null;
+        // if ($request->boolean('delete_pdf') && $article->pdf_file_path) {
+        //     Storage::disk('public')->delete($article->pdf_file_path);
+        //     $validated['pdf_file_path'] = null;
+        //     $validated['pdf_original_name'] = null;
+        //     $validated['pdf_file_size'] = null;
+        // }
+
+        // Обработка удаления PDF
+        if ($request->boolean('delete_pdf')) {
+            if ($article->pdf_file_path) {
+                // Удаляем физический файл
+                if (Storage::disk('public')->exists($article->pdf_file_path)) {
+                    Storage::disk('public')->delete($article->pdf_file_path);
+                }
+
+                // ОЧИЩАЕМ ВСЕ ПОЛЯ, связанные с файлом
+                $validated['pdf_file_path'] = null;
+                $validated['pdf_original_name'] = null;
+                $validated['pdf_file_size'] = null;
+
+                // Также очищаем pdf_url, если он был
+
+                // if ($request->filled('pdf_url')) {
+                //     $validated['pdf_url'] = $request->pdf_url;
+                // } else {
+                //     $validated['pdf_url'] = null;
+                // }
+            }
         }
 
         // Обработка загрузки нового PDF файла
@@ -230,7 +253,7 @@ class ArticleController extends Controller
             $validated['pdf_file_path'] = $filePath;
             $validated['pdf_original_name'] = $file->getClientOriginalName();
             $validated['pdf_file_size'] = $file->getSize();
-            $validated['pdf_url'] = null;
+            // $validated['pdf_url'] = null;
         }
 
         // Обновляем статью

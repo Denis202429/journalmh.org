@@ -330,11 +330,11 @@
                         <input type="file" name="pdf_file" class="form-control" accept=".pdf">
                         <small class="text-muted">Поддерживаются файлы в формате PDF (макс. 10 МБ)</small>
                     </div>
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                         <label class="form-label">Или ссылка на PDF</label>
                         <input type="url" name="pdf_url" class="form-control" value="{{ old('pdf_url') }}" placeholder="https://example.com/article.pdf">
                         <small class="text-muted">Если загружаете файл, ссылка будет проигнорирована</small>
-                    </div>
+                    </div> -->
                 </div>
 
 

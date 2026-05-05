@@ -133,15 +133,33 @@ class Article extends Model
     // }
 
 
+    // public function getPdfUrlAttribute($value)
+    // {
+    //     // Если есть загруженный файл, возвращаем путь к нему
+    //     if ($this->pdf_file_path && !$this->use_external_url) {
+    //         return asset('storage/' . $this->pdf_file_path);
+    //     }
+    //     // Иначе возвращаем внешнюю ссылку
+    //     return $value;
+    // }
+
+
     public function getPdfUrlAttribute($value)
     {
-        // Если есть загруженный файл, возвращаем путь к нему
-        if ($this->pdf_file_path && !$this->use_external_url) {
-            return asset('storage/' . $this->pdf_file_path);
+        // Если есть загруженный файл, проверяем, существует ли он физически
+        if ($this->pdf_file_path) {
+            // Проверяем, существует ли файл на диске
+            if (\Storage::disk('public')->exists($this->pdf_file_path)) {
+                return asset('storage/' . $this->pdf_file_path);
+            } else {
+                // Файл не существует, возвращаем null
+                return null;
+            }
         }
         // Иначе возвращаем внешнюю ссылку
         return $value;
     }
+
 
 
     // Проверяем, есть ли PDF файл

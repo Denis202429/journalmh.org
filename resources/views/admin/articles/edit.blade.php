@@ -340,9 +340,14 @@
 
 
                 <!-- Файл статьи -->
+                <!-- Файл статьи -->
                 <h5 class="mb-3">Файл статьи (PDF)</h5>
                 <div class="row g-3">
-                    @if($article->pdf_file_path)
+                    @php
+                    $hasPhysicalFile = $article->pdf_file_path && \Storage::disk('public')->exists($article->pdf_file_path);
+                    @endphp
+
+                    @if($hasPhysicalFile)
                     <div class="col-md-12">
                         <div class="alert alert-info">
                             <i class="bi bi-file-pdf"></i>
@@ -361,11 +366,11 @@
                         <input type="file" name="pdf_file" class="form-control" accept=".pdf">
                         <small class="text-muted">Поддерживаются файлы в формате PDF (макс. 10 МБ)</small>
                     </div>
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                         <label class="form-label">Или ссылка на PDF</label>
                         <input type="url" name="pdf_url" class="form-control" value="{{ old('pdf_url', $article->pdf_url) }}" placeholder="https://example.com/article.pdf">
                         <small class="text-muted">Если загружаете файл, ссылка будет проигнорирована</small>
-                    </div>
+                    </div> -->
                 </div>
 
 
@@ -765,4 +770,3 @@
 
 
 @endpush
-
