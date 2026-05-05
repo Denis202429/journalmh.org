@@ -151,8 +151,6 @@
                                 </div>
                                 <hr class="mt-3 mb-3">
 
-                                <hr class="mt-3 mb-3">
-
                                 <div class="col-md-4 mt-2">
                                     <label>Отчество (RU)</label>
                                     <input type="text" name="authors[{{ $index }}][patronymic_ru]" class="form-control" value="{{ old("authors.{$index}.patronymic_ru", $author->patronymic_ru ?? '') }}">
@@ -168,7 +166,6 @@
 
                                 <hr class="mt-3 mb-3">
 
-                                <hr class="mt-3 mb-3">
                                 <div class="col-md-6 mt-2">
                                     <label>Организация (RU)</label>
                                     <input type="text" name="authors[{{ $index }}][org_name_ru]" class="form-control" value="{{ old("authors.{$index}.org_name_ru", $author->org_name_ru ?? '') }}">
@@ -200,6 +197,7 @@
                                     <label>Должность (RU)</label>
                                     <input type="text" name="authors[{{ $index }}][position_ru]" class="form-control" value="{{ old("authors.{$index}.position_ru", $author->position_ru ?? '') }}">
                                 </div>
+                                
                                 <hr class="mt-3 mb-3">
 
                                 <div class="col-md-4 mt-2">
@@ -215,6 +213,7 @@
                                     <input type="text" name="authors[{{ $index }}][degree_cv]" class="form-control" placeholder="ăслăхсен кандидачĕ, ăслăхсен докторĕ" value="{{ old("authors.{$index}.degree_cv", $author->degree_cv ?? '') }}">
                                 </div>
 
+
                                  <hr class="mt-3 mb-3">
 
                                 <div class="col-md-4 mt-2">
@@ -229,6 +228,9 @@
                                     <label>Звание (CV)</label>
                                     <input type="text" name="authors[{{ $index }}][rank_cv]" class="form-control" placeholder="доцент, профессор" value="{{ old("authors.{$index}.rank_cv", $author->rank_cv ?? '') }}">
                                 </div>
+
+
+
                                 <hr class="mt-3 mb-3">
 
                                 <div class="col-md-4 mt-2">
