@@ -491,7 +491,7 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                         </div>
 
                         <!-- Социальные сети -->
-                        <div class="mt-5 pt-3">
+                        <!-- <div class="mt-5 pt-3">
                             <h4 class="h6 fw-bold mb-3">Мы в соцсетях</h4>
                             <div class="d-flex gap-3">
                                 <a href="#" class="btn btn-outline-primary rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
@@ -504,13 +504,14 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                                     <i class="bi bi-youtube fs-5"></i>
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
 
             <!-- Форма обратной связи -->
-            <div class="col-lg-7">
+
+            <!-- <div class="col-lg-7">
                 <div class="card border-0 shadow-sm h-100" style="border-radius: 30px; overflow: hidden;">
                     <div class="card-body p-4 p-lg-5">
                         <h3 class="h4 fw-bold mb-4">
@@ -545,7 +546,8 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
+            
         </div>
 
         <!-- КАРТА - ВСТАВЬТЕ СЮДА ВАШ КОД -->
