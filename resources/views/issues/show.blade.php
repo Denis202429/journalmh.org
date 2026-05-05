@@ -220,7 +220,7 @@
                         @if($article->abstract_ru)
                         <div class="mt-2 small">
                             <strong>Аннотация:</strong>
-                            <p class="text-muted mb-0 text-break">{!! Str::limit($article->abstract_ru, 1000) !!}</p>
+                            <p class="text-muted mb-0 text-break">{!! Str::limit($article->abstract_ru, 5000) !!}</p>
                         </div>
                         @endif
 
