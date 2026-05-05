@@ -94,7 +94,7 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                         </a>
                         <a class="btn"
                             style="border-radius: 40px; padding: 0.7rem 1.2rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--primary); border: 2px solid var(--primary); background: transparent; font-size: clamp(0.8rem, 3vw, 0.9rem);"
-                            href="#editors">
+                            href="#archive">
                             <i class="bi-bookshelf"></i> Архив выпусков
                         </a>
                         <a class="btn"
