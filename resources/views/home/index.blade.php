@@ -435,7 +435,7 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
 
         <div class="row g-4">
             <!-- Контактная информация -->
-            <div class="col-lg-5">
+            <div class="col-lg-8">
                 <div class="card border-0 shadow-sm h-100" style="border-radius: 30px; overflow: hidden;">
                     <div class="card-body p-4 p-lg-5">
                         <h3 class="h4 fw-bold mb-4">
@@ -547,7 +547,7 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                     </div>
                 </div>
             </div> -->
-            
+
         </div>
 
         <!-- КАРТА - ВСТАВЬТЕ СЮДА ВАШ КОД -->
