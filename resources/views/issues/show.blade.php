@@ -227,7 +227,7 @@
                         @endif
 
                         <!-- Текст статьи - ТОЛЬКО BOOTSTRAP КЛАССЫ -->
-                        @if($article->text_ru)
+                        <!-- @if($article->text_ru)
                         <div class="mt-3">
                             <strong>Текст статьи:</strong>
                             <div class="mt-2 p-3 border rounded bg-light overflow-auto" style="max-height: 300px;">
@@ -236,7 +236,7 @@
                                 </div>
                             </div>
                         </div>
-                        @endif
+                        @endif -->
 
                         <!-- PDF -->
                         @if($article->pdf_file_path)

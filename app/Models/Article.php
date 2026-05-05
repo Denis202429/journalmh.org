@@ -121,27 +121,6 @@ class Article extends Model
         return $this->$field ?? $this->keywords_ru ?? $this->keywords_en ?? null;
     }
 
-    // Добавьте аксессор для получения URL PDF
-    // public function getPdfUrlAttribute($value)
-    // {
-    //     // Если есть загруженный файл, возвращаем путь к нему
-    //     if ($this->pdf_file_path) {
-    //         return asset('storage/' . $this->pdf_file_path);
-    //     }
-    //     // Иначе возвращаем внешнюю ссылку
-    //     return $value;
-    // }
-
-
-    // public function getPdfUrlAttribute($value)
-    // {
-    //     // Если есть загруженный файл, возвращаем путь к нему
-    //     if ($this->pdf_file_path && !$this->use_external_url) {
-    //         return asset('storage/' . $this->pdf_file_path);
-    //     }
-    //     // Иначе возвращаем внешнюю ссылку
-    //     return $value;
-    // }
 
 
     public function getPdfUrlAttribute($value)

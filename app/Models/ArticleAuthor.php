@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ArticleAuthor extends Model
 {
     protected $table = 'article_authors';
-    
+
     protected $fillable = [
         'article_id',
         'author_num',
@@ -66,19 +66,19 @@ class ArticleAuthor extends Model
         'email_not_authentic',
         'org_not_authentic',
     ];
-    
+
     protected $casts = [
         'is_correspondent' => 'boolean',
         'org_not_authentic' => 'boolean',
         'email_not_authentic' => 'boolean',
         'comment_date' => 'date',
     ];
-    
+
     public function article(): BelongsTo
     {
         return $this->belongsTo(Article::class);
     }
-    
+
     // Полное ФИО на русском
     public function getFullNameRuAttribute(): string
     {
@@ -89,7 +89,7 @@ class ArticleAuthor extends Model
         ]);
         return implode(' ', $parts);
     }
-    
+
     // Полное ФИО на английском
     public function getFullNameEnAttribute(): string
     {
@@ -99,7 +99,7 @@ class ArticleAuthor extends Model
         ]);
         return implode(' ', $parts);
     }
-    
+
     // Полное ФИО на чувашском
     public function getFullNameCvAttribute(): string
     {
@@ -109,7 +109,7 @@ class ArticleAuthor extends Model
         ]);
         return implode(' ', $parts);
     }
-    
+
     // Получение ФИО на нужном языке
     public function getFullNameAttribute(): string
     {
@@ -123,7 +123,7 @@ class ArticleAuthor extends Model
                 return $this->full_name_ru;
         }
     }
-    
+
     // Получение организации на нужном языке
     public function getOrganizationAttribute(): ?string
     {
@@ -137,7 +137,7 @@ class ArticleAuthor extends Model
                 return $this->org_name_ru;
         }
     }
-    
+
     // Получение города на нужном языке
     public function getTownAttribute(): ?string
     {
@@ -151,7 +151,7 @@ class ArticleAuthor extends Model
                 return $this->town_ru;
         }
     }
-    
+
     // Получение страны на нужном языке
     public function getCountryAttribute(): ?string
     {
@@ -165,7 +165,7 @@ class ArticleAuthor extends Model
                 return $this->country_ru;
         }
     }
-    
+
     // Получение должности на нужном языке
     public function getPositionAttribute(): ?string
     {
@@ -179,7 +179,7 @@ class ArticleAuthor extends Model
                 return $this->position_ru;
         }
     }
-    
+
     // Инициалы с фамилией (рус)
     public function getInitialsFullRuAttribute(): string
     {
@@ -191,5 +191,38 @@ class ArticleAuthor extends Model
             $initials .= mb_substr($this->patronymic_ru, 0, 1) . '.';
         }
         return trim($this->surname_ru . ' ' . $initials);
+    }
+
+
+    // Ученая степень на нужном языке
+    public function getDegreeAttribute(): ?string
+    {
+        $locale = app()->getLocale();
+        $field = "degree_{$locale}";
+        return $this->$field ?? $this->degree_ru ?? null;
+    }
+
+    // Ученое звание на нужном языке
+    public function getRankAttribute(): ?string
+    {
+        $locale = app()->getLocale();
+        $field = "rank_{$locale}";
+        return $this->$field ?? $this->rank_ru ?? null;
+    }
+
+    // Адрес на нужном языке
+    public function getAddressAttribute(): ?string
+    {
+        $locale = app()->getLocale();
+        $field = "address_{$locale}";
+        return $this->$field ?? $this->address_ru ?? null;
+    }
+
+    // Другие сведения на нужном языке
+    public function getOtherInfoAttribute(): ?string
+    {
+        $locale = app()->getLocale();
+        $field = "other_info_{$locale}";
+        return $this->$field ?? $this->other_info_ru ?? null;
     }
 }
