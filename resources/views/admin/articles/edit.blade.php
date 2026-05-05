@@ -189,7 +189,8 @@
                                     <label>Должность (RU)</label>
                                     <input type="text" name="authors[{{ $index }}][position_ru]" class="form-control" value="{{ old("authors.{$index}.position_ru", $author->position_ru ?? '') }}">
                                 </div>
-                                <div class="col-md-4 mt-2">
+
+                                <!-- <div class="col-md-4 mt-2">
                                     <label>Ученая степень</label>
                                     <input type="text" name="authors[{{ $index }}][degree]" class="form-control" placeholder="кандидат наук, доктор наук" value="{{ old("authors.{$index}.degree", $author->degree ?? '') }}">
                                 </div>
@@ -197,6 +198,37 @@
                                     <label>Звание</label>
                                     <input type="text" name="authors[{{ $index }}][rank]" class="form-control" placeholder="доцент, профессор" value="{{ old("authors.{$index}.rank", $author->rank ?? '') }}">
                                 </div>
+
+                                 -->
+
+
+                                <div class="col-md-4 mt-2">
+                                    <label>Ученая степень (RU)</label>
+                                    <input type="text" name="authors[{{ $index }}][degree_ru]" class="form-control" placeholder="кандидат наук, доктор наук" value="{{ old("authors.{$index}.degree_ru", $author->degree_ru ?? '') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Ученая степень (EN)</label>
+                                    <input type="text" name="authors[{{ $index }}][degree_en]" class="form-control" placeholder="PhD, Doctor of Sciences" value="{{ old("authors.{$index}.degree_en", $author->degree_en ?? '') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Ученая степень (CV)</label>
+                                    <input type="text" name="authors[{{ $index }}][degree_cv]" class="form-control" placeholder="ăслăхсен кандидачĕ, ăслăхсен докторĕ" value="{{ old("authors.{$index}.degree_cv", $author->degree_cv ?? '') }}">
+                                </div>
+
+                                <div class="col-md-4 mt-2">
+                                    <label>Звание (RU)</label>
+                                    <input type="text" name="authors[{{ $index }}][rank_ru]" class="form-control" placeholder="доцент, профессор" value="{{ old("authors.{$index}.rank_ru", $author->rank_ru ?? '') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Звание (EN)</label>
+                                    <input type="text" name="authors[{{ $index }}][rank_en]" class="form-control" placeholder="Associate Professor, Professor" value="{{ old("authors.{$index}.rank_en", $author->rank_en ?? '') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Звание (CV)</label>
+                                    <input type="text" name="authors[{{ $index }}][rank_cv]" class="form-control" placeholder="доцент, профессор" value="{{ old("authors.{$index}.rank_cv", $author->rank_cv ?? '') }}">
+                                </div>
+
+
 
                                 <div class="col-md-4 mt-2">
                                     <label>ORCID</label>
@@ -722,14 +754,38 @@
                                 <label>Должность (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][position_ru]" class="form-control">
                             </div>
-                            <div class="col-md-4 mt-2">
-                                <label>Ученая степень</label>
-                                <input type="text" name="authors[${authorIndex}][degree]" class="form-control">
-                            </div>
-                            <div class="col-md-4 mt-2">
-                                <label>Звание</label>
-                                <input type="text" name="authors[${authorIndex}][rank]" class="form-control">
-                            </div>
+
+                      
+
+<div class="col-md-4 mt-2">
+    <label>Ученая степень (RU)</label>
+    <input type="text" name="authors[${authorIndex}][degree_ru]" class="form-control">
+</div>
+<div class="col-md-4 mt-2">
+    <label>Ученая степень (EN)</label>
+    <input type="text" name="authors[${authorIndex}][degree_en]" class="form-control">
+</div>
+<div class="col-md-4 mt-2">
+    <label>Ученая степень (CV)</label>
+    <input type="text" name="authors[${authorIndex}][degree_cv]" class="form-control">
+</div>
+
+<div class="col-md-4 mt-2">
+    <label>Звание (RU)</label>
+    <input type="text" name="authors[${authorIndex}][rank_ru]" class="form-control">
+</div>
+<div class="col-md-4 mt-2">
+    <label>Звание (EN)</label>
+    <input type="text" name="authors[${authorIndex}][rank_en]" class="form-control">
+</div>
+<div class="col-md-4 mt-2">
+    <label>Звание (CV)</label>
+    <input type="text" name="authors[${authorIndex}][rank_cv]" class="form-control">
+</div>
+
+
+
+
 
                             <div class="col-md-4 mt-2">
                                 <label>ORCID</label>
