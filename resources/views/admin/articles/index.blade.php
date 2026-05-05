@@ -99,7 +99,7 @@
                     <th>DOI</th>
                     <th>Язык</th>
                     <th>Статус</th>
-                    <th>РИНЦ</th>
+                    <!-- <th>РИНЦ</th> -->
                     <th>PDF</th>
                     <th style="min-width: 180px;">Действия</th>
                 </tr>
@@ -144,11 +144,17 @@
                         @php
                         $artTypeLabels = [
                         'RAR' => 'Научная статья',
-                        'REV' => 'Обзор',
-                        'SCO' => 'Краткое сообщение',
+                        'EDI' => 'Редакторская заметка',
                         'BRV' => 'Рецензия',
-                        'CNF' => 'Материалы конф.',
-                        'EDI' => 'Редакторская заметка'
+                        'CNF' => 'Материалы конференции',
+                        'SCO' => 'Краткое сообщение',
+                        'REV' => 'Обзорная статья',
+                        'ABS' => 'Аннотация',
+                        'REP' => 'Научный отчет',
+                        'RPR' => 'Репринт',
+                        'COR' => 'Переписка',
+                        'PER' => 'Персоналии',
+                        'MIS' => 'Разное'
                         ];
                         @endphp
                         <span class="badge bg-secondary" title="{{ $article->art_type }}">
@@ -181,7 +187,7 @@
                         <span class="badge bg-secondary">Черновик</span>
                         @endif
                     </td>
-                    <td>
+                    <!-- <td>
                         @if($article->is_rinc ?? false)
                         <span class="badge bg-primary">В РИНЦ</span>
                         @if($article->rinc_id)
@@ -190,7 +196,7 @@
                         @else
                         <span class="badge bg-warning text-dark">Не в РИНЦ</span>
                         @endif
-                    </td>
+                    </td> -->
                     <td>
                         @if($article->pdf_url)
                         <a href="{{ $article->pdf_url }}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-success">
