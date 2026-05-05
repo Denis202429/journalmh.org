@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\ArticleAuthor;
 use App\Models\Issue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage; 
 
 class ArticleController extends Controller
 {
@@ -80,7 +81,8 @@ class ArticleController extends Controller
         // Обработка загрузки PDF файла
         if ($request->hasFile('pdf_file')) {
             $file = $request->file('pdf_file');
-            $fileName = time() . '_' . preg_replace('/[^a-zA-Z0-9._-]/', '_', $file->getClientOriginalName());
+            // $fileName = time() . '_' . preg_replace('/[^a-zA-Z0-9._-]/', '_', $file->getClientOriginalName());
+            $fileName = time() . '_' . uniqid() . '.pdf';
             $filePath = $file->storeAs('pdfs', $fileName, 'public');
 
             $validated['pdf_file_path'] = $filePath;
@@ -222,9 +224,9 @@ class ArticleController extends Controller
             }
 
             $file = $request->file('pdf_file');
-            $fileName = time() . '_' . preg_replace('/[^a-zA-Z0-9._-]/', '_', $file->getClientOriginalName());
+            // $fileName = time() . '_' . preg_replace('/[^a-zA-Z0-9._-]/', '_', $file->getClientOriginalName());
+            $fileName = time() . '_' . uniqid() . '.pdf';
             $filePath = $file->storeAs('pdfs', $fileName, 'public');
-
             $validated['pdf_file_path'] = $filePath;
             $validated['pdf_original_name'] = $file->getClientOriginalName();
             $validated['pdf_file_size'] = $file->getSize();
