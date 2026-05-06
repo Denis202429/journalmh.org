@@ -74,6 +74,16 @@ class ArticleController extends Controller
             'pdf_file' => 'nullable|file|mimes:pdf|max:10240', // 10MB max
             'is_published' => 'boolean',
             'sort_order' => 'nullable|integer',
+            'authors.*.role' => 'nullable|string|max:2', // Добавьте эту строку
+
+            'authors.*.degree_ru' => 'nullable|string|max:255',
+            'authors.*.degree_en' => 'nullable|string|max:255',
+            'authors.*.degree_cv' => 'nullable|string|max:255',
+            'authors.*.rank_ru' => 'nullable|string|max:255',
+            'authors.*.rank_en' => 'nullable|string|max:255',
+            'authors.*.rank_cv' => 'nullable|string|max:255',
+
+
         ]);
 
         $validated['is_published'] = $request->boolean('is_published');
@@ -123,12 +133,20 @@ class ArticleController extends Controller
                     'position_ru' => $authorData['position_ru'] ?? null,
                     'position_en' => $authorData['position_en'] ?? null,
                     'position_cv' => $authorData['position_cv'] ?? null,
-                    'degree' => $authorData['degree'] ?? null,
-                    'rank' => $authorData['rank'] ?? null,
+
+                    'degree_ru' => $authorData['degree_ru'] ?? null,
+                    'degree_en' => $authorData['degree_en'] ?? null,
+                    'degree_cv' => $authorData['degree_cv'] ?? null,
+                    'rank_ru' => $authorData['rank_ru'] ?? null,
+                    'rank_en' => $authorData['rank_en'] ?? null,
+                    'rank_cv' => $authorData['rank_cv'] ?? null,
+
+
                     'orcid' => isset($authorData['orcid']) ? substr($authorData['orcid'], 0, 19) : null,
                     'spin' => isset($authorData['spin']) ? substr($authorData['spin'], 0, 9) : null,
                     'email' => $authorData['email'] ?? null,
                     'is_correspondent' => isset($authorData['is_correspondent']),
+                    'role' => $authorData['role'] ?? null,
                 ]);
             }
         }
@@ -204,6 +222,14 @@ class ArticleController extends Controller
             'delete_pdf' => 'nullable|boolean',
             'is_published' => 'boolean',
             'sort_order' => 'nullable|integer',
+            'authors.*.role' => 'nullable|string|max:2', // Добавьте эту строку
+            'authors.*.degree_ru' => 'nullable|string|max:255',
+            'authors.*.degree_en' => 'nullable|string|max:255',
+            'authors.*.degree_cv' => 'nullable|string|max:255',
+            'authors.*.rank_ru' => 'nullable|string|max:255',
+            'authors.*.rank_en' => 'nullable|string|max:255',
+            'authors.*.rank_cv' => 'nullable|string|max:255',
+
         ]);
 
         $validated['is_published'] = $request->boolean('is_published');
@@ -290,12 +316,19 @@ class ArticleController extends Controller
                     'position_ru' => $authorData['position_ru'] ?? null,
                     'position_en' => $authorData['position_en'] ?? null,
                     'position_cv' => $authorData['position_cv'] ?? null,
-                    'degree' => $authorData['degree'] ?? null,
-                    'rank' => $authorData['rank'] ?? null,
+
+                    'degree_ru' => $authorData['degree_ru'] ?? null,
+                    'degree_en' => $authorData['degree_en'] ?? null,
+                    'degree_cv' => $authorData['degree_cv'] ?? null,
+                    'rank_ru' => $authorData['rank_ru'] ?? null,
+                    'rank_en' => $authorData['rank_en'] ?? null,
+                    'rank_cv' => $authorData['rank_cv'] ?? null,
+
                     'orcid' => isset($authorData['orcid']) ? substr($authorData['orcid'], 0, 19) : null,
                     'spin' => isset($authorData['spin']) ? substr($authorData['spin'], 0, 9) : null,
                     'email' => $authorData['email'] ?? null,
                     'is_correspondent' => isset($authorData['is_correspondent']),
+                    'role' => $authorData['role'] ?? null, // Добавьте эту строку
                 ]);
             }
         }
