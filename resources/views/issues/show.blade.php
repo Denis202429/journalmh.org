@@ -148,7 +148,7 @@
                         @endif
 
                         <!-- Авторы -->
-                        <div class="mb-2">
+                        <!-- <div class="mb-2">
                             <strong>Авторы:</strong>
                             <span class="text-muted text-break">
                                 @php
@@ -165,6 +165,24 @@
                                 @endphp
                                 {{ $authorsString }}
                             </span>
+                        </div> -->
+
+
+                        <div class="row mb-3">
+                            <div class="col-md-2 fw-bold">Авторы:</div>
+                            <div class="col-md-10">
+                                @php
+                                $authorsList = $article->authors()->orderBy('author_num')->get();
+                                @endphp
+
+                                @if($authorsList->isNotEmpty())
+                                @foreach($authorsList as $author)
+                                <span>{{ $author->full_name_ru }}</span>@if(!$loop->last); @endif
+                                @endforeach
+                                @else
+                                <span class="text-muted">-</span>
+                                @endif
+                            </div>
                         </div>
 
                         <!-- Метаданные -->
