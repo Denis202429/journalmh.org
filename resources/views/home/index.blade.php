@@ -559,7 +559,7 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                                 8 (8352) 45-00-10
                             </a>
                         </p>
-                        <small class="text-secondary">Пн-Пт с 9:00 до 18:00</small>
+                        <small class="text-secondary">Пн-Пт с 8:30 до 17:30</small>
                     </div>
                 </div>
             </div>
