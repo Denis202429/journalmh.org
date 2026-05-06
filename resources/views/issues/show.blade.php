@@ -151,28 +151,7 @@
 
                         @endif
 
-                        <!-- Авторы -->
-                        <!-- <div class="mb-2">
-                            <strong>Авторы:</strong>
-                            <span class="text-muted text-break">
-                                @php
-                                $authorsString = '-';
-                                $authorsList = \App\Models\ArticleAuthor::where('article_id', $article->id)->orderBy('author_num')->get();
-                                if ($authorsList->count() > 0) {
-                                $authorNames = [];
-                                foreach ($authorsList as $author) {
-                                $name = $author->surname_ru ?? $author->surname_en ?? '';
-                                if ($name) $authorNames[] = $name;
-                                }
-                                $authorsString = implode(', ', $authorNames);
-                                }
-                                @endphp
-                                {{ $authorsString }}
-                            </span>
-                        </div> -->
-
-
-                        <div class="row mb-3">
+                         <div class="row mb-3">
                             <div class="col-md-2 fw-bold">Авторы:</div>
                             <div class="col-md-10">
                                 @php
@@ -227,12 +206,17 @@
                                 </div>
                                 @endif
                             </div>
-                            <div class="col">
+                            <div class="col">   
                                 @if($article->doi)
                                 <div class="text-break"><i class="bi bi-link-45deg"></i> DOI: <code class="small text-break">{{ $article->doi }}</code></div>
                                 @endif
+                                
                                 @if($article->udk)
                                 <div><i class="bi bi-hash"></i> УДК: {{ is_array($article->udk) ? implode(', ', $article->udk) : $article->udk }}</div>
+                                @endif
+
+                                @if($article->bbk)
+                                <div><i class="bi bi-hash"></i> ББК: {{ is_array($article->bbk) ? implode(', ', $article->bbk) : $article->bbk }}</div>
                                 @endif
 
                             </div>
