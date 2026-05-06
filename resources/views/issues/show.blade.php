@@ -157,18 +157,21 @@
                             <div class="col-md-10">
                                 @php
                                 $authorsList = $article->authors()->orderBy('author_num')->get();
-                                $names = [];
-                                foreach($authorsList as $author) {
-                                $name = trim($author->full_name_ru);
-                                if (!empty($name)) {
-                                $names[] = $name;
-                                }
-                                }
                                 @endphp
 
-                                {{ !empty($names) ? implode('; ', $names) : '-' }}
+                                @if($authorsList->isNotEmpty())
+                                @foreach($authorsList as $author)
+                                @php $fullName = trim($author->full_name_ru); @endphp
+                                @if(!empty($fullName))
+                                <span>{{ $fullName }}</span>@if(!$loop->last); @endif
+                                @endif
+                                @endforeach
+                                @else
+                                <span class="text-muted">-</span>
+                                @endif
                             </div>
                         </div>
+
 
                         <!-- Метаданные -->
                         <div class="row row-cols-1 row-cols-md-2 g-2 small text-muted">
