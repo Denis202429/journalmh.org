@@ -123,7 +123,7 @@
                                     <label>Фамилия (CV)</label>
                                     <input type="text" name="authors[0][surname_cv]" class="form-control" value="{{ old('authors.0.surname_cv') }}">
                                 </div>
-                                 <hr class="mt-3 mb-3">
+                                <hr class="mt-3 mb-3">
                                 <div class="col-md-4 mt-2">
                                     <label>Имя (RU)</label>
                                     <input type="text" name="authors[0][name_ru]" class="form-control" value="{{ old('authors.0.name_ru') }}">
@@ -136,7 +136,7 @@
                                     <label>Имя (CV)</label>
                                     <input type="text" name="authors[0][name_cv]" class="form-control" value="{{ old('authors.0.name_cv') }}">
                                 </div>
-                                 <hr class="mt-3 mb-3">
+                                <hr class="mt-3 mb-3">
                                 <div class="col-md-4 mt-2">
                                     <label>Отчество (RU)</label>
                                     <input type="text" name="authors[0][patronymic_ru]" class="form-control" value="{{ old('authors.0.patronymic_ru') }}">
@@ -149,7 +149,7 @@
                                     <label>Отчество (CV)</label>
                                     <input type="text" name="authors[0][patronymic_cv]" class="form-control" value="{{ old('authors.0.patronymic_cv') }}">
                                 </div>
-                                 <hr class="mt-3 mb-3">
+                                <hr class="mt-3 mb-3">
                                 <div class="col-md-6 mt-2">
                                     <label>Организация (RU)</label>
                                     <input type="text" name="authors[0][org_name_ru]" class="form-control" value="{{ old('authors.0.org_name_ru') }}">
@@ -158,7 +158,7 @@
                                     <label>Организация (EN)</label>
                                     <input type="text" name="authors[0][org_name_en]" class="form-control" value="{{ old('authors.0.org_name_en') }}">
                                 </div>
-                                 <hr class="mt-3 mb-3">
+                                <hr class="mt-3 mb-3">
                                 <div class="col-md-4 mt-2">
                                     <label>Город (RU)</label>
                                     <input type="text" name="authors[0][town_ru]" class="form-control" value="{{ old('authors.0.town_ru') }}">
@@ -174,13 +174,39 @@
                                     </div>
                                 </div>
 
+
+                                <!-- НОВЫЙ БЛОК - РОЛЬ АВТОРА -->
+                                <div class="col-md-3 mt-2">
+                                    <label>Роль автора</label>
+                                    <select name="authors[0][role]" class="form-select">
+                                        <option value="">Автор</option>
+                                        <option value="0" {{ old('authors.0.role') == '0' ? 'selected' : '' }}>Редактор</option>
+                                        <option value="1" {{ old('authors.0.role') == '1' ? 'selected' : '' }}>Ответственный редактор</option>
+                                        <option value="2" {{ old('authors.0.role') == '2' ? 'selected' : '' }}>Научный редактор</option>
+                                        <option value="3" {{ old('authors.0.role') == '3' ? 'selected' : '' }}>Переводчик</option>
+                                        <option value="4" {{ old('authors.0.role') == '4' ? 'selected' : '' }}>Составитель</option>
+                                        <option value="5" {{ old('authors.0.role') == '5' ? 'selected' : '' }}>Фотограф</option>
+                                        <option value="6" {{ old('authors.0.role') == '6' ? 'selected' : '' }}>Художник</option>
+                                        <option value="9" {{ old('authors.0.role') == '9' ? 'selected' : '' }}>Иллюстратор</option>
+                                        <option value="10" {{ old('authors.0.role') == '10' ? 'selected' : '' }}>Автор комментария</option>
+                                        <option value="20" {{ old('authors.0.role') == '20' ? 'selected' : '' }}>Автор вступительной статьи</option>
+                                        <option value="23" {{ old('authors.0.role') == '23' ? 'selected' : '' }}>Рецензент</option>
+                                        <option value="24" {{ old('authors.0.role') == '24' ? 'selected' : '' }}>Автор предисловия</option>
+                                        <option value="25" {{ old('authors.0.role') == '25' ? 'selected' : '' }}>Автор послесловия</option>
+                                        <option value="26" {{ old('authors.0.role') == '26' ? 'selected' : '' }}>Научный руководитель</option>
+                                        <option value="48" {{ old('authors.0.role') == '48' ? 'selected' : '' }}>Редактор перевода</option>
+                                    </select>
+                                    <small class="text-muted">Если не выбрано - автор</small>
+                                </div>
+
+
                                 <div class="col-md-4 mt-2">
                                     <label>Должность (RU)</label>
                                     <input type="text" name="authors[0][position_ru]" class="form-control" value="{{ old('authors.0.position_ru') }}">
                                 </div>
 
 
-                                 <hr class="mt-3 mb-3">
+                                <hr class="mt-3 mb-3">
 
                                 <div class="col-md-4 mt-2">
                                     <label>Ученая степень (RU)</label>
@@ -195,7 +221,7 @@
                                     <input type="text" name="authors[0][degree_cv]" class="form-control" placeholder="ăслăхсен кандидачĕ, ăслăхсен докторĕ" value="{{ old('authors.0.degree_cv') }}">
                                 </div>
 
-                                 <hr class="mt-3 mb-3">
+                                <hr class="mt-3 mb-3">
 
                                 <div class="col-md-4 mt-2">
                                     <label>Звание (RU)</label>
@@ -714,14 +740,32 @@
                                     <label class="form-check-label">Автор-корреспондент</label>
                                 </div>
                             </div>
-
+            <div class="col-md-4 mt-2">
+                <label>Роль автора</label>
+                <select name="authors[${authorIndex}][role]" class="form-select">
+                    <option value="">Автор</option>
+                    <option value="0">Редактор</option>
+                    <option value="1">Ответственный редактор</option>
+                    <option value="2">Научный редактор</option>
+                    <option value="3">Переводчик</option>
+                    <option value="4">Составитель</option>
+                    <option value="5">Фотограф</option>
+                    <option value="6">Художник</option>
+                    <option value="9">Иллюстратор</option>
+                    <option value="10">Автор комментария</option>
+                    <option value="20">Автор вступительной статьи</option>
+                    <option value="23">Рецензент</option>
+                    <option value="24">Автор предисловия</option>
+                    <option value="25">Автор послесловия</option>
+                    <option value="26">Научный руководитель</option>
+                    <option value="48">Редактор перевода</option>
+                </select>
+                <small class="text-muted">Если не выбрано - автор</small>
+            </div>
                             <div class="col-md-4 mt-2">
                                 <label>Должность (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][position_ru]" class="form-control">
                             </div>
-
-
-
 <div class="col-md-4 mt-2">
     <label>Ученая степень (RU)</label>
     <input type="text" name="authors[${authorIndex}][degree_ru]" class="form-control" placeholder="кандидат наук, доктор наук">
