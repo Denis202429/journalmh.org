@@ -499,41 +499,44 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
 </section> -->
 
 
-<section class="section py-5" id="contacts">
+<section class="py-5 bg-light" id="contacts">
     <div class="container">
         <!-- Заголовок -->
         <div class="text-center mb-5">
-            <h2 class="display-4 fw-bold mb-3" style="font-family:'Playfair Display', serif;">Контакты</h2>
+            <h2 class="display-4 fw-bold mb-3">Контакты</h2>
             <div class="mx-auto" style="width: 80px; height: 4px; background: linear-gradient(90deg, #0d6efd, #0dcaf0); border-radius: 2px;"></div>
-            <p class="text-muted mt-3">Свяжитесь с нами любым удобным способом</p>
+            <p class="text-secondary mt-3">Свяжитесь с нами любым удобным способом</p>
         </div>
 
         <div class="row g-4">
             <!-- Контактная информация -->
-            <div class="col-lg-6">
-                <div class="card border-0 shadow-sm h-100" style="border-radius: 30px; overflow: hidden;">
-                    <div class="card-body p-4 p-lg-5">
+            <div class="col-12 col-lg-6">
+                <div class="card border-0 shadow-sm h-100 rounded-4">
+                    <div class="card-body p-4 p-md-5">
                         <h3 class="h4 fw-bold mb-4">
                             <i class="bi bi-chat-dots text-primary me-2"></i>Напишите нам
                         </h3>
 
                         <!-- Адрес -->
-                        <div class="d-flex mb-4">
-                            <div class="flex-shrink-0">
-                                <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3">
+                        <div class="d-flex flex-column flex-sm-row mb-4">
+                            <div class="flex-shrink-0 mb-3 mb-sm-0">
+                                <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-sm-3 text-center">
                                     <i class="bi bi-geo-alt-fill text-primary fs-4"></i>
                                 </div>
                             </div>
                             <div>
                                 <h4 class="h6 fw-bold mb-1">Адрес</h4>
-                                <p class="text-muted mb-0">428015, Чувашская Республика,<br>г. Чебоксары, Московский проспект, 29, корпус 1</p>
+                                <p class="text-secondary mb-0">428015, Чувашская Республика,<br>г. Чебоксары, Московский проспект, 29, корпус 1</p>
+                                <a href="https://yandex.ru/maps/-/CDxS7J2V" target="_blank" class="btn btn-sm btn-link ps-0 mt-1">
+                                    <i class="bi bi-map"></i> Построить маршрут
+                                </a>
                             </div>
                         </div>
 
                         <!-- Email -->
-                        <div class="d-flex mb-4">
-                            <div class="flex-shrink-0">
-                                <div class="bg-success bg-opacity-10 rounded-circle p-3 me-3">
+                        <div class="d-flex flex-column flex-sm-row mb-4">
+                            <div class="flex-shrink-0 mb-3 mb-sm-0">
+                                <div class="bg-success bg-opacity-10 rounded-circle p-3 me-sm-3 text-center">
                                     <i class="bi bi-envelope-fill text-success fs-4"></i>
                                 </div>
                             </div>
@@ -544,13 +547,14 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                                         sovrem_human@rambler.ru
                                     </a>
                                 </p>
+                                <small class="text-secondary">Ответим в течение 2-3 рабочих дней</small>
                             </div>
                         </div>
 
                         <!-- Телефон -->
-                        <div class="d-flex mb-4">
-                            <div class="flex-shrink-0">
-                                <div class="bg-info bg-opacity-10 rounded-circle p-3 me-3">
+                        <div class="d-flex flex-column flex-sm-row mb-4">
+                            <div class="flex-shrink-0 mb-3 mb-sm-0">
+                                <div class="bg-info bg-opacity-10 rounded-circle p-3 me-sm-3 text-center">
                                     <i class="bi bi-telephone-fill text-info fs-4"></i>
                                 </div>
                             </div>
@@ -561,89 +565,97 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                                         8 (8352) 45-00-10
                                     </a>
                                 </p>
-                                <small class="text-muted">Пн-Пт с 9:00 до 18:00</small>
+                                <small class="text-secondary">Пн-Пт с 9:00 до 18:00</small>
                             </div>
                         </div>
 
                         <!-- Социальные сети -->
-                        <!-- <div class="mt-5 pt-3">
+                        <div class="mt-4 pt-2">
                             <h4 class="h6 fw-bold mb-3">Мы в соцсетях</h4>
-                            <div class="d-flex gap-3">
-                                <a href="#" class="btn btn-outline-primary rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
-                                    <i class="bi bi-telegram fs-5"></i>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <a href="#" class="btn btn-primary rounded-circle p-2 d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="bi bi-facebook"></i>
                                 </a>
-                                <a href="#" class="btn btn-outline-info rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
-                                    <i class="bi bi-vk fs-5"></i>
+                                <a href="#" class="btn btn-info rounded-circle p-2 d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="bi bi-twitter-x text-white"></i>
                                 </a>
-                                <a href="#" class="btn btn-outline-danger rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
-                                    <i class="bi bi-youtube fs-5"></i>
+                                <a href="#" class="btn btn-primary rounded-circle p-2 d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background-color: #0a66c2; border-color: #0a66c2;">
+                                    <i class="bi bi-linkedin"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger rounded-circle p-2 d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="bi bi-instagram"></i>
+                                </a>
+                                <a href="#" class="btn btn-primary rounded-circle p-2 d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background-color: #0088cc; border-color: #0088cc;">
+                                    <i class="bi bi-telegram"></i>
                                 </a>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Форма обратной связи -->
-
-            <!-- <div class="col-lg-7">
-                <div class="card border-0 shadow-sm h-100" style="border-radius: 30px; overflow: hidden;">
-                    <div class="card-body p-4 p-lg-5">
+            <div class="col-12 col-lg-6">
+                <div class="card border-0 shadow-sm h-100 rounded-4">
+                    <div class="card-body p-4 p-md-5">
                         <h3 class="h4 fw-bold mb-4">
                             <i class="bi bi-send text-primary me-2"></i>Отправить сообщение
                         </h3>
-
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="form-label fw-semibold">Ваше имя</label>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Иван Иванов" style="border-radius: 15px;">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-semibold">Email</label>
-                                    <input type="email" class="form-control form-control-lg" placeholder="ivan@example.com" style="border-radius: 15px;">
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label fw-semibold">Тема</label>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Вопрос о сотрудничестве" style="border-radius: 15px;">
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label fw-semibold">Сообщение</label>
-                                    <textarea class="form-control" rows="5" placeholder="Напишите ваше сообщение здесь..." style="border-radius: 15px;"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill">
-                                        Отправить <i class="bi bi-arrow-right ms-2"></i>
-                                    </button>
-                                </div>
+                        
+                        <form action="{{ route('contact.send') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Ваше имя</label>
+                                <input type="text" name="name" class="form-control" placeholder="Иван Иванов" required>
                             </div>
-
+                            
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="ivan@example.com" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Тема</label>
+                                <select name="subject" class="form-select" required>
+                                    <option value="">Выберите тему...</option>
+                                    <option value="question">Вопрос по публикации</option>
+                                    <option value="suggestion">Предложение сотрудничества</option>
+                                    <option value="review">Отзыв о журнале</option>
+                                    <option value="other">Другое</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold">Сообщение</label>
+                                <textarea name="message" class="form-control" rows="5" placeholder="Напишите ваше сообщение..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-100 py-2 rounded-pill fw-semibold">
+                                <i class="bi bi-send"></i> Отправить сообщение
+                            </button>
                         </form>
                     </div>
                 </div>
-            </div> -->
-
+            </div>
         </div>
 
-        <!-- КАРТА - ВСТАВЬТЕ СЮДА ВАШ КОД -->
+        <!-- Карта -->
         <div class="row mt-5">
             <div class="col-12">
-                <div class="card border-0 shadow-sm" style="border-radius: 30px; overflow: hidden;">
-                    <!-- Вместо этого комментария вставьте ваш код из конструктора -->
-                    <div style="position:relative;overflow:hidden; width:100%; height:400px;">
-                        <a href="https://yandex.ru/maps/45/cheboksary/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Чебоксары</a>
-                        <a href="https://yandex.ru/maps/45/cheboksary/house/moskovskiy_prospekt_29k1/YE4YdAZgSUIOQFtsfX11cn1mbA==/?from=mapframe&ll=47.210079%2C56.143158&source=mapframe&um=constructor%3A1234567890&utm_medium=mapframe&utm_source=maps&z=17" style="color:#eee;font-size:12px;position:absolute;top:14px;">Московский проспект, 29к1 — Яндекс Карты</a>
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div style="position:relative; width:100%; height: 300px; min-height: 300px;">
                         <iframe
                             src="https://yandex.ru/map-widget/v1/?from=mapframe&ll=47.210079%2C56.143158&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NjAxMjI0NhKKAdCg0L7RgdGB0LjRjywg0KfRg9Cy0LDRiNGB0LrQsNGPINCg0LXRgdC_0YPQsdC70LjQutCwIOKAlCDQp9GD0LLQsNGI0LjRjywg0KfQtdCx0L7QutGB0LDRgNGLLCDQnNC-0YHQutC-0LLRgdC60LjQuSDQv9GA0L7RgdC_0LXQutGCLCAyOdC6MSIKDR_XPEIVmJJgQg%2C%2C&source=mapframe&um=constructor%3A1234567890&utm_source=mapframe&z=17"
                             width="100%"
-                            height="400"
+                            height="100%"
                             frameborder="0"
                             allowfullscreen="true"
-                            style="position:relative; border:0;">
+                            loading="lazy"
+                            style="border:0; min-height: 300px;">
                         </iframe>
                     </div>
-                    <div class="card-body bg-light text-center py-3">
-                        <small class="text-muted">
+                    <div class="card-footer bg-light text-center py-3">
+                        <small class="text-secondary">
                             <i class="bi bi-geo-alt"></i> Московский проспект, 29, корпус 1, Чебоксары
                         </small>
                     </div>
