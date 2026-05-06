@@ -36,7 +36,7 @@
                         <li><a class="dropdown-item" href="{{ route('journal.page', 'ethics') }}">Публикационная этика</a></li>
                         <li><a class="dropdown-item" href="{{ route('journal.page', 'reviewing') }}">Рецензирование</a></li>
                         <li><a class="dropdown-item" href="{{ route('journal.page', 'indexing') }}">Индексирование</a></li>
-                        <li><a class="dropdown-item" href="{{ route('journal.page', 'policy') }}">Новости</a></li>
+                        <!-- <li><a class="dropdown-item" href="{{ route('journal.page', 'policy') }}">Новости</a></li> -->
                         <!-- <li><a class="dropdown-item" href="{{ route('journal.page', 'public-offer') }}">Публичная оферта</a></li> -->
                     </ul>
                 </li>

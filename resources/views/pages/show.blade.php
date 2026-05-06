@@ -19,12 +19,20 @@
                 </p>
 
                 <!-- АДАПТИВНЫЕ КНОПКИ -->
-                <div class="d-flex gap-3 mb-4 flex-wrap">
+                <!-- <div class="d-flex gap-3 mb-4 flex-wrap">
                     <a href="#archive" class="btn btn-lg"
                         style="border-radius: 40px; padding: 0.7rem 1.5rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; border: 2px solid var(--primary); background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); font-size: clamp(0.8rem, 3vw, 1rem);">
                         <i class="bi bi-journal"></i> Текущий выпуск
                     </a>
+                </div> -->
+
+                <div class="d-flex gap-3 mb-4 flex-wrap">
+                    <a href="{{ route('current.issue') }}" class="btn btn-lg"
+                        style="border-radius: 40px; padding: 0.7rem 1.5rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; border: 2px solid var(--primary); background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); font-size: clamp(0.8rem, 3vw, 1rem);">
+                        <i class="bi bi-journal"></i> Текущий выпуск
+                    </a>
                 </div>
+
             </div>
 
             
