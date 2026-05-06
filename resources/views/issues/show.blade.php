@@ -144,8 +144,11 @@
                         @if($article->title_en && $article->title_en != ($article->title_ru ?? $article->title))
                         <div class="text-muted small mb-2 text-break">
                             <i>{{ $article->title_en }}</i>
+                        </div>
+                        <div class="text-muted small mb-2 text-break">
                             <i>{{ $article->title_cv }}</i>
                         </div>
+
                         @endif
 
                         <!-- Авторы -->
