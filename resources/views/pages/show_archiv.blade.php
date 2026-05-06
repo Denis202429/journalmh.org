@@ -17,8 +17,9 @@
                 </p>
 
                 <!-- АДАПТИВНЫЕ КНОПКИ -->
+
                 <div class="d-flex gap-3 mb-4 flex-wrap">
-                    <a href="#archive" class="btn btn-lg"
+                    <a href="{{ route('current.issue') }}" class="btn btn-lg"
                         style="border-radius: 40px; padding: 0.7rem 1.5rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; border: 2px solid var(--primary); background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); font-size: clamp(0.8rem, 3vw, 1rem);">
                         <i class="bi bi-journal"></i> Текущий выпуск
                     </a>
@@ -109,30 +110,19 @@
                         </div>
 
                         <!-- Кнопки действий -->
+                        <!-- Кнопки действий -->
                         <div class="d-flex gap-2 flex-wrap mt-3">
-
-                            <!-- Обложка выпуска (уменьшенная) -->
-                            @if($issue->cover_image_path)
-                            <div class="text-center pt-3">
-                                <img src="{{ route('issue.cover', $issue) }}" alt="Обложка выпуска" class="img-fluid" style="max-width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                            </div>
-                            @elseif($issue->cover_image)
-                            <div class="text-center pt-3">
-                                <img src="{{ $issue->cover_image }}" alt="Обложка выпуска" class="img-fluid" style="max-width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                            </div>
-                            @endif
-
-                            <a href="{{ route('issues.show', $issue) }}" class="btn btn-sm btn-outline-primary">
+                            <a href="{{ route('issues.show', $issue) }}" class="btn btn-sm btn-outline-primary" style="flex: 0 0 auto; width: auto;">
                                 <i class="bi bi-list"></i> Содержание
                             </a>
 
                             <!-- PDF выпуска -->
                             @if($issue->pdf_file_path)
-                            <a href="{{ route('download.issue.pdf', $issue) }}" class="btn btn-sm btn-success">
+                            <a href="{{ route('download.issue.pdf', $issue) }}" class="btn btn-sm btn-success" style="flex: 0 0 auto; width: auto;">
                                 <i class="bi bi-file-pdf"></i> PDF
                             </a>
                             @elseif($issue->pdf_url)
-                            <a href="{{ $issue->pdf_url }}" target="_blank" class="btn btn-sm btn-success">
+                            <a href="{{ $issue->pdf_url }}" target="_blank" class="btn btn-sm btn-success" style="flex: 0 0 auto; width: auto;">
                                 <i class="bi bi-file-pdf"></i> PDF
                             </a>
                             @endif
