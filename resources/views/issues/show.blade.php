@@ -148,23 +148,25 @@
                         <div class="text-muted small mb-2 text-break">
                             <i>{{ $article->title_cv }}</i>
                         </div>
-
                         @endif
 
-                         <div class="row mb-3">
+
+
+                        <div class="row mb-3">
                             <div class="col-md-2 fw-bold">Авторы:</div>
                             <div class="col-md-10">
                                 @php
                                 $authorsList = $article->authors()->orderBy('author_num')->get();
+                                $names = [];
+                                foreach($authorsList as $author) {
+                                $name = trim($author->full_name_ru);
+                                if (!empty($name)) {
+                                $names[] = $name;
+                                }
+                                }
                                 @endphp
 
-                                @if($authorsList->isNotEmpty())
-                                @foreach($authorsList as $author)
-                                <span>{{ $author->full_name_ru }}</span>@if(!$loop->last); @endif
-                                @endforeach
-                                @else
-                                <span class="text-muted">-</span>
-                                @endif
+                                {{ !empty($names) ? implode('; ', $names) : '-' }}
                             </div>
                         </div>
 
@@ -206,11 +208,11 @@
                                 </div>
                                 @endif
                             </div>
-                            <div class="col">   
+                            <div class="col">
                                 @if($article->doi)
                                 <div class="text-break"><i class="bi bi-link-45deg"></i> DOI: <code class="small text-break">{{ $article->doi }}</code></div>
                                 @endif
-                                
+
                                 @if($article->udk)
                                 <div><i class="bi bi-hash"></i> УДК: {{ is_array($article->udk) ? implode(', ', $article->udk) : $article->udk }}</div>
                                 @endif
