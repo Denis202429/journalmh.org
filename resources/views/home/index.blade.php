@@ -499,7 +499,7 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
 </section> -->
 
 
-<section class="py-5 bg-light" id="contacts">
+<section class="py-5" id="contacts">
     <div class="container">
         <!-- Заголовок -->
         <div class="text-center mb-5">
@@ -509,131 +509,57 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
         </div>
 
         <div class="row g-4">
-            <!-- Контактная информация -->
-            <div class="col-12 col-lg-6">
+            <!-- Колонка 1 -->
+            <div class="col-md-6 col-lg-4">
                 <div class="card border-0 shadow-sm h-100 rounded-4">
-                    <div class="card-body p-4 p-md-5">
-                        <h3 class="h4 fw-bold mb-4">
-                            <i class="bi bi-chat-dots text-primary me-2"></i>Напишите нам
-                        </h3>
-
-                        <!-- Адрес -->
-                        <div class="d-flex flex-column flex-sm-row mb-4">
-                            <div class="flex-shrink-0 mb-3 mb-sm-0">
-                                <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-sm-3 text-center">
-                                    <i class="bi bi-geo-alt-fill text-primary fs-4"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="h6 fw-bold mb-1">Адрес</h4>
-                                <p class="text-secondary mb-0">428015, Чувашская Республика,<br>г. Чебоксары, Московский проспект, 29, корпус 1</p>
-                                <a href="https://yandex.ru/maps/-/CDxS7J2V" target="_blank" class="btn btn-sm btn-link ps-0 mt-1">
-                                    <i class="bi bi-map"></i> Построить маршрут
-                                </a>
-                            </div>
+                    <div class="card-body p-4 p-lg-5 text-center text-md-start">
+                        <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-flex mb-3">
+                            <i class="bi bi-geo-alt-fill text-primary fs-2"></i>
                         </div>
-
-                        <!-- Email -->
-                        <div class="d-flex flex-column flex-sm-row mb-4">
-                            <div class="flex-shrink-0 mb-3 mb-sm-0">
-                                <div class="bg-success bg-opacity-10 rounded-circle p-3 me-sm-3 text-center">
-                                    <i class="bi bi-envelope-fill text-success fs-4"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="h6 fw-bold mb-1">Email</h4>
-                                <p class="mb-0">
-                                    <a href="mailto:sovrem_human@rambler.ru" class="text-decoration-none">
-                                        sovrem_human@rambler.ru
-                                    </a>
-                                </p>
-                                <small class="text-secondary">Ответим в течение 2-3 рабочих дней</small>
-                            </div>
-                        </div>
-
-                        <!-- Телефон -->
-                        <div class="d-flex flex-column flex-sm-row mb-4">
-                            <div class="flex-shrink-0 mb-3 mb-sm-0">
-                                <div class="bg-info bg-opacity-10 rounded-circle p-3 me-sm-3 text-center">
-                                    <i class="bi bi-telephone-fill text-info fs-4"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="h6 fw-bold mb-1">Телефон</h4>
-                                <p class="mb-0">
-                                    <a href="tel:+78352450010" class="text-decoration-none">
-                                        8 (8352) 45-00-10
-                                    </a>
-                                </p>
-                                <small class="text-secondary">Пн-Пт с 9:00 до 18:00</small>
-                            </div>
-                        </div>
-
-                        <!-- Социальные сети -->
-                        <div class="mt-4 pt-2">
-                            <h4 class="h6 fw-bold mb-3">Мы в соцсетях</h4>
-                            <div class="d-flex gap-2 flex-wrap">
-                                <a href="#" class="btn btn-primary rounded-circle p-2 d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                                    <i class="bi bi-facebook"></i>
-                                </a>
-                                <a href="#" class="btn btn-info rounded-circle p-2 d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                                    <i class="bi bi-twitter-x text-white"></i>
-                                </a>
-                                <a href="#" class="btn btn-primary rounded-circle p-2 d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background-color: #0a66c2; border-color: #0a66c2;">
-                                    <i class="bi bi-linkedin"></i>
-                                </a>
-                                <a href="#" class="btn btn-danger rounded-circle p-2 d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                                    <i class="bi bi-instagram"></i>
-                                </a>
-                                <a href="#" class="btn btn-primary rounded-circle p-2 d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background-color: #0088cc; border-color: #0088cc;">
-                                    <i class="bi bi-telegram"></i>
-                                </a>
-                            </div>
-                        </div>
+                        <h3 class="h5 fw-bold mb-2">Адрес</h3>
+                        <p class="text-secondary mb-0">
+                            428015, Чувашская Республика,<br>
+                            г. Чебоксары, Московский проспект, 29, корпус 1
+                        </p>
+                        <a href="https://yandex.ru/maps/-/CDxS7J2V" target="_blank" class="btn btn-sm btn-link ps-0 mt-2">
+                            <i class="bi bi-map"></i> Построить маршрут
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Форма обратной связи -->
-            <div class="col-12 col-lg-6">
+            <!-- Колонка 2 -->
+            <div class="col-md-6 col-lg-4">
                 <div class="card border-0 shadow-sm h-100 rounded-4">
-                    <div class="card-body p-4 p-md-5">
-                        <h3 class="h4 fw-bold mb-4">
-                            <i class="bi bi-send text-primary me-2"></i>Отправить сообщение
-                        </h3>
-                        
-                        <form action="{{ route('contact.send') }}" method="POST">
-                            @csrf
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">Ваше имя</label>
-                                <input type="text" name="name" class="form-control" placeholder="Иван Иванов" required>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="ivan@example.com" required>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">Тема</label>
-                                <select name="subject" class="form-select" required>
-                                    <option value="">Выберите тему...</option>
-                                    <option value="question">Вопрос по публикации</option>
-                                    <option value="suggestion">Предложение сотрудничества</option>
-                                    <option value="review">Отзыв о журнале</option>
-                                    <option value="other">Другое</option>
-                                </select>
-                            </div>
-                            
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">Сообщение</label>
-                                <textarea name="message" class="form-control" rows="5" placeholder="Напишите ваше сообщение..." required></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary w-100 py-2 rounded-pill fw-semibold">
-                                <i class="bi bi-send"></i> Отправить сообщение
-                            </button>
-                        </form>
+                    <div class="card-body p-4 p-lg-5 text-center text-md-start">
+                        <div class="bg-success bg-opacity-10 rounded-circle p-3 d-inline-flex mb-3">
+                            <i class="bi bi-envelope-fill text-success fs-2"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-2">Email</h3>
+                        <p class="mb-0">
+                            <a href="mailto:sovrem_human@rambler.ru" class="text-decoration-none">
+                                sovrem_human@rambler.ru
+                            </a>
+                        </p>
+                        <small class="text-secondary">Ответим в течение 2-3 рабочих дней</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Колонка 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm h-100 rounded-4">
+                    <div class="card-body p-4 p-lg-5 text-center text-md-start">
+                        <div class="bg-info bg-opacity-10 rounded-circle p-3 d-inline-flex mb-3">
+                            <i class="bi bi-telephone-fill text-info fs-2"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-2">Телефон</h3>
+                        <p class="mb-0">
+                            <a href="tel:+78352450010" class="text-decoration-none">
+                                8 (8352) 45-00-10
+                            </a>
+                        </p>
+                        <small class="text-secondary">Пн-Пт с 9:00 до 18:00</small>
                     </div>
                 </div>
             </div>
@@ -643,15 +569,15 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
         <div class="row mt-5">
             <div class="col-12">
                 <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-                    <div style="position:relative; width:100%; height: 300px; min-height: 300px;">
+                    <div style="position:relative; width:100%; height: 400px;">
                         <iframe
                             src="https://yandex.ru/map-widget/v1/?from=mapframe&ll=47.210079%2C56.143158&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NjAxMjI0NhKKAdCg0L7RgdGB0LjRjywg0KfRg9Cy0LDRiNGB0LrQsNGPINCg0LXRgdC_0YPQsdC70LjQutCwIOKAlCDQp9GD0LLQsNGI0LjRjywg0KfQtdCx0L7QutGB0LDRgNGLLCDQnNC-0YHQutC-0LLRgdC60LjQuSDQv9GA0L7RgdC_0LXQutGCLCAyOdC6MSIKDR_XPEIVmJJgQg%2C%2C&source=mapframe&um=constructor%3A1234567890&utm_source=mapframe&z=17"
                             width="100%"
-                            height="100%"
+                            height="400"
                             frameborder="0"
                             allowfullscreen="true"
                             loading="lazy"
-                            style="border:0; min-height: 300px;">
+                            style="border:0;">
                         </iframe>
                     </div>
                     <div class="card-footer bg-light text-center py-3">
