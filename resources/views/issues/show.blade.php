@@ -77,7 +77,7 @@
                         @if($issue->issn || $issue->eissn)
                         <tr>
                             <th style="width: 150px;">ISSN:</th>
-                            <td>@if($issue->issn) print: {{ $issue->issn }}@endif @if($issue->eissn) online: {{ $issue->eissn }}@endif
+                            <td>@if($issue->issn) {{ $issue->issn }}@endif @if($issue->eissn) online: {{ $issue->eissn }}@endif
                         </tr>
                         @endif
                         @if($issue->issue_doi)<tr>
