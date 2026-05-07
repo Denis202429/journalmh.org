@@ -172,38 +172,45 @@
                             </div>
                         </div> -->
 
-                        @foreach($authorsList as $index => $author)
-                        <span class="author-item">
-                            {{ $author->getFullNameAttribute() }}
-                            @php
-                            $roles = [
-                            '' => '',
-                            '0' => 'редактор',
-                            '1' => 'ответственный редактор',
-                            '2' => 'научный редактор',
-                            '3' => 'переводчик',
-                            '4' => 'составитель',
-                            '5' => 'фотограф',
-                            '6' => 'художник',
-                            '9' => 'иллюстратор',
-                            '10' => 'автор комментария',
-                            '20' => 'автор вступительной статьи',
-                            '23' => 'рецензент',
-                            '24' => 'автор предисловия',
-                            '25' => 'автор послесловия',
-                            '26' => 'научный руководитель',
-                            '48' => 'редактор перевода',
-                            ];
-                            $roleText = $roles[$author->role] ?? '';
-                            @endphp
-                            @if($roleText)
-                            <span class="badge bg-secondary ms-1" style="font-size: 0.7rem;">({{ $roleText }})</span>
-                            @endif
-                            @if(!$loop->last)
-                            ,&nbsp;
-                            @endif
-                        </span>
-                        @endforeach
+                        <div class="row mb-3">
+                            <div class="col-md-2 fw-bold">Авторы:</div>
+                            <div class="col-md-10">
+                                <div class="authors-list">
+                                    @foreach($authorsList as $index => $author)
+                                    <span class="author-item">
+                                        {{ $author->getFullNameAttribute() }}
+                                        @php
+                                        $roles = [
+                                        '' => '',
+                                        '0' => 'редактор',
+                                        '1' => 'ответственный редактор',
+                                        '2' => 'научный редактор',
+                                        '3' => 'переводчик',
+                                        '4' => 'составитель',
+                                        '5' => 'фотограф',
+                                        '6' => 'художник',
+                                        '9' => 'иллюстратор',
+                                        '10' => 'автор комментария',
+                                        '20' => 'автор вступительной статьи',
+                                        '23' => 'рецензент',
+                                        '24' => 'автор предисловия',
+                                        '25' => 'автор послесловия',
+                                        '26' => 'научный руководитель',
+                                        '48' => 'редактор перевода',
+                                        ];
+                                        $roleText = $roles[$author->role] ?? '';
+                                        @endphp
+                                        @if($roleText)
+                                        <span class="badge bg-secondary ms-1" style="font-size: 0.7rem;">({{ $roleText }})</span>
+                                        @endif
+                                        @if(!$loop->last)
+                                        ,&nbsp;
+                                        @endif
+                                    </span>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
 
 
                         <!-- Метаданные -->
