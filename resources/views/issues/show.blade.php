@@ -119,7 +119,7 @@
     </div>
 
     <!-- Список статей в выпуске -->
-    <!-- Список статей в выпуске -->
+
     <div class="mt-4">
         <h2 class="h4 mb-3">Статьи выпуска</h2>
 
@@ -151,8 +151,8 @@
                         @endif
 
 
-                        <!-- 
-                        <div class="row mb-3">
+
+                        <!-- <div class="row mb-3">
                             <div class="col-md-2 fw-bold">Авторы:</div>
                             <div class="col-md-10">
                                 @php
@@ -171,52 +171,39 @@
                                 @endif
                             </div>
                         </div> -->
-                        <div class="mb-4">
-                            <h5 class="fw-bold mb-2">Авторы</h5>
-                            <div class="authors-list">
-                                @if($article->authors && $article->authors->count() > 0)
-                                @foreach($article->authors as $index => $author)
-                                <span class="author-item">
-                                    {{ $author->getFullNameAttribute() }}
-                                    @if($author->role && $author->role != '')
-                                    @php
-                                    $roles = [
-                                    '0' => 'редактор',
-                                    '1' => 'ответственный редактор',
-                                    '2' => 'научный редактор',
-                                    '3' => 'переводчик',
-                                    '4' => 'составитель',
-                                    '5' => 'фотограф',
-                                    '6' => 'художник',
-                                    '9' => 'иллюстратор',
-                                    '10' => 'автор комментария',
-                                    '20' => 'автор вступительной статьи',
-                                    '23' => 'рецензент',
-                                    '24' => 'автор предисловия',
-                                    '25' => 'автор послесловия',
-                                    '26' => 'научный руководитель',
-                                    '48' => 'редактор перевода',
-                                    ];
-                                    $roleText = $roles[$author->role] ?? '';
-                                    @endphp
-                                    @if($roleText)
-                                    <span class="badge bg-secondary ms-1" style="font-size: 0.7rem;">({{ $roleText }})</span>
-                                    @endif
-                                    @endif
-                                    @if($author->is_correspondent)
-                                    <span class="badge bg-primary ms-1" style="font-size: 0.7rem;">корреспондент</span>
-                                    @endif
-                                    @if(!$loop->last)
-                                    ,&nbsp;
-                                    @endif
-                                </span>
-                                @endforeach
-                                @else
-                                <span class="text-muted">Авторы не указаны</span>
-                                @endif
-                            </div>
-                        </div>
 
+                        @foreach($authorsList as $index => $author)
+                        <span class="author-item">
+                            {{ $author->getFullNameAttribute() }}
+                            @php
+                            $roles = [
+                            '' => '',
+                            '0' => 'редактор',
+                            '1' => 'ответственный редактор',
+                            '2' => 'научный редактор',
+                            '3' => 'переводчик',
+                            '4' => 'составитель',
+                            '5' => 'фотограф',
+                            '6' => 'художник',
+                            '9' => 'иллюстратор',
+                            '10' => 'автор комментария',
+                            '20' => 'автор вступительной статьи',
+                            '23' => 'рецензент',
+                            '24' => 'автор предисловия',
+                            '25' => 'автор послесловия',
+                            '26' => 'научный руководитель',
+                            '48' => 'редактор перевода',
+                            ];
+                            $roleText = $roles[$author->role] ?? '';
+                            @endphp
+                            @if($roleText)
+                            <span class="badge bg-secondary ms-1" style="font-size: 0.7rem;">({{ $roleText }})</span>
+                            @endif
+                            @if(!$loop->last)
+                            ,&nbsp;
+                            @endif
+                        </span>
+                        @endforeach
 
 
                         <!-- Метаданные -->
