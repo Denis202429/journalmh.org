@@ -960,6 +960,7 @@
                                 <input type="text" name="authors[${authorIndex}][surname_cv]" class="form-control">
                             </div>
 
+                            <hr class="my-4">
                             <div class="col-md-4 mt-2">
                                 <label>Имя (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][name_ru]" class="form-control">
@@ -973,6 +974,7 @@
                                 <input type="text" name="authors[${authorIndex}][name_cv]" class="form-control">
                             </div>
 
+                            <hr class="my-4">
                             <div class="col-md-4 mt-2">
                                 <label>Отчество (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][patronymic_ru]" class="form-control">
@@ -985,6 +987,7 @@
                                 <label>Отчество (CV)</label>
                                 <input type="text" name="authors[${authorIndex}][patronymic_cv]" class="form-control">
                             </div>
+                            <hr class="my-4">
 
                             <div class="col-md-6 mt-2">
                                 <label>Организация (RU)</label>
@@ -994,105 +997,107 @@
                                 <label>Организация (EN)</label>
                                 <input type="text" name="authors[${authorIndex}][org_name_en]" class="form-control">
                             </div>
-         <div class="col-md-4 mt-2">
-                <label>Организация (CV)</label>
-                <input type="text" name="authors[${authorIndex}][org_name_cv]" class="form-control">
-            </div>
-
+                                <div class="col-md-4 mt-2">
+                                <label>Организация (CV)</label>
+                                <input type="text" name="authors[${authorIndex}][org_name_cv]" class="form-control">
+                            </div>
+                            <hr class="my-4">
                             <div class="col-md-4 mt-2">
                                 <label>Город (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][town_ru]" class="form-control">
                             </div>
-            <div class="col-md-4 mt-2">
-                <label>Город (EN)</label>
-                <input type="text" name="authors[${authorIndex}][town_en]" class="form-control">
-            </div>
-            <div class="col-md-4 mt-2">
-                <label>Город (CV)</label>
-                <input type="text" name="authors[${authorIndex}][town_cv]" class="form-control">
-            </div>
-
+                            <div class="col-md-4 mt-2">
+                                <label>Город (EN)</label>
+                                <input type="text" name="authors[${authorIndex}][town_en]" class="form-control">
+                            </div>
+                            <div class="col-md-4 mt-2">
+                                <label>Город (CV)</label>
+                                <input type="text" name="authors[${authorIndex}][town_cv]" class="form-control">
+                            </div>
+                            <hr class="my-4">
                             <div class="col-md-4 mt-2">
                                 <label>Страна (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][country_ru]" class="form-control">
                             </div>
-            <div class="col-md-4 mt-2">
-                <label>Страна (EN)</label>
-                <input type="text" name="authors[${authorIndex}][country_en]" class="form-control">
-            </div>
-            <div class="col-md-4 mt-2">
-                <label>Страна (CV)</label>
-                <input type="text" name="authors[${authorIndex}][country_cv]" class="form-control">
-            </div>
-
-
                             <div class="col-md-4 mt-2">
-                                <div class="form-check mt-4">
-                                    <input type="checkbox" name="authors[${authorIndex}][is_correspondent]" value="1" class="form-check-input">
-                                    <label class="form-check-label">Автор-корреспондент</label>
-                                </div>
+                                <label>Страна (EN)</label>
+                                <input type="text" name="authors[${authorIndex}][country_en]" class="form-control">
+                           </div>
+                           <div class="col-md-4 mt-2">
+                               <label>Страна (CV)</label>
+                               <input type="text" name="authors[${authorIndex}][country_cv]" class="form-control">
+                           </div>
+                           <hr class="my-4">                           
+                           <div class="col-md-4 mt-2">
+                               <div class="form-check mt-4">
+                               <input type="checkbox" name="authors[${authorIndex}][is_correspondent]" value="1" class="form-check-input">
+                               <label class="form-check-label">Автор-корреспондент</label>
+                               </div>
+                           </div>
+                           <div class="col-md-4 mt-2">
+                               <label>Роль автора</label>
+                               <select name="authors[${authorIndex}][role]" class="form-select">
+                               <option value="">Автор</option>
+                               <option value="0">Редактор</option>
+                               <option value="1">Ответственный редактор</option>
+                               <option value="2">Научный редактор</option>
+                               <option value="3">Переводчик</option>
+                               <option value="4">Составитель</option>
+                               <option value="5">Фотограф</option>
+                               <option value="6">Художник</option>
+                               <option value="9">Иллюстратор</option>
+                               <option value="10">Автор комментария</option>
+                               <option value="20">Автор вступительной статьи</option>
+                               <option value="23">Рецензент</option>
+                               <option value="24">Автор предисловия</option>
+                               <option value="25">Автор послесловия</option>
+                               <option value="26">Научный руководитель</option>
+                               <option value="48">Редактор перевода</option>
+                               </select>
+                            <small class="text-muted">Если не выбрано - автор</small>
                             </div>
-            <div class="col-md-4 mt-2">
-                <label>Роль автора</label>
-                <select name="authors[${authorIndex}][role]" class="form-select">
-                    <option value="">Автор</option>
-                    <option value="0">Редактор</option>
-                    <option value="1">Ответственный редактор</option>
-                    <option value="2">Научный редактор</option>
-                    <option value="3">Переводчик</option>
-                    <option value="4">Составитель</option>
-                    <option value="5">Фотограф</option>
-                    <option value="6">Художник</option>
-                    <option value="9">Иллюстратор</option>
-                    <option value="10">Автор комментария</option>
-                    <option value="20">Автор вступительной статьи</option>
-                    <option value="23">Рецензент</option>
-                    <option value="24">Автор предисловия</option>
-                    <option value="25">Автор послесловия</option>
-                    <option value="26">Научный руководитель</option>
-                    <option value="48">Редактор перевода</option>
-                </select>
-                <small class="text-muted">Если не выбрано - автор</small>
-            </div>
+                            <hr class="my-4">                            
                             <div class="col-md-4 mt-2">
                                 <label>Должность (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][position_ru]" class="form-control">
                             </div>
-            <div class="col-md-4 mt-2">
-                <label>Должность (EN)</label>
-                <input type="text" name="authors[${authorIndex}][position_en]" class="form-control">
-            </div>
-            <div class="col-md-4 mt-2">
-                <label>Должность (CV)</label>
-                <input type="text" name="authors[${authorIndex}][position_cv]" class="form-control">
-            </div>
+                            <div class="col-md-4 mt-2">
+                                <label>Должность (EN)</label>
+                                <input type="text" name="authors[${authorIndex}][position_en]" class="form-control">
+                            </div>
+                            <div class="col-md-4 mt-2">
+                                <label>Должность (CV)</label>
+                                <input type="text" name="authors[${authorIndex}][position_cv]" class="form-control">
+                            </div>
 
-<div class="col-md-4 mt-2">
-    <label>Ученая степень (RU)</label>
-    <input type="text" name="authors[${authorIndex}][degree_ru]" class="form-control">
-</div>
-<div class="col-md-4 mt-2">
-    <label>Ученая степень (EN)</label>
-    <input type="text" name="authors[${authorIndex}][degree_en]" class="form-control">
-</div>
-<div class="col-md-4 mt-2">
-    <label>Ученая степень (CV)</label>
-    <input type="text" name="authors[${authorIndex}][degree_cv]" class="form-control">
-</div>
-
-<div class="col-md-4 mt-2">
-    <label>Звание (RU)</label>
-    <input type="text" name="authors[${authorIndex}][rank_ru]" class="form-control">
-</div>
-<div class="col-md-4 mt-2">
-    <label>Звание (EN)</label>
-    <input type="text" name="authors[${authorIndex}][rank_en]" class="form-control">
-</div>
-<div class="col-md-4 mt-2">
-    <label>Звание (CV)</label>
-    <input type="text" name="authors[${authorIndex}][rank_cv]" class="form-control">
-</div>
-
+                            <hr class="my-4">
+                            <div class="col-md-4 mt-2">
+                                <label>Ученая степень (RU)</label>
+                                <input type="text" name="authors[${authorIndex}][degree_ru]" class="form-control">
+                            </div>
+                            <div class="col-md-4 mt-2">
+                                <label>Ученая степень (EN)</label>
+                                <input type="text" name="authors[${authorIndex}][degree_en]" class="form-control">
+                            </div>
+                            <div class="col-md-4 mt-2">
+                                <label>Ученая степень (CV)</label>
+                                <input type="text" name="authors[${authorIndex}][degree_cv]" class="form-control">
+                            </div>
+                            <hr class="my-4">
+                            <div class="col-md-4 mt-2">
+                                <label>Звание (RU)</label>
+                                <input type="text" name="authors[${authorIndex}][rank_ru]" class="form-control">
+                            </div>
+                            <div class="col-md-4 mt-2">
+                                <label>Звание (EN)</label>
+                                <input type="text" name="authors[${authorIndex}][rank_en]" class="form-control">
+                            </div>
+                            <div class="col-md-4 mt-2">
+                                <label>Звание (CV)</label>
+                                <input type="text" name="authors[${authorIndex}][rank_cv]" class="form-control">
+                            </div>
+                            
+                            <hr class="my-4">
                             <div class="col-md-4 mt-2">
                                 <label>ORCID</label>
                                 <input type="text" name="authors[${authorIndex}][orcid]" class="form-control">
