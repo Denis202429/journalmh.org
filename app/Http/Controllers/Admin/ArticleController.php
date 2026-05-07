@@ -59,10 +59,9 @@ class ArticleController extends Controller
             'keywords_ru' => 'nullable|string',
             'keywords_en' => 'nullable|string',
             'keywords_cv' => 'nullable|string',
-            'text_ru' => 'nullable|string',      // Добавьте
-            'text_en' => 'nullable|string',      // Добавьте
-            'text_cv' => 'nullable|string',      // Добавьте
-
+            'text_ru' => 'nullable|string',
+            'text_en' => 'nullable|string',
+            'text_cv' => 'nullable|string',
             'doi' => 'nullable|string|max:100',
             'edn' => 'nullable|string|max:6',
             'udk' => 'nullable|string|max:100',
@@ -70,23 +69,54 @@ class ArticleController extends Controller
             'date_received' => 'nullable|date',
             'date_accepted' => 'nullable|date',
             'date_publication' => 'nullable|date',
-            // 'pdf_url' => 'nullable|url|max:2048',
-            'pdf_file' => 'nullable|file|mimes:pdf|max:10240', // 10MB max
+            'pdf_file' => 'nullable|file|mimes:pdf|max:10240',
             'is_published' => 'boolean',
             'sort_order' => 'nullable|integer',
-            'authors.*.role' => 'nullable|string|max:2', // Добавьте эту строку
 
+            // НОВЫЕ ПОЛЯ
+            'section_ru' => 'nullable|string|max:255',
+            'section_en' => 'nullable|string|max:255',
+            'section_cv' => 'nullable|string|max:255',
+            'fundings_ru' => 'nullable|string',
+            'fundings_en' => 'nullable|string',
+            'fundings_cv' => 'nullable|string',
+            'references_ru' => 'nullable|string',
+            'references_en' => 'nullable|string',
+            'citation_ru' => 'nullable|string',
+            'citation_en' => 'nullable|string',
+            'citation_cv' => 'nullable|string',
+
+            // Поля авторов
+            'authors.*.role' => 'nullable|string|max:2',
             'authors.*.degree_ru' => 'nullable|string|max:255',
             'authors.*.degree_en' => 'nullable|string|max:255',
             'authors.*.degree_cv' => 'nullable|string|max:255',
             'authors.*.rank_ru' => 'nullable|string|max:255',
             'authors.*.rank_en' => 'nullable|string|max:255',
             'authors.*.rank_cv' => 'nullable|string|max:255',
-
-
         ]);
 
         $validated['is_published'] = $request->boolean('is_published');
+
+        // ПРЕОБРАЗОВАНИЕ СТРОК В МАССИВЫ
+        // Финансирование
+        if ($request->has('fundings_ru')) {
+            $validated['fundings_ru'] = $request->fundings_ru ? explode("\n", trim($request->fundings_ru)) : [];
+        }
+        if ($request->has('fundings_en')) {
+            $validated['fundings_en'] = $request->fundings_en ? explode("\n", trim($request->fundings_en)) : [];
+        }
+        if ($request->has('fundings_cv')) {
+            $validated['fundings_cv'] = $request->fundings_cv ? explode("\n", trim($request->fundings_cv)) : [];
+        }
+
+        // Список литературы
+        if ($request->has('references_ru')) {
+            $validated['references_ru'] = $request->references_ru ? explode("\n", trim($request->references_ru)) : [];
+        }
+        if ($request->has('references_en')) {
+            $validated['references_en'] = $request->references_en ? explode("\n", trim($request->references_en)) : [];
+        }
 
         // Обработка загрузки PDF файла
         if ($request->hasFile('pdf_file')) {
@@ -154,7 +184,6 @@ class ArticleController extends Controller
         return redirect()->route('admin.articles.index')->with('success', 'Статья добавлена');
     }
 
-
     // public function edit(Article $article)
     // {
     //     $issues = Issue::query()
@@ -162,18 +191,15 @@ class ArticleController extends Controller
     //         ->orderByDesc('number')
     //         ->get();
 
-    //     // Обязательно загружаем авторов
-    //     $article->load('authors');
+    //     // Загружаем авторов через прямой запрос (гарантированно работает)
+    //     $authors = ArticleAuthor::where('article_id', $article->id)->orderBy('author_num')->get();
 
-    //     // Отладка - проверяем, сколько авторов загружено
-    //     \Log::info('Article ID: ' . $article->id);
-    //     \Log::info('Authors count: ' . $article->authors->count());
-    //     foreach ($article->authors as $author) {
-    //         \Log::info('Author: ' . ($author->surname_ru ?? 'no surname'));
-    //     }
+    //     // Привязываем авторов к статье
+    //     $article->setRelation('authors', $authors);
 
     //     return view('admin.articles.edit', compact('article', 'issues'));
     // }
+
     public function edit(Article $article)
     {
         $issues = Issue::query()
@@ -181,14 +207,37 @@ class ArticleController extends Controller
             ->orderByDesc('number')
             ->get();
 
-        // Загружаем авторов через прямой запрос (гарантированно работает)
+        // Загружаем авторов
         $authors = ArticleAuthor::where('article_id', $article->id)->orderBy('author_num')->get();
-
-        // Привязываем авторов к статье
         $article->setRelation('authors', $authors);
 
-        return view('admin.articles.edit', compact('article', 'issues'));
+        // Определяем, какой раздел выбран на основе сохраненных значений
+        $selectedSection = '';
+
+        $sectionsMap = [
+            'historical' => ['ru' => 'Исторические науки', 'en' => 'Historical Sciences', 'cv' => 'Истори ăслăхĕсем'],
+            'philological' => ['ru' => 'Филологические науки', 'en' => 'Philological Sciences', 'cv' => 'Филологи ăслăхĕсем'],
+            'art' => ['ru' => 'Виды искусств', 'en' => 'Arts', 'cv' => 'Искусство тĕсĕсем'],
+            'reviews' => ['ru' => 'Рецензии', 'en' => 'Reviews', 'cv' => 'Рецензисем'],
+            'personalia' => ['ru' => 'Персоналии', 'en' => 'Personalia', 'cv' => 'Персоналисем'],
+            'scientific_life' => ['ru' => 'Научная жизнь', 'en' => 'Scientific Life', 'cv' => 'Ăслăх пурнăçĕ'],
+        ];
+
+        foreach ($sectionsMap as $key => $values) {
+            if (
+                $article->section_ru == $values['ru'] ||
+                $article->section_en == $values['en'] ||
+                $article->section_cv == $values['cv']
+            ) {
+                $selectedSection = $key;
+                break;
+            }
+        }
+
+        return view('admin.articles.edit', compact('article', 'issues', 'selectedSection'));
     }
+
+
 
 
     public function update(Request $request, Article $article)
@@ -199,6 +248,19 @@ class ArticleController extends Controller
             'title_en' => 'nullable|string|max:500',
             'title_cv' => 'nullable|string|max:500',
             'pages' => 'nullable|string|max:50',
+
+            'section_ru' => 'nullable|string|max:255',
+            'section_en' => 'nullable|string|max:255',
+            'section_cv' => 'nullable|string|max:255',
+            'fundings_ru' => 'nullable|string',
+            'fundings_en' => 'nullable|string',
+            'fundings_cv' => 'nullable|string',
+            'references_ru' => 'nullable|string',
+            'references_en' => 'nullable|string',
+            'citation_ru' => 'nullable|string',
+            'citation_en' => 'nullable|string',
+            'citation_cv' => 'nullable|string',
+
             'art_type' => 'nullable|string|in:RAR,REV,SCO,BRV,CNF,EDI,ABS,REP,RPR,COR,PER,MIS',
             'lang_publ' => 'nullable|string|in:RUS,ENG,CHV',
             'abstract_ru' => 'nullable|string',
@@ -234,13 +296,23 @@ class ArticleController extends Controller
 
         $validated['is_published'] = $request->boolean('is_published');
 
-        // Обработка удаления PDF
-        // if ($request->boolean('delete_pdf') && $article->pdf_file_path) {
-        //     Storage::disk('public')->delete($article->pdf_file_path);
-        //     $validated['pdf_file_path'] = null;
-        //     $validated['pdf_original_name'] = null;
-        //     $validated['pdf_file_size'] = null;
-        // }
+        // ПРЕОБРАЗОВАНИЕ СТРОК В МАССИВЫ (те же, что и в store)
+        if ($request->has('fundings_ru')) {
+            $validated['fundings_ru'] = $request->fundings_ru ? explode("\n", trim($request->fundings_ru)) : [];
+        }
+        if ($request->has('fundings_en')) {
+            $validated['fundings_en'] = $request->fundings_en ? explode("\n", trim($request->fundings_en)) : [];
+        }
+        if ($request->has('fundings_cv')) {
+            $validated['fundings_cv'] = $request->fundings_cv ? explode("\n", trim($request->fundings_cv)) : [];
+        }
+
+        if ($request->has('references_ru')) {
+            $validated['references_ru'] = $request->references_ru ? explode("\n", trim($request->references_ru)) : [];
+        }
+        if ($request->has('references_en')) {
+            $validated['references_en'] = $request->references_en ? explode("\n", trim($request->references_en)) : [];
+        }
 
         // Обработка удаления PDF
         if ($request->boolean('delete_pdf')) {
@@ -254,14 +326,6 @@ class ArticleController extends Controller
                 $validated['pdf_file_path'] = null;
                 $validated['pdf_original_name'] = null;
                 $validated['pdf_file_size'] = null;
-
-                // Также очищаем pdf_url, если он был
-
-                // if ($request->filled('pdf_url')) {
-                //     $validated['pdf_url'] = $request->pdf_url;
-                // } else {
-                //     $validated['pdf_url'] = null;
-                // }
             }
         }
 

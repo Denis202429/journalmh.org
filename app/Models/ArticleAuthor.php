@@ -55,8 +55,16 @@ class ArticleAuthor extends Model
         'position_en',
         'position_cv',
         // Ученая степень и звание
-        'degree',
-        'rank',
+        // 'degree',
+        'degree_ru',
+        'degree_en',
+        'degree_cv',
+
+        // 'rank',
+        'rank_ru',
+        'rank_en',
+        'rank_cv',
+
         // Другое
         'other_info_ru',
         'other_info_en',

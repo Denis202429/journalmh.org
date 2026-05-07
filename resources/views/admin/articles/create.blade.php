@@ -41,6 +41,63 @@
                         </select>
                     </div>
 
+
+
+                    <!-- <div class="row g-3 mt-2">
+                        <div class="col-md-12">
+                            <label class="form-label">Раздел (RU)</label>
+                            <input type="text" name="section_ru" class="form-control" value="{{ old('section_ru') }}" placeholder="Например: Исторические науки">
+                            <small class="text-muted">Название тематического раздела на русском языке</small>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Раздел (EN)</label>
+                            <input type="text" name="section_en" class="form-control" value="{{ old('section_en') }}" placeholder="For example: Historical Sciences">
+                            <small class="text-muted">Название раздела на английском языке</small>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Раздел (CV)</label>
+                            <input type="text" name="section_cv" class="form-control" value="{{ old('section_cv') }}" placeholder="Сăмахран: Истори ăслăхĕсем">
+                            <small class="text-muted">Название раздела на чувашском языке</small>
+                        </div>
+                    </div> -->
+
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-12">
+                            <label class="form-label">Раздел</label>
+                            <select name="section_select" class="form-select" id="section_select">
+                                <option value="">-- Выберите раздел --</option>
+                                <option value="historical" {{ old('section_select') == 'historical' ? 'selected' : '' }}>Исторические науки</option>
+                                <option value="philological" {{ old('section_select') == 'philological' ? 'selected' : '' }}>Филологические науки</option>
+                                <option value="art" {{ old('section_select') == 'art' ? 'selected' : '' }}>Виды искусств</option>
+                                <option value="reviews" {{ old('section_select') == 'reviews' ? 'selected' : '' }}>Рецензии</option>
+                                <option value="personalia" {{ old('section_select') == 'personalia' ? 'selected' : '' }}>Персоналии</option>
+                                <option value="scientific_life" {{ old('section_select') == 'scientific_life' ? 'selected' : '' }}>Научная жизнь</option>
+                            </select>
+                            <small class="text-muted">Выберите тематический раздел</small>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Раздел (RU)</label>
+                            <input type="text" name="section_ru" id="section_ru" class="form-control" value="{{ old('section_ru') }}" placeholder="Например: Исторические науки" readonly style="background-color: #f8f9fa;">
+                            <small class="text-muted">Название тематического раздела на русском языке</small>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Раздел (EN)</label>
+                            <input type="text" name="section_en" id="section_en" class="form-control" value="{{ old('section_en') }}" placeholder="For example: Historical Sciences" readonly style="background-color: #f8f9fa;">
+                            <small class="text-muted">Название раздела на английском языке</small>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Раздел (CV)</label>
+                            <input type="text" name="section_cv" id="section_cv" class="form-control" value="{{ old('section_cv') }}" placeholder="Сăмахран: Истори ăслăхĕсем" readonly style="background-color: #f8f9fa;">
+                            <small class="text-muted">Название раздела на чувашском языке</small>
+                        </div>
+                    </div>
+
+
+
+
                     <div class="col-md-12">
                         <label class="form-label">Название статьи (RU) <span class="text-danger">*</span></label>
                         <input type="text" name="title_ru" class="form-control" value="{{ old('title_ru') }}" required>
@@ -149,6 +206,7 @@
                                     <label>Отчество (CV)</label>
                                     <input type="text" name="authors[0][patronymic_cv]" class="form-control" value="{{ old('authors.0.patronymic_cv') }}">
                                 </div>
+
                                 <hr class="mt-3 mb-3">
                                 <div class="col-md-6 mt-2">
                                     <label>Организация (RU)</label>
@@ -158,15 +216,41 @@
                                     <label>Организация (EN)</label>
                                     <input type="text" name="authors[0][org_name_en]" class="form-control" value="{{ old('authors.0.org_name_en') }}">
                                 </div>
+                                <div class="col-md-6 mt-2">
+                                    <label>Организация (CV)</label>
+                                    <input type="text" name="authors[0][org_name_cv]" class="form-control" value="{{ old('authors.0.org_name_cv') }}">
+                                </div>
+
+
                                 <hr class="mt-3 mb-3">
                                 <div class="col-md-4 mt-2">
                                     <label>Город (RU)</label>
                                     <input type="text" name="authors[0][town_ru]" class="form-control" value="{{ old('authors.0.town_ru') }}">
                                 </div>
                                 <div class="col-md-4 mt-2">
+                                    <label>Город (EN)</label>
+                                    <input type="text" name="authors[0][town_en]" class="form-control" value="{{ old('authors.0.town_en') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Город (CV)</label>
+                                    <input type="text" name="authors[0][town_cv]" class="form-control" value="{{ old('authors.0.town_cv') }}">
+                                </div>
+
+                                <hr class="mt-3 mb-3">
+                                <div class="col-md-4 mt-2">
                                     <label>Страна (RU)</label>
                                     <input type="text" name="authors[0][country_ru]" class="form-control" value="{{ old('authors.0.country_ru') }}">
                                 </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Страна (EN)</label>
+                                    <input type="text" name="authors[0][country_en]" class="form-control" value="{{ old('authors.0.country_en') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Страна (CV)</label>
+                                    <input type="text" name="authors[0][country_cv]" class="form-control" value="{{ old('authors.0.country_cv') }}">
+                                </div>
+
+
                                 <div class="col-md-4 mt-2">
                                     <div class="form-check mt-4">
                                         <input type="checkbox" name="authors[0][is_correspondent]" value="1" class="form-check-input" {{ old('authors.0.is_correspondent') ? 'checked' : '' }}>
@@ -200,9 +284,18 @@
                                 </div>
 
 
+                                <hr class="mt-3 mb-3">
                                 <div class="col-md-4 mt-2">
                                     <label>Должность (RU)</label>
                                     <input type="text" name="authors[0][position_ru]" class="form-control" value="{{ old('authors.0.position_ru') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Должность (EN)</label>
+                                    <input type="text" name="authors[0][position_en]" class="form-control" value="{{ old('authors.0.position_en') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Должность (CV)</label>
+                                    <input type="text" name="authors[0][position_cv]" class="form-control" value="{{ old('authors.0.position_cv') }}">
                                 </div>
 
 
@@ -296,6 +389,9 @@
                     </div>
                 </div>
 
+
+
+
                 <hr class="my-4">
                 <!-- Полный текст статьи -->
                 <h5 class="mb-3">Полный текст статьи</h5>
@@ -314,6 +410,64 @@
                         <label class="form-label">Текст статьи (CV)</label>
                         <textarea name="text_cv" class="form-control" rows="15" placeholder="Чăвашла статья тулли текст...">{{ old('text_cv') }}</textarea>
                         <small class="text-muted">HTML форматлани пултарать</small>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+
+                <h5 class="mb-3">Финансирование</h5>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Финансирование (RU)</label>
+                        <textarea name="fundings_ru" class="form-control" rows="3" placeholder="Каждая строка - отдельный источник финансирования&#10;Исследование выполнено при поддержке РФФИ (грант № 20-01-00001)&#10;Работа поддержана грантом Президента РФ (проект № НШ-1234.2020.6)">{{ old('fundings_ru') }}</textarea>
+                        <small class="text-muted">Каждая строка - отдельный грант или источник финансирования</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Финансирование (EN)</label>
+                        <textarea name="fundings_en" class="form-control" rows="3" placeholder="The study was supported by RFBR (grant No. 20-01-00001)">{{ old('fundings_en') }}</textarea>
+                        <small class="text-muted">Each line is a separate grant or funding source</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Финансирование (CV)</label>
+                        <textarea name="fundings_cv" class="form-control" rows="3" placeholder="Финансировани çинчен...">{{ old('fundings_cv') }}</textarea>
+                        <small class="text-muted">Кашни йĕрке - уйрăм грант е финансăлав çăлкуçĕ</small>
+                    </div>
+                </div>
+                <hr class="my-4">
+
+                <h5 class="mb-3">Список литературы</h5>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Литература (RU)</label>
+                        <textarea name="references_ru" class="form-control" rows="8" placeholder="Каждая ссылка с новой строки&#10;1. Иванов И.И. Название статьи // Журнал. 2024. Т.5. №2. С.10-15.&#10;2. Петров П.П. Название книги. М.: Наука, 2024. 300 с.&#10;3. Сидоров С.С. Название диссертации ...">{{ old('references_ru') }}</textarea>
+                        <small class="text-muted">Оформление по ГОСТ Р 7.0.5-2008, каждая ссылка с новой строки</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Литература (EN)</label>
+                        <textarea name="references_en" class="form-control" rows="8" placeholder="Each reference on a new line&#10;1. Ivanov I.I. Article title // Journal. 2024. Vol.5. No.2. pp.10-15.&#10;2. Petrov P.P. Book title. Moscow: Nauka, 2024. 300 p.">{{ old('references_en') }}</textarea>
+                        <small class="text-muted">Each reference on a new line</small>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <h5 class="mb-3">Формат цитирования</h5>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Как цитировать (RU)</label>
+                        <textarea name="citation_ru" class="form-control" rows="2" placeholder="Иванов И.И. Название статьи // Современная гуманитаристика. 2024. Т.5. №2. С.10-15.">{{ old('citation_ru') }}</textarea>
+                        <small class="text-muted">Рекомендуемый формат цитирования статьи на русском языке</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Как цитировать (EN)</label>
+                        <textarea name="citation_en" class="form-control" rows="2" placeholder="Ivanov I.I. Article title // Sovremennaya gumanitaristika. 2024. Vol.5. No.2. pp.10-15.">{{ old('citation_en') }}</textarea>
+                        <small class="text-muted">Recommended citation format in English</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Как цитировать (CV)</label>
+                        <textarea name="citation_cv" class="form-control" rows="2" placeholder="Иванов И.И. Статья ячĕ // Современная гуманитаристика. 2024. Т.5. №2. С.10-15.">{{ old('citation_cv') }}</textarea>
+                        <small class="text-muted">Статьяна чӑвашла цитатӑламалли сӗнекен формат</small>
                     </div>
                 </div>
 
@@ -341,6 +495,11 @@
                 </div>
 
                 <hr class="my-4">
+
+                <!-- Добавьте после блока "Ключевые слова" или перед "Идентификаторы" -->
+
+
+
 
                 <!-- Даты -->
                 <h5 class="mb-3">Даты</h5>
@@ -412,7 +571,69 @@
 @push('js')
 <script src="https://cdn.jsdelivr.net/npm/tinymce@7/tinymce.min.js"></script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sectionSelect = document.getElementById('section_select');
+        const sectionRu = document.getElementById('section_ru');
+        const sectionEn = document.getElementById('section_en');
+        const sectionCv = document.getElementById('section_cv');
 
+        // Соответствие разделов
+        const sections = {
+            'historical': {
+                ru: 'Исторические науки',
+                en: 'Historical Sciences',
+                cv: 'Истори ăслăхĕсем'
+            },
+            'philological': {
+                ru: 'Филологические науки',
+                en: 'Philological Sciences',
+                cv: 'Филологи ăслăхĕсем'
+            },
+            'art': {
+                ru: 'Виды искусств',
+                en: 'Arts',
+                cv: 'Искусство тĕсĕсем'
+            },
+            'reviews': {
+                ru: 'Рецензии',
+                en: 'Reviews',
+                cv: 'Рецензисем'
+            },
+            'personalia': {
+                ru: 'Персоналии',
+                en: 'Personalia',
+                cv: 'Персоналисем'
+            },
+            'scientific_life': {
+                ru: 'Научная жизнь',
+                en: 'Scientific Life',
+                cv: 'Ăслăх пурнăçĕ'
+            }
+        };
+
+        // Функция обновления полей
+        function updateSectionFields() {
+            const selectedValue = sectionSelect.value;
+            
+            if (selectedValue && sections[selectedValue]) {
+                sectionRu.value = sections[selectedValue].ru;
+                sectionEn.value = sections[selectedValue].en;
+                sectionCv.value = sections[selectedValue].cv;
+            } else {
+                sectionRu.value = '';
+                sectionEn.value = '';
+                sectionCv.value = '';
+            }
+        }
+
+        // При изменении выпадающего списка
+        sectionSelect.addEventListener('change', updateSectionFields);
+
+        // При загрузке страницы (для редактирования)
+        updateSectionFields();
+    });
+</script>
 
 
 <script>
@@ -725,15 +946,40 @@
                                 <label>Организация (EN)</label>
                                 <input type="text" name="authors[${authorIndex}][org_name_en]" class="form-control">
                             </div>
+<div class="col-md-4 mt-2">
+    <label>Организация (CV)</label>
+    <input type="text" name="authors[${authorIndex}][org_name_cv]" class="form-control">
+</div>
+
 
                             <div class="col-md-4 mt-2">
                                 <label>Город (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][town_ru]" class="form-control">
                             </div>
+<div class="col-md-4 mt-2">
+    <label>Город (EN)</label>
+    <input type="text" name="authors[${authorIndex}][town_en]" class="form-control">
+</div>
+<div class="col-md-4 mt-2">
+    <label>Город (CV)</label>
+    <input type="text" name="authors[${authorIndex}][town_cv]" class="form-control">
+</div>
+
+
                             <div class="col-md-4 mt-2">
                                 <label>Страна (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][country_ru]" class="form-control">
                             </div>
+<div class="col-md-4 mt-2">
+    <label>Страна (EN)</label>
+    <input type="text" name="authors[${authorIndex}][country_en]" class="form-control">
+</div>
+<div class="col-md-4 mt-2">
+    <label>Страна (CV)</label>
+    <input type="text" name="authors[${authorIndex}][country_cv]" class="form-control">
+</div>
+
+
                             <div class="col-md-4 mt-2">
                                 <div class="form-check mt-4">
                                     <input type="checkbox" name="authors[${authorIndex}][is_correspondent]" value="1" class="form-check-input">
@@ -766,6 +1012,16 @@
                                 <label>Должность (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][position_ru]" class="form-control">
                             </div>
+<div class="col-md-4 mt-2">
+    <label>Должность (EN)</label>
+    <input type="text" name="authors[${authorIndex}][position_en]" class="form-control">
+</div>
+<div class="col-md-4 mt-2">
+    <label>Должность (CV)</label>
+    <input type="text" name="authors[${authorIndex}][position_cv]" class="form-control">
+</div>
+
+
 <div class="col-md-4 mt-2">
     <label>Ученая степень (RU)</label>
     <input type="text" name="authors[${authorIndex}][degree_ru]" class="form-control" placeholder="кандидат наук, доктор наук">

@@ -99,9 +99,65 @@
                     </div>
                 </div>
 
+                <!-- Раздел (после чекбокса Опубликована) -->
+                <!-- <div class="row g-3 mt-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Раздел (RU)</label>
+                        <input type="text" name="section_ru" class="form-control" value="{{ old('section_ru', $article->section_ru) }}" placeholder="Например: Исторические науки">
+                        <small class="text-muted">Название тематического раздела на русском языке</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Раздел (EN)</label>
+                        <input type="text" name="section_en" class="form-control" value="{{ old('section_en', $article->section_en) }}" placeholder="For example: Historical Sciences">
+                        <small class="text-muted">Название раздела на английском языке</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Раздел (CV)</label>
+                        <input type="text" name="section_cv" class="form-control" value="{{ old('section_cv', $article->section_cv) }}" placeholder="Сăмахран: Истори ăслăхĕсем">
+                        <small class="text-muted">Название раздела на чувашском языке</small>
+                    </div>
+                </div> -->
+
+                <!-- Раздел (выпадающий список) -->
+                <div class="row g-3 mt-2">
+                    <div class="col-md-12">
+                        <label class="form-label">Раздел</label>
+                        <select name="section_select" class="form-select" id="section_select">
+                            <option value="">-- Выберите раздел --</option>
+                            <option value="historical" {{ old('section_select', $selectedSection) == 'historical' ? 'selected' : '' }}>Исторические науки</option>
+                            <option value="philological" {{ old('section_select', $selectedSection) == 'philological' ? 'selected' : '' }}>Филологические науки</option>
+                            <option value="art" {{ old('section_select', $selectedSection) == 'art' ? 'selected' : '' }}>Виды искусств</option>
+                            <option value="reviews" {{ old('section_select', $selectedSection) == 'reviews' ? 'selected' : '' }}>Рецензии</option>
+                            <option value="personalia" {{ old('section_select', $selectedSection) == 'personalia' ? 'selected' : '' }}>Персоналии</option>
+                            <option value="scientific_life" {{ old('section_select', $selectedSection) == 'scientific_life' ? 'selected' : '' }}>Научная жизнь</option>
+                        </select>
+                        <small class="text-muted">Выберите тематический раздел</small>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">Раздел (RU)</label>
+                        <input type="text" name="section_ru" id="section_ru" class="form-control" value="{{ old('section_ru', $article->section_ru) }}">
+                        <small class="text-muted">Название раздела на русском языке</small>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">Раздел (EN)</label>
+                        <input type="text" name="section_en" id="section_en" class="form-control" value="{{ old('section_en', $article->section_en) }}">
+                        <small class="text-muted">Название раздела на английском языке</small>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">Раздел (CV)</label>
+                        <input type="text" name="section_cv" id="section_cv" class="form-control" value="{{ old('section_cv', $article->section_cv) }}">
+                        <small class="text-muted">Название раздела на чувашском языке</small>
+                    </div>
+                </div>
+
+
+
+
                 <hr class="my-4">
 
-                <!-- Авторы статьи -->
                 <!-- Авторы статьи -->
                 <h5 class="mb-3">Авторы статьи</h5>
                 <div id="authors-container">
@@ -174,6 +230,11 @@
                                     <label>Организация (EN)</label>
                                     <input type="text" name="authors[{{ $index }}][org_name_en]" class="form-control" value="{{ old("authors.{$index}.org_name_en", $author->org_name_en ?? '') }}">
                                 </div>
+                                <div class="col-md-6 mt-2">
+                                    <label>Организация (CV)</label>
+                                    <input type="text" name="authors[{{ $index }}][org_name_cv]" class="form-control" value="{{ old("authors.{$index}.org_name_cv", $author->org_name_cv ?? '') }}">
+                                </div>
+
 
                                 <hr class="mt-3 mb-3">
 
@@ -182,9 +243,30 @@
                                     <input type="text" name="authors[{{ $index }}][town_ru]" class="form-control" value="{{ old("authors.{$index}.town_ru", $author->town_ru ?? '') }}">
                                 </div>
                                 <div class="col-md-4 mt-2">
+                                    <label>Город (EN)</label>
+                                    <input type="text" name="authors[{{ $index }}][town_en]" class="form-control" value="{{ old("authors.{$index}.town_en", $author->town_en ?? '') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Город (CV)</label>
+                                    <input type="text" name="authors[{{ $index }}][town_cv]" class="form-control" value="{{ old("authors.{$index}.town_cv", $author->town_cv ?? '') }}">
+                                </div>
+                                <hr class="mt-3 mb-3">
+
+
+                                <div class="col-md-4 mt-2">
                                     <label>Страна (RU)</label>
                                     <input type="text" name="authors[{{ $index }}][country_ru]" class="form-control" value="{{ old("authors.{$index}.country_ru", $author->country_ru ?? '') }}">
                                 </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Страна (EN)</label>
+                                    <input type="text" name="authors[{{ $index }}][country_en]" class="form-control" value="{{ old("authors.{$index}.country_en", $author->country_en ?? '') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Страна (CV)</label>
+                                    <input type="text" name="authors[{{ $index }}][country_cv]" class="form-control" value="{{ old("authors.{$index}.country_cv", $author->country_cv ?? '') }}">
+                                </div>
+
+
                                 <div class="col-md-4 mt-2">
                                     <div class="form-check mt-4">
                                         <input type="checkbox" name="authors[{{ $index }}][is_correspondent]" value="1" class="form-check-input" {{ old("authors.{$index}.is_correspondent", $author->is_correspondent ?? false) ? 'checked' : '' }}>
@@ -222,6 +304,15 @@
                                     <label>Должность (RU)</label>
                                     <input type="text" name="authors[{{ $index }}][position_ru]" class="form-control" value="{{ old("authors.{$index}.position_ru", $author->position_ru ?? '') }}">
                                 </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Должность (EN)</label>
+                                    <input type="text" name="authors[{{ $index }}][position_en]" class="form-control" value="{{ old("authors.{$index}.position_en", $author->position_en ?? '') }}">
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                    <label>Должность (CV)</label>
+                                    <input type="text" name="authors[{{ $index }}][position_cv]" class="form-control" value="{{ old("authors.{$index}.position_cv", $author->position_cv ?? '') }}">
+                                </div>
+
 
                                 <hr class="mt-3 mb-3">
 
@@ -321,7 +412,65 @@
                     </div>
                 </div>
 
+
                 <hr class="my-4">
+
+                <h5 class="mb-3">Финансирование</h5>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Финансирование (RU)</label>
+                        <textarea name="fundings_ru" class="form-control" rows="3" placeholder="Каждая строка - отдельный источник финансирования">{{ old('fundings_ru', is_array($article->fundings_ru) ? implode("\n", $article->fundings_ru) : $article->fundings_ru) }}</textarea>
+                        <small class="text-muted">Каждая строка - отдельный грант или источник финансирования</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Финансирование (EN)</label>
+                        <textarea name="fundings_en" class="form-control" rows="3" placeholder="Each line is a separate grant or funding source">{{ old('fundings_en', is_array($article->fundings_en) ? implode("\n", $article->fundings_en) : $article->fundings_en) }}</textarea>
+                        <small class="text-muted">Each line is a separate grant or funding source</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Финансирование (CV)</label>
+                        <textarea name="fundings_cv" class="form-control" rows="3" placeholder="Кашни йĕрке - уйрăм грант е финансăлав çăлкуçĕ">{{ old('fundings_cv', is_array($article->fundings_cv) ? implode("\n", $article->fundings_cv) : $article->fundings_cv) }}</textarea>
+                        <small class="text-muted">Кашни йĕрке - уйрăм грант е финансăлав çăлкуçĕ</small>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <h5 class="mb-3">Список литературы</h5>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Литература (RU)</label>
+                        <textarea name="references_ru" class="form-control" rows="8" placeholder="Каждая ссылка с новой строки">{{ old('references_ru', is_array($article->references_ru) ? implode("\n", $article->references_ru) : $article->references_ru) }}</textarea>
+                        <small class="text-muted">Оформление по ГОСТ Р 7.0.5-2008, каждая ссылка с новой строки</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Литература (EN)</label>
+                        <textarea name="references_en" class="form-control" rows="8" placeholder="Each reference on a new line">{{ old('references_en', is_array($article->references_en) ? implode("\n", $article->references_en) : $article->references_en) }}</textarea>
+                        <small class="text-muted">Each reference on a new line</small>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <h5 class="mb-3">Формат цитирования</h5>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Как цитировать (RU)</label>
+                        <textarea name="citation_ru" class="form-control" rows="2" placeholder="Рекомендуемый формат цитирования">{{ old('citation_ru', $article->citation_ru) }}</textarea>
+                        <small class="text-muted">Рекомендуемый формат цитирования статьи на русском языке</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Как цитировать (EN)</label>
+                        <textarea name="citation_en" class="form-control" rows="2" placeholder="Recommended citation format">{{ old('citation_en', $article->citation_en) }}</textarea>
+                        <small class="text-muted">Recommended citation format in English</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Как цитировать (CV)</label>
+                        <textarea name="citation_cv" class="form-control" rows="2" placeholder="Чăвашла цитировани форматĕ">{{ old('citation_cv', $article->citation_cv) }}</textarea>
+                        <small class="text-muted">Статьяна чӑвашла цитатӑламалли сӗнекен формат</small>
+                    </div>
+                </div>
+
 
                 <!-- Полный текст статьи -->
                 <h5 class="mb-3">Полный текст статьи</h5>
@@ -456,6 +605,89 @@
 @push('js')
 
 <script src="https://cdn.jsdelivr.net/npm/tinymce@7/tinymce.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sectionSelect = document.getElementById('section_select');
+        const sectionRu = document.getElementById('section_ru');
+        const sectionEn = document.getElementById('section_en');
+        const sectionCv = document.getElementById('section_cv');
+
+        // Соответствие разделов
+        const sections = {
+            'historical': {
+                ru: 'Исторические науки',
+                en: 'Historical Sciences',
+                cv: 'Истори ăслăхĕсем'
+            },
+            'philological': {
+                ru: 'Филологические науки',
+                en: 'Philological Sciences',
+                cv: 'Филологи ăслăхĕсем'
+            },
+            'art': {
+                ru: 'Виды искусств',
+                en: 'Arts',
+                cv: 'Искусство тĕсĕсем'
+            },
+            'reviews': {
+                ru: 'Рецензии',
+                en: 'Reviews',
+                cv: 'Рецензисем'
+            },
+            'personalia': {
+                ru: 'Персоналии',
+                en: 'Personalia',
+                cv: 'Персоналисем'
+            },
+            'scientific_life': {
+                ru: 'Научная жизнь',
+                en: 'Scientific Life',
+                cv: 'Ăслăх пурнăçĕ'
+            }
+        };
+
+        // Функция обновления полей при выборе из списка
+        function updateSectionFields() {
+            const selectedValue = sectionSelect.value;
+
+            if (selectedValue && sections[selectedValue]) {
+                sectionRu.value = sections[selectedValue].ru;
+                sectionEn.value = sections[selectedValue].en;
+                sectionCv.value = sections[selectedValue].cv;
+            }
+        }
+
+        // Сохраняем исходные значения (если пользователь передумал)
+        let originalRu = sectionRu.value;
+        let originalEn = sectionEn.value;
+        let originalCv = sectionCv.value;
+
+        // При изменении выпадающего списка
+        sectionSelect.addEventListener('change', function() {
+            if (this.value) {
+                updateSectionFields();
+            } else {
+                // Если выбрано "-- Выберите раздел --", возвращаем исходные значения
+                sectionRu.value = originalRu;
+                sectionEn.value = originalEn;
+                sectionCv.value = originalCv;
+            }
+        });
+
+        // Если пользователь вручную меняет текстовые поля, обновляем исходные значения
+        sectionRu.addEventListener('input', function() {
+            originalRu = this.value;
+        });
+        sectionEn.addEventListener('input', function() {
+            originalEn = this.value;
+        });
+        sectionCv.addEventListener('input', function() {
+            originalCv = this.value;
+        });
+    });
+</script>
+
 
 
 <script>
@@ -762,15 +994,38 @@
                                 <label>Организация (EN)</label>
                                 <input type="text" name="authors[${authorIndex}][org_name_en]" class="form-control">
                             </div>
+         <div class="col-md-4 mt-2">
+                <label>Организация (CV)</label>
+                <input type="text" name="authors[${authorIndex}][org_name_cv]" class="form-control">
+            </div>
 
                             <div class="col-md-4 mt-2">
                                 <label>Город (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][town_ru]" class="form-control">
                             </div>
+            <div class="col-md-4 mt-2">
+                <label>Город (EN)</label>
+                <input type="text" name="authors[${authorIndex}][town_en]" class="form-control">
+            </div>
+            <div class="col-md-4 mt-2">
+                <label>Город (CV)</label>
+                <input type="text" name="authors[${authorIndex}][town_cv]" class="form-control">
+            </div>
+
                             <div class="col-md-4 mt-2">
                                 <label>Страна (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][country_ru]" class="form-control">
                             </div>
+            <div class="col-md-4 mt-2">
+                <label>Страна (EN)</label>
+                <input type="text" name="authors[${authorIndex}][country_en]" class="form-control">
+            </div>
+            <div class="col-md-4 mt-2">
+                <label>Страна (CV)</label>
+                <input type="text" name="authors[${authorIndex}][country_cv]" class="form-control">
+            </div>
+
+
                             <div class="col-md-4 mt-2">
                                 <div class="form-check mt-4">
                                     <input type="checkbox" name="authors[${authorIndex}][is_correspondent]" value="1" class="form-check-input">
@@ -803,6 +1058,15 @@
                                 <label>Должность (RU)</label>
                                 <input type="text" name="authors[${authorIndex}][position_ru]" class="form-control">
                             </div>
+            <div class="col-md-4 mt-2">
+                <label>Должность (EN)</label>
+                <input type="text" name="authors[${authorIndex}][position_en]" class="form-control">
+            </div>
+            <div class="col-md-4 mt-2">
+                <label>Должность (CV)</label>
+                <input type="text" name="authors[${authorIndex}][position_cv]" class="form-control">
+            </div>
+
 <div class="col-md-4 mt-2">
     <label>Ученая степень (RU)</label>
     <input type="text" name="authors[${authorIndex}][degree_ru]" class="form-control">
@@ -828,10 +1092,6 @@
     <label>Звание (CV)</label>
     <input type="text" name="authors[${authorIndex}][rank_cv]" class="form-control">
 </div>
-
-
-
-
 
                             <div class="col-md-4 mt-2">
                                 <label>ORCID</label>

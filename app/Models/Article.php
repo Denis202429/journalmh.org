@@ -13,6 +13,9 @@ class Article extends Model
     protected $fillable = [
         'issue_id',
         'section_id',
+        'section_ru',     // Добавить
+        'section_en',     // Добавить
+        'section_cv',     // Добавить
         'pages',
         'art_type',
         'lang_publ',
@@ -44,8 +47,13 @@ class Article extends Model
         'pacs',
         'anycode',
         'rubrics',
-        'fundings',
-        'references',
+        // 'fundings',
+        'fundings_ru',   // вместо 'fundings'
+        'fundings_en',   // добавить
+        'fundings_cv',   // добавить
+        // 'references',
+        'references_ru', // вместо 'references'
+        'references_en', // добавить
         // Даты
         'date_received',
         'date_accepted',
@@ -60,6 +68,9 @@ class Article extends Model
         'pdf_file_path',
         'pdf_original_name',
         'pdf_file_size',
+        'citation_ru',   // добавить
+        'citation_en',   // добавить
+        'citation_cv',   // добавить
 
     ];
 
@@ -71,8 +82,15 @@ class Article extends Model
         'pacs' => 'array',
         'anycode' => 'array',
         'rubrics' => 'array',
-        'fundings' => 'array',
-        'references' => 'array',
+        // 'fundings' => 'array',
+        'fundings_ru' => 'array',   // добавить
+        'fundings_en' => 'array',   // добавить
+        'fundings_cv' => 'array',   // добавить
+
+        // 'references' => 'array',
+        'references_ru' => 'array', // добавить
+        'references_en' => 'array', // добавить
+
         'additional_files' => 'array',
         'date_received' => 'date',
         'date_accepted' => 'date',
@@ -145,5 +163,12 @@ class Article extends Model
     public function hasPdfFile()
     {
         return !empty($this->pdf_file_path) && file_exists(storage_path('app/public/' . $this->pdf_file_path));
+    }
+    // Получение названия раздела на нужном языке
+    public function getSectionTitleAttribute(): ?string
+    {
+        $locale = app()->getLocale();
+        $field = "section_{$locale}";
+        return $this->$field ?? $this->section_ru ?? null;
     }
 }
