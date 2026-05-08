@@ -228,7 +228,8 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                 <p class="text-justify" style="color: var(--text-light); font-size: 1.05rem;">
                     <span class="fw-bolder">Публикация статей</span> – бесплатно.
                     Подача рукописей статей для публикации производится на e-mail редакции: sovrem_human@rambler.ru (отв. редактор — Гаврилов Артем Дмитриевич)
-                    ISSN 3034-6827 (print)
+                    <br>
+                    <span class="badge bg-primary mt-2">ISSN 3034-6827 (print)</span>
                 </p>
             </div>
 
