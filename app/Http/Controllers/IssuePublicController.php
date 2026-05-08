@@ -46,37 +46,65 @@ class IssuePublicController extends Controller
     // ДОБАВЬТЕ ЭТОТ МЕТОД ДЛЯ СКАЧИВАНИЯ PDF ВЫПУСКА
 
 
-    public function downloadPdf(Issue $issue)
-    {
-        abort_unless($issue->is_published, 404);
+    // public function downloadPdf(Issue $issue)
+    // {
+    //     abort_unless($issue->is_published, 404);
 
+    //     if (!$issue->pdf_file_path) {
+    //         abort(404, 'PDF файл не найден');
+    //     }
+
+    //     $filePath = storage_path('app/public/' . $issue->pdf_file_path);
+
+    //     if (!file_exists($filePath)) {
+    //         abort(404, 'Файл не существует на сервере');
+    //     }
+
+    //     $downloadName = $issue->pdf_original_name;
+    //     if (empty($downloadName)) {
+    //         $serverFileName = basename($issue->pdf_file_path);
+    //         $downloadName = preg_replace('/^\d+_/', '', $serverFileName);
+    //     }
+
+    //     if (empty($downloadName)) {
+    //         $downloadName = 'issue_' . $issue->id . '.pdf';
+    //     } elseif (!str_ends_with($downloadName, '.pdf')) {
+    //         $downloadName .= '.pdf';
+    //     }
+
+    //     // ВАЖНО: Проверьте, что файл действительно PDF
+    //     $mimeType = mime_content_type($filePath);
+    //     \Log::info('File MIME type: ' . $mimeType);
+    //     \Log::info('File path: ' . $filePath);
+    //     \Log::info('File size: ' . filesize($filePath));
+
+    //     return response()->download($filePath, $downloadName, [
+    //         'Content-Type' => 'application/pdf',
+    //         'Content-Disposition' => 'attachment; filename="' . $downloadName . '"'
+    //     ]);
+    // }
+
+    public function downloadIssuePdf(Issue $issue)
+    {
         if (!$issue->pdf_file_path) {
-            abort(404, 'PDF файл не найден');
+            abort(404);
         }
 
         $filePath = storage_path('app/public/' . $issue->pdf_file_path);
 
         if (!file_exists($filePath)) {
-            abort(404, 'Файл не существует на сервере');
+            abort(404);
         }
 
+        // Формируем красивое имя для выпуска
         $downloadName = $issue->pdf_original_name;
-        if (empty($downloadName)) {
-            $serverFileName = basename($issue->pdf_file_path);
-            $downloadName = preg_replace('/^\d+_/', '', $serverFileName);
-        }
 
         if (empty($downloadName)) {
-            $downloadName = 'issue_' . $issue->id . '.pdf';
-        } elseif (!str_ends_with($downloadName, '.pdf')) {
+            $downloadName = 'issue_' . $issue->year;
+            if ($issue->volume) $downloadName .= '_vol' . $issue->volume;
+            if ($issue->number) $downloadName .= '_no' . $issue->number;
             $downloadName .= '.pdf';
         }
-
-        // ВАЖНО: Проверьте, что файл действительно PDF
-        $mimeType = mime_content_type($filePath);
-        \Log::info('File MIME type: ' . $mimeType);
-        \Log::info('File path: ' . $filePath);
-        \Log::info('File size: ' . filesize($filePath));
 
         return response()->download($filePath, $downloadName, [
             'Content-Type' => 'application/pdf',
