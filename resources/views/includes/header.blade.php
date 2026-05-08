@@ -9,6 +9,8 @@
             <span class="small text-muted d-block">Научный журнал</span>
         </a>
 
+
+
         <!-- ========== ГАМБУРГЕР (виден только на мобильных) ========== -->
         <button class="navbar-toggler border-0" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -86,7 +88,12 @@
                         <a class="btn btn-sm {{ app()->getLocale() === 'en' ? 'btn-primary' : 'btn-outline-secondary' }}"
                             href="{{ route('lang.switch', 'en') }}">EN</a>
                     </div>
+
+
                 </li>
+
+
+
 
                 <!-- Админ-меню (видимо на всех устройствах) -->
                 @if (auth()->check() && (auth()->user()->isAdmin() || auth()->user()->isSuperAdmin()))
@@ -108,6 +115,9 @@
                     </ul>
                 </li>
                 @endif
+
+
+
             </ul>
 
             <!-- ========== ПРАВАЯ ЧАСТЬ: ЯЗЫК + АВТОРИЗАЦИЯ ========== -->
@@ -123,6 +133,7 @@
                             href="{{ route('lang.switch', 'en') }}">EN</a>
                     </div>
                 </li>
+
 
                 @guest
                 <li class="nav-item">
@@ -147,6 +158,13 @@
                     </ul>
                 </li>
                 @endguest
+
+                <li class="nav-item d-none d-lg-block">
+                    <span class="nav-link text-muted small">
+                        ISSN 3034-6827 (print)
+                    </span>
+                </li>
+
             </ul>
 
         </div>
