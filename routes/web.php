@@ -64,7 +64,7 @@ Route::get('/lang/{locale}', function ($locale) {
 })->name('lang.switch');
 // Маршруты для скачивания PDF
 Route::get('/download-pdf/{article}', [ArticlePublicController::class, 'downloadPdf'])->name('download.pdf');
-Route::get('/download-issue-pdf/{issue}', [IssuePublicController::class, 'downloadPdf'])->name('download.issue.pdf');
+Route::get('/download-issue-pdf/{issue}', [IssuePublicController::class, 'downloadIssuePdf'])->name('download.issue.pdf');
 // Маршрут для отображения обложки
 Route::get('/issue-cover/{issue}', [IssuePublicController::class, 'cover'])->name('issue.cover');
 // Маршрут для текущего номера
