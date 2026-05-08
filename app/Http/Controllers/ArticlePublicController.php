@@ -17,21 +17,49 @@ class ArticlePublicController extends Controller
         return view('articles.show', compact('article'));
     }
 
+    // public function downloadPdf(Article $article)
+    // {
+    //     if (!$article->pdf_file_path) {
+    //         abort(404, 'PDF файл не найден');
+    //     }
+
+    //     $filePath = storage_path('app/public/' . $article->pdf_file_path);
+
+    //     if (!file_exists($filePath)) {
+    //         abort(404, 'Файл не существует на сервере');
+    //     }
+
+    //     // Оригинальное имя для скачивания (извлекаем из пути, убирая временную метку)
+    //     $serverFileName = basename($article->pdf_file_path); // 1776951610_prep2018_187.pdf
+    //     $downloadName = preg_replace('/^\d+_/', '', $serverFileName); // prep2018_187.pdf
+
+    //     return response()->download($filePath, $downloadName, [
+    //         'Content-Type' => 'application/pdf',
+    //         'Content-Disposition' => 'attachment; filename="' . $downloadName . '"'
+    //     ]);
+    // }
+
     public function downloadPdf(Article $article)
     {
         if (!$article->pdf_file_path) {
-            abort(404, 'PDF файл не найден');
+            abort(404);
         }
 
         $filePath = storage_path('app/public/' . $article->pdf_file_path);
 
         if (!file_exists($filePath)) {
-            abort(404, 'Файл не существует на сервере');
+            abort(404);
         }
 
-        // Оригинальное имя для скачивания (извлекаем из пути, убирая временную метку)
-        $serverFileName = basename($article->pdf_file_path); // 1776951610_prep2018_187.pdf
-        $downloadName = preg_replace('/^\d+_/', '', $serverFileName); // prep2018_187.pdf
+        // Формируем красивое имя для скачивания
+        $downloadName = $article->pdf_original_name;
+
+        if (empty($downloadName)) {
+            $downloadName = $article->title_ru ?? $article->title_en ?? 'article';
+            $downloadName = preg_replace('/[^a-zA-Zа-яА-Я0-9\s\-]/u', '', $downloadName);
+            $downloadName = str_replace(' ', '_', $downloadName);
+            $downloadName = $downloadName . '_' . $article->id . '.pdf';
+        }
 
         return response()->download($filePath, $downloadName, [
             'Content-Type' => 'application/pdf',
