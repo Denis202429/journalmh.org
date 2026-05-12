@@ -88,11 +88,7 @@
                         <a class="btn btn-sm {{ app()->getLocale() === 'en' ? 'btn-primary' : 'btn-outline-secondary' }}"
                             href="{{ route('lang.switch', 'en') }}">EN</a>
                     </div>
-
-
                 </li>
-
-
 
 
                 <!-- Админ-меню (видимо на всех устройствах) -->
