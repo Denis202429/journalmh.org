@@ -112,6 +112,26 @@ class IssuePublicController extends Controller
         ]);
     }
 
+
+    /**
+     * Скачивание файла с инструкцией для авторов
+     */
+    public function downloadInstructions()
+    {
+        $filePath = storage_path('app/public/instructions/Научный журнал. Требования к статьям.pdf');
+
+        if (!file_exists($filePath)) {
+            abort(404, 'Файл инструкции не найден');
+        }
+
+        $downloadName = 'Требования_к_статьям.pdf';
+
+        return response()->download($filePath, $downloadName, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="' . $downloadName . '"'
+        ]);
+    }
+
     public function cover(Issue $issue)
     {
         try {

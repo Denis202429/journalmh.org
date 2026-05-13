@@ -65,6 +65,11 @@ Route::get('/lang/{locale}', function ($locale) {
 // Маршруты для скачивания PDF
 Route::get('/download-pdf/{article}', [ArticlePublicController::class, 'downloadPdf'])->name('download.pdf');
 Route::get('/download-issue-pdf/{issue}', [IssuePublicController::class, 'downloadIssuePdf'])->name('download.issue.pdf');
+
+
+
+Route::get('/download/instructions', [IssuePublicController::class, 'downloadInstructions'])->name('download.instructions');
+
 // Маршрут для отображения обложки
 Route::get('/issue-cover/{issue}', [IssuePublicController::class, 'cover'])->name('issue.cover');
 // Маршрут для текущего номера
