@@ -116,6 +116,7 @@ class IssuePublicController extends Controller
     /**
      * Скачивание файла с инструкцией для авторов
      */
+    
     public function downloadInstructions()
     {
         $filePath = storage_path('app/public/instructions/Научный журнал. Требования к статьям.pdf');

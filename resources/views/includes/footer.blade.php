@@ -6,7 +6,7 @@
                 <p style="opacity: 0.7;">Научный журнал</p>
                 <p style="opacity: 0.6; font-size: 0.9rem;">
                     ISSN: 3034-6827 (Print)<br> 
-                    ISSN:  (Online)
+                    ISSN: 3033-8638 (Online)
                 </p>
 
                 <div class="social-links">
@@ -17,10 +17,8 @@
                     <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
 
                     <!-- Мессенджер Max (используем универсальную иконку чата) -->
-                    <!-- <a href="#" aria-label="Max Messenger"><i class="bi bi-chat-dots-fill"></i></a> -->
 
                     <a href="#" aria-label="Max"><i class="fas fa-comment-dots"></i></a>
-                    <!-- <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a> -->
 
                 </div>
             </div>
@@ -35,19 +33,6 @@
                     <li><a href="{{ route('home') }}#contacts"><i class="bi bi-chevron-right"></i> Контакты</a></li>
                 </ul>
             </div>
-
-            <!-- <div class="col-lg-2 mb-4">
-                <h5>Пользователю</h5>
-                <ul class="footer-links">
-                    @guest
-                    <li><a href="{{ route('login') }}"><i class="bi bi-chevron-right"></i> Войти</a></li>
-                    <li><a href="{{ route('register') }}"><i class="bi bi-chevron-right"></i> Регистрация</a></li>
-                    @else
-                    <li><a href="{{ route('profile.edit') }}"><i class="bi bi-chevron-right"></i> Профиль</a></li>
-                    <li><a href="{{ route('dashboard') }}"><i class="bi bi-chevron-right"></i> Dashboard</a></li>
-                    @endguest
-                </ul>
-            </div> -->
 
             <div class="col-lg-4 mb-4">
                 <h5>Контакты</h5>

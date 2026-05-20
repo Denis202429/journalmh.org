@@ -159,6 +159,10 @@
                     <span class="nav-link text-muted small">
                         ISSN 3034-6827 (print)
                     </span>
+
+                    <span class="nav-link text-muted small">
+                        ISSN 3033-8638 (online)
+                    </span>
                 </li>
 
             </ul>

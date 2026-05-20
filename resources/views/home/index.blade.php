@@ -237,9 +237,14 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                     <div class="mb-2">
                         <span class="fw-bolder">📍 Адрес издателя:</span> 428015, Чувашская Республика, город Чебоксары, Московский проспект, 29, корпус 1
                     </div>
-                    <div class="mt-3">
+                    <div class="mt-3">          
                         <span class="badge bg-primary">ISSN 3034-6827 (print)</span>
                     </div>
+
+                    <div class="mt-3">             
+                        <span class="badge bg-primary">ISSN  3033-8638 (online)</span>
+                    </div>
+
                 </div>
 
 
