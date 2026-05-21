@@ -68,7 +68,14 @@ Route::get('/download-issue-pdf/{issue}', [IssuePublicController::class, 'downlo
 
 
 
-Route::get('/download/instructions', [IssuePublicController::class, 'downloadInstructions'])->name('download.instructions');
+// Route::get('/download/instructions', [IssuePublicController::class, 'downloadInstructions'])->name('download.instructions');
+// Route::get('/download/{fileType}', [IssuePublicController::class, 'downloadFile'])->whereIn('fileType', ['instructions', 'instructions2'])->name('download.file');
+Route::get('/download/{fileType}', [IssuePublicController::class, 'downloadFile'])->whereIn('fileType', ['instructions', 'application', 'questionnaires']);
+
+// Route::get('/download/instructions', [IssuePublicController::class, 'downloadInstructions'])->name('download.instructions');
+// Route::get('/download/application', [IssuePublicController::class, 'downloadApplication'])->name('download.application');
+// Route::get('/download/questionnaires', [IssuePublicController::class, 'downloadQuestionnaires'])->name('download.questionnaires');
+
 
 // Маршрут для отображения обложки
 Route::get('/issue-cover/{issue}', [IssuePublicController::class, 'cover'])->name('issue.cover');

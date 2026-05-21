@@ -116,20 +116,56 @@ class IssuePublicController extends Controller
     /**
      * Скачивание файла с инструкцией для авторов
      */
-    
-    public function downloadInstructions()
-    {
-        $filePath = storage_path('app/public/instructions/Научный журнал. Требования к статьям.pdf');
 
-        if (!file_exists($filePath)) {
-            abort(404, 'Файл инструкции не найден');
+
+
+    // public function downloadInstructions()
+    // {
+    //     $filePath = storage_path('app/public/instructions/Научный журнал. Требования к статьям.pdf');
+
+    //     if (!file_exists($filePath)) {
+    //         abort(404, 'Файл инструкции не найден');
+    //     }
+
+    //     $downloadName = 'Требования_к_статьям.pdf';
+
+    //     return response()->download($filePath, $downloadName, [
+    //         'Content-Type' => 'application/pdf',
+    //         'Content-Disposition' => 'attachment; filename="' . $downloadName . '"'
+    //     ]);
+    // }
+
+    public function downloadFile($fileType)
+    {
+        $files = [
+            'instructions' => [
+                'path' => 'Научный журнал. Требования к статьям.pdf',
+                'name' => 'Требования_к_статьям.pdf'
+            ],
+            'application' => [
+                'path' => 'Оферта, заявление, анкета.docx',
+                'name' => 'Заявление_на_имя_главного_редактора.docx',
+                'type' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+            ],
+            'questionnaires' => [
+                'path' => 'Оферта, заявление, анкета.docx',
+                'name' => 'Анкеты_авторов.docx',
+                'type' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+            ]
+        ];
+
+        if (!isset($files[$fileType])) {
+            abort(404, 'Файл не найден');
         }
 
-        $downloadName = 'Требования_к_статьям.pdf';
+        $filePath = storage_path('app/public/instructions/' . $files[$fileType]['path']);
 
-        return response()->download($filePath, $downloadName, [
+        if (!file_exists($filePath)) {
+            abort(404, 'Файл не найден');
+        }
+
+        return response()->download($filePath, $files[$fileType]['name'], [
             'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'attachment; filename="' . $downloadName . '"'
         ]);
     }
 
