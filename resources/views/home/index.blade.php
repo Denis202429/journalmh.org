@@ -227,22 +227,31 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
 
                 <p class="text-justify" style="color: var(--text-light); font-size: 1.05rem;">
                     <span class="fw-bolder">Публикация статей</span> – бесплатно.
-                    Подача рукописей статей для публикации производится на e-mail редакции: sovrem_human@rambler.ru (отв. редактор — Гаврилов Артем Дмитриевич)
+
                 </p>
 
                 <div class="mt-3" style="color: var(--text-light); font-size: 1.05rem;">
                     <div class="mb-2">
-                        <span class="fw-bolder">📘 Издатель:</span> Чувашский государственный институт гуманитарных наук
+                        <span class="fw-bolder">📘 Учредитель и издатель:</span> Чувашский государственный институт гуманитарных наук (428015, Российская Федерация, Чувашская Республика, г. Чебоксары, Московский проспект, 29, корпус 1)
                     </div>
                     <div class="mb-2">
-                        <span class="fw-bolder">📍 Адрес издателя:</span> 428015, Чувашская Республика, город Чебоксары, Московский проспект, 29, корпус 1
+                        <span class="fw-bolder">📍 Адрес редакции:</span> 428015, Российская Федерация, Чувашская Республика, г. Чебоксары, Московский проспект, 29, корпус 1 Тел./факс +7 (8352) 450-010
                     </div>
-                    <div class="mt-3">          
+
+                    <div class="mb-2">
+                        <span class="fw-bolder">✍️ Главный редактор:</span> Исаев Юрий Николаевич, доктор филологических наук, доцент
+                    </div>
+
+                    <div class="mb-2">
+                        <span class="fw-bolder">✉️ Email редакции:</span> sovrem_human@rambler.ru
+                    </div>
+
+                    <div class="mt-3">
                         <span class="badge bg-primary">ISSN 3034-6827 (print)</span>
                     </div>
 
-                    <div class="mt-3">             
-                        <span class="badge bg-primary">ISSN  3033-8638 (online)</span>
+                    <div class="mt-3">
+                        <span class="badge bg-primary">ISSN 3033-8638 (online)</span>
                     </div>
 
                 </div>
@@ -560,7 +569,7 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                                 sovrem_human@rambler.ru
                             </a>
                         </p>
-                        <small class="text-secondary">Ответим в течение 2-3 рабочих дней</small>
+                        <!-- <small class="text-secondary">Ответим в течение 2-3 рабочих дней</small> -->
                     </div>
                 </div>
             </div>
