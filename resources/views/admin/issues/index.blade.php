@@ -149,6 +149,11 @@
                                         <a href="{{ route('admin.issues.edit', $issue) }}" class="btn btn-sm btn-outline-primary" title="Редактировать">
                                             <i class="bi bi-pencil"></i>
                                         </a>
+                                        @if(auth()->check() && auth()->user()->isSuperAdmin())
+                                        <a href="{{ route('admin.issues.export.xml', $issue) }}" class="btn btn-sm btn-outline-success" title="Экспорт XML">
+                                            <i class="bi bi-file-earmark-code"></i>
+                                        </a>
+                                        @endif
                                         <form action="{{ route('admin.issues.destroy', $issue) }}" method="POST"
                                             onsubmit="return confirm('Удалить выпуск «{{ $issue->fullTitle }}»? Статьи должны быть предварительно удалены.');">
                                             @csrf

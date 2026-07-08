@@ -21,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'active' => \App\Http\Middleware\ActiveMiddleware::class,
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
+            'superadmin' => \App\Http\Middleware\SuperAdminMiddleware::class,
             'chat.access' => \App\Http\Middleware\ChatAccessMiddleware::class,
             'token' => \App\Http\Middleware\TokenMiddleware::class,
         ]);

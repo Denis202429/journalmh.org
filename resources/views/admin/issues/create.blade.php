@@ -27,22 +27,30 @@
 
         <div class="card">
             <div class="card-body">
+                <!-- Легенда -->
+                <div class="alert alert-info mb-4">
+                    <i class="bi bi-info-circle"></i>
+                    Поля, отмеченные <span class="text-danger fw-bold">*обязательно к заполнению</span>, должны быть заполнены в соответствии с требованиями РИНЦ
+                </div>
+
                 <!-- ===== СЕКЦИЯ 1: ОСНОВНАЯ ИНФОРМАЦИЯ ===== -->
                 <h5 class="mb-3 text-primary">Основная информация</h5>
                 <div class="row g-3">
                     <div class="col-md-3">
-                        <label class="form-label">Год <span class="text-danger">*</span></label>
+                        <label class="form-label">Год <span class="text-danger">*обязательно к заполнению</span></label>
                         <input type="number" name="year" class="form-control" value="{{ old('year', date('Y')) }}" required>
                     </div>
 
                     <div class="col-md-3">
-                        <label class="form-label">Том</label>
+                        <label class="form-label">Том <span class="text-warning">(или номер)</span></label>
                         <input type="text" name="volume" class="form-control" value="{{ old('volume') }}" placeholder="15">
+                        <small class="text-muted">Заполните том или номер</small>
                     </div>
 
                     <div class="col-md-3">
-                        <label class="form-label">Номер</label>
+                        <label class="form-label">Номер <span class="text-warning">(или том)</span></label>
                         <input type="text" name="number" class="form-control" value="{{ old('number') }}" placeholder="3">
+                        <small class="text-muted">Заполните том или номер</small>
                     </div>
 
                     <div class="col-md-3">
@@ -75,8 +83,8 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label">Страницы выпуска</label>
-                        <input type="text" name="issue_pages" class="form-control" value="{{ old('issue_pages') }}" placeholder="1-100">
+                        <label class="form-label">Страницы выпуска <span class="text-danger">*обязательно к заполнению</span></label>
+                        <input type="text" name="issue_pages" class="form-control" value="{{ old('issue_pages') }}" placeholder="1-100" required>
                         <small class="text-muted">Диапазон страниц всего выпуска</small>
                     </div>
 
@@ -102,6 +110,10 @@
 
                 <!-- ===== СЕКЦИЯ 2: ИДЕНТИФИКАТОРЫ ===== -->
                 <h5 class="mb-3 text-primary">Идентификаторы</h5>
+                <div class="alert alert-secondary mb-3">
+                    <i class="bi bi-info-circle"></i>
+                    <strong>Опциональные поля</strong> — заполняются при наличии соответствующих идентификаторов
+                </div>
                 <div class="row g-3">
                     <div class="col-md-4">
                         <label class="form-label">ISSN журнала</label>
@@ -157,42 +169,19 @@
                 <hr class="my-4">
 
                 <!-- ===== СЕКЦИЯ 4: ФАЙЛЫ ===== -->
-                <!-- <h5 class="mb-3 text-primary">Файлы выпуска</h5>
+                <h5 class="mb-3 text-primary">Файлы выпуска</h5>
                 <div class="row g-3">
-
                     <div class="col-md-6">
                         <label class="form-label">Загрузить PDF файл выпуска</label>
                         <input type="file" name="pdf_file" class="form-control" accept=".pdf">
                         <small class="text-muted">Поддерживаются файлы в формате PDF (макс. 100 МБ)</small>
                     </div>
 
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                         <label class="form-label">Или ссылка на PDF выпуска</label>
                         <input type="url" name="pdf_url" class="form-control" value="{{ old('pdf_url') }}" placeholder="https://example.com/issue.pdf">
                         <small class="text-muted">Если загружаете файл, ссылка будет проигнорирована</small>
-                    </div>
-
-                    <div class="col-12">
-                        <label class="form-label">Ссылка на обложку выпуска</label>
-                        <input type="url" name="cover_image" class="form-control" value="{{ old('cover_image') }}" placeholder="https://example.com/cover.jpg">
-                        <small class="text-muted">Изображение обложки для отображения</small>
-                    </div>
-                </div> -->
-
-
-                <h5 class="mb-3">Файл статьи (PDF)</h5>
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Загрузить PDF файл</label>
-                        <input type="file" name="pdf_file" class="form-control" accept=".pdf">
-                        <small class="text-muted">Поддерживаются файлы в формате PDF (макс. 100 МБ)</small>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label">Или ссылка на PDF</label>
-                        <input type="url" name="pdf_url" class="form-control" value="{{ old('pdf_url') }}" placeholder="https://example.com/article.pdf">
-                        <small class="text-muted">Если загружаете файл, ссылка будет проигнорирована</small>
-                    </div>
+                    </div> -->
 
                     <div class="col-md-6">
                         <label class="form-label">Загрузить обложку выпуска</label>
@@ -200,12 +189,11 @@
                         <small class="text-muted">Поддерживаются форматы: JPG, PNG, GIF, WEBP (макс. 5 МБ)</small>
                     </div>
 
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                         <label class="form-label">Или ссылка на обложку выпуска</label>
                         <input type="url" name="cover_image" class="form-control" value="{{ old('cover_image') }}" placeholder="https://example.com/cover.jpg">
                         <small class="text-muted">Если загружаете файл, ссылка будет проигнорирована</small>
-                    </div>
-
+                    </div> -->
                 </div>
             </div>
             <div class="card-footer text-end">

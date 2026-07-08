@@ -28,22 +28,30 @@
 
         <div class="card">
             <div class="card-body">
+                <!-- Легенда -->
+                <div class="alert alert-info mb-4">
+                    <i class="bi bi-info-circle"></i>
+                    Поля, отмеченные <span class="text-danger fw-bold">*обязательно к заполнению</span>, должны быть заполнены в соответствии с требованиями РИНЦ
+                </div>
+
                 <!-- ===== СЕКЦИЯ 1: ОСНОВНАЯ ИНФОРМАЦИЯ ===== -->
                 <h5 class="mb-3 text-primary">Основная информация</h5>
                 <div class="row g-3">
                     <div class="col-md-3">
-                        <label class="form-label">Год <span class="text-danger">*</span></label>
+                        <label class="form-label">Год <span class="text-danger">*обязательно к заполнению</span></label>
                         <input type="number" name="year" class="form-control" value="{{ old('year', $issue->year) }}" required>
                     </div>
 
                     <div class="col-md-3">
-                        <label class="form-label">Том</label>
+                        <label class="form-label">Том <span class="text-warning">(или номер)</span></label>
                         <input type="text" name="volume" class="form-control" value="{{ old('volume', $issue->volume) }}" placeholder="15">
+                        <small class="text-muted">Заполните том или номер</small>
                     </div>
 
                     <div class="col-md-3">
-                        <label class="form-label">Номер</label>
+                        <label class="form-label">Номер <span class="text-warning">(или том)</span></label>
                         <input type="text" name="number" class="form-control" value="{{ old('number', $issue->number) }}" placeholder="3">
+                        <small class="text-muted">Заполните том или номер</small>
                     </div>
 
                     <div class="col-md-3">
@@ -76,8 +84,8 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label">Страницы выпуска</label>
-                        <input type="text" name="issue_pages" class="form-control" value="{{ old('issue_pages', $issue->issue_pages) }}" placeholder="1-100">
+                        <label class="form-label">Страницы выпуска <span class="text-danger">*обязательно к заполнению</span></label>
+                        <input type="text" name="issue_pages" class="form-control" value="{{ old('issue_pages', $issue->issue_pages) }}" placeholder="1-100" required>
                         <small class="text-muted">Диапазон страниц всего выпуска</small>
                     </div>
 
@@ -103,6 +111,10 @@
 
                 <!-- ===== СЕКЦИЯ 2: ИДЕНТИФИКАТОРЫ ===== -->
                 <h5 class="mb-3 text-primary">Идентификаторы</h5>
+                <div class="alert alert-secondary mb-3">
+                    <i class="bi bi-info-circle"></i>
+                    <strong>Опциональные поля</strong> — заполняются при наличии соответствующих идентификаторов
+                </div>
                 <div class="row g-3">
                     <div class="col-md-4">
                         <label class="form-label">ISSN журнала</label>
@@ -158,10 +170,10 @@
                 <hr class="my-4">
 
                 <!-- ===== СЕКЦИЯ 4: ФАЙЛЫ ===== -->
-                <!-- <h5 class="mb-3 text-primary">Файлы выпуска</h5>
+                <h5 class="mb-3 text-primary">Файлы выпуска</h5>
                 <div class="row g-3">
                     @if($issue->pdf_file_path)
-                    <div class="col-12">
+                    <div class="col-md-12">
                         <div class="alert alert-info">
                             <i class="bi bi-file-pdf"></i>
                             <strong>Текущий PDF файл:</strong> {{ $issue->pdf_original_name ?? 'PDF файл' }}
@@ -173,46 +185,12 @@
                         </div>
                     </div>
                     @endif
-                    <div class="col-md-6">
-                        <label class="form-label">Загрузить PDF файл выпуска</label>
-                        <input type="file" name="pdf_file" class="form-control" accept=".pdf">
-                        <small class="text-muted">Поддерживаются файлы в формате PDF (макс. 10 МБ)</small>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Или ссылка на PDF выпуска</label>
-                        <input type="url" name="pdf_url" class="form-control" value="{{ old('pdf_url', $issue->pdf_url) }}" placeholder="https://example.com/issue.pdf">
-                        <small class="text-muted">Если загружаете файл, ссылка будет проигнорирована</small>
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label">Ссылка на обложку выпуска</label>
-                        <input type="url" name="cover_image" class="form-control" value="{{ old('cover_image') }}" placeholder="https://example.com/cover.jpg">
-                        <small class="text-muted">Изображение обложки для отображения</small>
-                    </div>
 
-                </div> -->
-
-
-                <h5 class="mb-3">Файл журнала (PDF)</h5>
-                <div class="row g-3">
-                    @if($issue->pdf_file_path)
-                    <div class="col-md-12">
-                        <div class="alert alert-info">
-                            <i class="bi bi-file-pdf"></i>
-                            <strong>Текущий файл:</strong> {{ $issue->pdf_original_name ?? 'PDF файл' }}
-                            ({{ number_format($issue->pdf_file_size / 1024, 2) }} КБ)
-                            <div class="form-check mt-2">
-                                <input type="checkbox" name="delete_pdf" value="1" class="form-check-input" id="delete_pdf">
-                                <label class="form-check-label text-danger" for="delete_pdf">Удалить текущий PDF файл</label>
-                            </div>
-                        </div>
-                    </div>
-                    @endif
                     <div class="col-md-6">
                         <label class="form-label">Загрузить новый PDF файл</label>
                         <input type="file" name="pdf_file" class="form-control" accept=".pdf">
                         <small class="text-muted">Поддерживаются файлы в формате PDF (макс. 100 МБ)</small>
                     </div>
-
 
                     <div class="col-md-6">
                         <label class="form-label">Или ссылка на PDF</label>
@@ -220,47 +198,44 @@
                         <small class="text-muted">Если загружаете файл, ссылка будет проигнорирована</small>
                     </div>
 
-
-                </div>
-
-                <!-- Обложка -->
-                @if($issue->cover_image_path)
-                <div class="col-12">
-                    <div class="alert alert-info">
-                        <i class="bi bi-image"></i>
-                        <strong>Текущая обложка:</strong> {{ $issue->cover_original_name ?? 'Файл обложки' }}
-                        <div class="mt-2">
-                            <img src="{{ asset('storage/' . $issue->cover_image_path) }}" alt="Обложка" style="max-width: 150px; max-height: 200px; border: 1px solid #ddd; padding: 5px;">
-                        </div>
-                        <div class="form-check mt-2">
-                            <input type="checkbox" name="delete_cover" value="1" class="form-check-input" id="delete_cover">
-                            <label class="form-check-label text-danger" for="delete_cover">Удалить текущую обложку</label>
+                    <!-- Обложка -->
+                    @if($issue->cover_image_path)
+                    <div class="col-md-12">
+                        <div class="alert alert-info">
+                            <i class="bi bi-image"></i>
+                            <strong>Текущая обложка:</strong> {{ $issue->cover_original_name ?? 'Файл обложки' }}
+                            <div class="mt-2">
+                                <img src="{{ asset('storage/' . $issue->cover_image_path) }}" alt="Обложка" style="max-width: 150px; max-height: 200px; border: 1px solid #ddd; padding: 5px;">
+                            </div>
+                            <div class="form-check mt-2">
+                                <input type="checkbox" name="delete_cover" value="1" class="form-check-input" id="delete_cover">
+                                <label class="form-check-label text-danger" for="delete_cover">Удалить текущую обложку</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                @endif
+                    @endif
 
-                <div class="col-md-6">
-                    <label class="form-label">Загрузить обложку выпуска</label>
-                    <input type="file" name="cover_image_file" class="form-control" accept="image/jpeg,image/png,image/gif,image/webp">
-                    <small class="text-muted">Поддерживаются форматы: JPG, PNG, GIF, WEBP (макс. 5 МБ)</small>
-                </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Загрузить обложку выпуска</label>
+                        <input type="file" name="cover_image_file" class="form-control" accept="image/jpeg,image/png,image/gif,image/webp">
+                        <small class="text-muted">Поддерживаются форматы: JPG, PNG, GIF, WEBP (макс. 5 МБ)</small>
+                    </div>
 
-                <div class="col-md-6">
-                    <label class="form-label">Или ссылка на обложку выпуска</label>
-                    <input type="url" name="cover_image" class="form-control" value="{{ old('cover_image', $issue->cover_image) }}" placeholder="https://example.com/cover.jpg">
-                    <small class="text-muted">Если загружаете файл, ссылка будет проигнорирована</small>
+                    <div class="col-md-6">
+                        <label class="form-label">Или ссылка на обложку выпуска</label>
+                        <input type="url" name="cover_image" class="form-control" value="{{ old('cover_image', $issue->cover_image) }}" placeholder="https://example.com/cover.jpg">
+                        <small class="text-muted">Если загружаете файл, ссылка будет проигнорирована</small>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card-footer text-end">
-            <button type="submit" class="btn btn-primary">
-                <i class="bi bi-check-lg"></i> Сохранить изменения
-            </button>
-            <a href="{{ route('admin.issues.index') }}" class="btn btn-outline-secondary">Отмена</a>
+            <div class="card-footer text-end">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-check-lg"></i> Сохранить изменения
+                </button>
+                <a href="{{ route('admin.issues.index') }}" class="btn btn-outline-secondary">Отмена</a>
+            </div>
         </div>
-</div>
-</form>
+    </form>
 </div>
 @endsection

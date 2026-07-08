@@ -107,6 +107,10 @@
                         <li><a class="dropdown-item" href="{{ route('admin.users.index') }}">Управление пользователями</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.design.edit') }}">Дизайн сайта</a></li>
                         <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-primary" href="{{ route('admin.issues.export.latest') }}">
+                            <i class="bi bi-file-earmark-code"></i> Экспорт XML (последний выпуск)
+                        </a></li>
                         @endif
                     </ul>
                 </li>

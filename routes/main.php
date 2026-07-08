@@ -80,6 +80,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::put('issues/{issue}', [IssueController::class, 'update'])->name('issues.update');
     Route::delete('issues/{issue}', [IssueController::class, 'destroy'])->name('issues.destroy');
     Route::get('issues/{issue}', [IssueController::class, 'show'])->name('issues.show');
+    Route::get('issues/{issue}/export-xml', [IssueController::class, 'exportXml'])->name('issues.export.xml')->middleware('superadmin');
+    Route::get('issues/export-latest-xml', [IssueController::class, 'exportLatestXml'])->name('issues.export.latest')->middleware('superadmin');
 
     Route::get('articles', [ArticleController::class, 'index'])->name('articles.index');
     Route::get('articles/create', [ArticleController::class, 'create'])->name('articles.create');

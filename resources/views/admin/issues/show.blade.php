@@ -10,6 +10,11 @@
                 <a href="{{ route('admin.issues.edit', $issue) }}" class="btn btn-outline-primary">
                     <i class="bi bi-pencil"></i> Редактировать
                 </a>
+                @if(auth()->check() && auth()->user()->isSuperAdmin())
+                <a href="{{ route('admin.issues.export.xml', $issue) }}" class="btn btn-outline-success">
+                    <i class="bi bi-file-earmark-code"></i> Экспорт XML
+                </a>
+                @endif
                 <a href="{{ route('admin.issues.index') }}" class="btn btn-outline-secondary">
                     <i class="bi bi-arrow-left"></i> Назад
                 </a>

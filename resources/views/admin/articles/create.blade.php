@@ -27,10 +27,16 @@
 
         <div class="card">
             <div class="card-body">
+                <!-- Легенда -->
+                <div class="alert alert-info mb-4">
+                    <i class="bi bi-info-circle"></i>
+                    Поля, отмеченные <span class="text-danger fw-bold">*обязательно к заполнению</span>, должны быть заполнены в соответствии с требованиями РИНЦ
+                </div>
+
                 <!-- Обязательные поля -->
                 <div class="row g-3">
                     <div class="col-md-12">
-                        <label class="form-label">Выпуск <span class="text-danger">*</span></label>
+                        <label class="form-label">Выпуск <span class="text-danger">*обязательно к заполнению</span></label>
                         <select name="issue_id" class="form-select" required>
                             <option value="">Выберите выпуск</option>
                             @foreach($issues as $issue)
@@ -40,26 +46,6 @@
                             @endforeach
                         </select>
                     </div>
-
-
-
-                    <!-- <div class="row g-3 mt-2">
-                        <div class="col-md-12">
-                            <label class="form-label">Раздел (RU)</label>
-                            <input type="text" name="section_ru" class="form-control" value="{{ old('section_ru') }}" placeholder="Например: Исторические науки">
-                            <small class="text-muted">Название тематического раздела на русском языке</small>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="form-label">Раздел (EN)</label>
-                            <input type="text" name="section_en" class="form-control" value="{{ old('section_en') }}" placeholder="For example: Historical Sciences">
-                            <small class="text-muted">Название раздела на английском языке</small>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="form-label">Раздел (CV)</label>
-                            <input type="text" name="section_cv" class="form-control" value="{{ old('section_cv') }}" placeholder="Сăмахран: Истори ăслăхĕсем">
-                            <small class="text-muted">Название раздела на чувашском языке</small>
-                        </div>
-                    </div> -->
 
                     <div class="row g-3 mt-2">
                         <div class="col-md-12">
@@ -95,16 +81,13 @@
                         </div>
                     </div>
 
-
-
-
                     <div class="col-md-12">
-                        <label class="form-label">Название статьи (RU) <span class="text-danger">*</span></label>
+                        <label class="form-label">Название статьи (RU) <span class="text-danger">*обязательно к заполнению</span></label>
                         <input type="text" name="title_ru" class="form-control" value="{{ old('title_ru') }}" required>
                     </div>
 
                     <div class="col-md-12">
-                        <label class="form-label">Название статьи (EN) <span class="text-danger">*</span></label>
+                        <label class="form-label">Название статьи (EN) <span class="text-danger">*обязательно к заполнению</span></label>
                         <input type="text" name="title_en" class="form-control" value="{{ old('title_en') }}" required>
                     </div>
 
@@ -114,14 +97,14 @@
                     </div>
 
                     <div class="col-md-3">
-                        <label class="form-label">Страницы</label>
-                        <input type="text" name="pages" class="form-control" value="{{ old('pages') }}" placeholder="12-25">
+                        <label class="form-label">Страницы <span class="text-danger">*обязательно к заполнению</span></label>
+                        <input type="text" name="pages" class="form-control" value="{{ old('pages') }}" placeholder="12-25" required>
                     </div>
 
                     <div class="col-md-3">
-                        <label class="form-label">Тип статьи</label>
-                        <select name="art_type" class="form-select">
-
+                        <label class="form-label">Тип статьи <span class="text-danger">*обязательно к заполнению</span></label>
+                        <select name="art_type" class="form-select" required>
+                            <option value="">Выберите тип</option>
                             <option value="RAR" {{ old('art_type', 'RAR') == 'RAR' ? 'selected' : '' }}>научная статья</option>
                             <option value="EDI" {{ old('art_type') == 'EDI' ? 'selected' : '' }}>редакторская заметка</option>
                             <option value="BRV" {{ old('art_type') == 'BRV' ? 'selected' : '' }}>рецензия</option>
@@ -134,14 +117,13 @@
                             <option value="COR" {{ old('art_type') == 'COR' ? 'selected' : '' }}>переписка</option>
                             <option value="PER" {{ old('art_type') == 'PER' ? 'selected' : '' }}>персоналии</option>
                             <option value="MIS" {{ old('art_type') == 'MIS' ? 'selected' : '' }}>разное</option>
-
-                            <!-- RAR  EDI BRV CNF SCO REV  ABS  REP RPR COR PER MIS -->
                         </select>
                     </div>
 
                     <div class="col-md-3">
-                        <label class="form-label">Язык статьи</label>
-                        <select name="lang_publ" class="form-select">
+                        <label class="form-label">Язык статьи <span class="text-danger">*обязательно к заполнению</span></label>
+                        <select name="lang_publ" class="form-select" required>
+                            <option value="">Выберите язык</option>
                             <option value="RUS" {{ old('lang_publ', 'RUS') == 'RUS' ? 'selected' : '' }}>Русский</option>
                             <option value="ENG" {{ old('lang_publ') == 'ENG' ? 'selected' : '' }}>English</option>
                             <option value="CHV" {{ old('lang_publ') == 'CHV' ? 'selected' : '' }}>Чăваш (Чувашский)</option>
@@ -169,8 +151,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label>Фамилия (RU)</label>
-                                    <input type="text" name="authors[0][surname_ru]" class="form-control" value="{{ old('authors.0.surname_ru') }}">
+                                    <label>Фамилия (RU) <span class="text-danger">*обязательно к заполнению</span></label>
+                                    <input type="text" name="authors[0][surname_ru]" class="form-control" value="{{ old('authors.0.surname_ru') }}" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label>Фамилия (EN)</label>
@@ -221,7 +203,6 @@
                                     <input type="text" name="authors[0][org_name_cv]" class="form-control" value="{{ old('authors.0.org_name_cv') }}">
                                 </div>
 
-
                                 <hr class="mt-3 mb-3">
                                 <div class="col-md-4 mt-2">
                                     <label>Город (RU)</label>
@@ -250,7 +231,6 @@
                                     <input type="text" name="authors[0][country_cv]" class="form-control" value="{{ old('authors.0.country_cv') }}">
                                 </div>
 
-
                                 <div class="col-md-4 mt-2">
                                     <div class="form-check mt-4">
                                         <input type="checkbox" name="authors[0][is_correspondent]" value="1" class="form-check-input" {{ old('authors.0.is_correspondent') ? 'checked' : '' }}>
@@ -258,8 +238,6 @@
                                     </div>
                                 </div>
 
-
-                                <!-- НОВЫЙ БЛОК - РОЛЬ АВТОРА -->
                                 <div class="col-md-3 mt-2">
                                     <label>Роль автора</label>
                                     <select name="authors[0][role]" class="form-select">
@@ -283,7 +261,6 @@
                                     <small class="text-muted">Если не выбрано - автор</small>
                                 </div>
 
-
                                 <hr class="mt-3 mb-3">
                                 <div class="col-md-4 mt-2">
                                     <label>Должность (RU)</label>
@@ -298,9 +275,7 @@
                                     <input type="text" name="authors[0][position_cv]" class="form-control" value="{{ old('authors.0.position_cv') }}">
                                 </div>
 
-
                                 <hr class="mt-3 mb-3">
-
                                 <div class="col-md-4 mt-2">
                                     <label>Ученая степень (RU)</label>
                                     <input type="text" name="authors[0][degree_ru]" class="form-control" placeholder="кандидат наук, доктор наук" value="{{ old('authors.0.degree_ru') }}">
@@ -315,7 +290,6 @@
                                 </div>
 
                                 <hr class="mt-3 mb-3">
-
                                 <div class="col-md-4 mt-2">
                                     <label>Звание (RU)</label>
                                     <input type="text" name="authors[0][rank_ru]" class="form-control" placeholder="доцент, профессор" value="{{ old('authors.0.rank_ru') }}">
@@ -353,8 +327,8 @@
 
                 <hr class="my-4">
 
-                <!-- Аннотации -->
-                <h5 class="mb-3">Аннотация</h5>
+     
+                <!-- <h5 class="mb-3">Аннотация</h5>
                 <div class="row g-3">
                     <div class="col-md-12">
                         <label class="form-label">Аннотация (RU)</label>
@@ -368,8 +342,37 @@
                         <label class="form-label">Аннотация (CV)</label>
                         <textarea name="abstract_cv" class="form-control" rows="4">{{ old('abstract_cv') }}</textarea>
                     </div>
+                </div> -->
+
+
+                <!-- Аннотации -->
+                <h5 class="mb-3">Аннотация</h5>
+                <div class="alert alert-warning mb-3">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <strong>Рекомендуется к заполнению</strong> — аннотация повышает видимость статьи в научных базах данных и поисковых системах
                 </div>
-                <!-- abstract_ru abstract_en abstract_cv -->
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label class="form-label">Аннотация (RU)</label>
+                        <textarea name="abstract_ru" class="form-control" rows="4">{{ old('abstract_ru') }}</textarea>
+                        <small class="text-muted">Рекомендуемый объем: 150-250 слов</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Аннотация (EN)</label>
+                        <textarea name="abstract_en" class="form-control" rows="4">{{ old('abstract_en') }}</textarea>
+                        <small class="text-muted">Recommended length: 150-250 words</small>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Аннотация (CV)</label>
+                        <textarea name="abstract_cv" class="form-control" rows="4">{{ old('abstract_cv') }}</textarea>
+                        <small class="text-muted">Сӗннӗ калӑпӑш: 150-250 сăмах</small>
+                    </div>
+                </div>
+
+
+
+
+
                 <hr class="my-4">
 
                 <!-- Ключевые слова -->
@@ -389,16 +392,14 @@
                     </div>
                 </div>
 
-
-
-
                 <hr class="my-4">
+
                 <!-- Полный текст статьи -->
                 <h5 class="mb-3">Полный текст статьи</h5>
                 <div class="row g-3">
                     <div class="col-md-12">
-                        <label class="form-label">Текст статьи (RU)</label>
-                        <textarea name="text_ru" class="form-control" rows="15" placeholder="Введите полный текст статьи на русском языке...">{{ old('text_ru') }}</textarea>
+                        <label class="form-label">Текст статьи (RU) <span class="text-danger">*обязательно к заполнению</span></label>
+                        <textarea name="text_ru" class="form-control" rows="15" placeholder="Введите полный текст статьи на русском языке..." required>{{ old('text_ru') }}</textarea>
                         <small class="text-muted">Поддерживается HTML форматирование</small>
                     </div>
                     <div class="col-md-12">
@@ -414,7 +415,6 @@
                 </div>
 
                 <hr class="my-4">
-
 
                 <h5 class="mb-3">Финансирование</h5>
                 <div class="row g-3">
@@ -434,6 +434,7 @@
                         <small class="text-muted">Кашни йĕрке - уйрăм грант е финансăлав çăлкуçĕ</small>
                     </div>
                 </div>
+
                 <hr class="my-4">
 
                 <h5 class="mb-3">Список литературы</h5>
@@ -496,11 +497,6 @@
 
                 <hr class="my-4">
 
-                <!-- Добавьте после блока "Ключевые слова" или перед "Идентификаторы" -->
-
-
-
-
                 <!-- Даты -->
                 <h5 class="mb-3">Даты</h5>
                 <div class="row g-3">
@@ -520,33 +516,15 @@
 
                 <hr class="my-4">
 
-                <!-- Файл -->
-                <!-- <h5 class="mb-3">Файл статьи</h5>
-                <div class="row g-3">
-                    <div class="col-md-12">
-                        <label class="form-label">Ссылка на PDF</label>
-                        <input type="url" name="pdf_url" class="form-control" value="{{ old('pdf_url') }}" placeholder="https://example.com/article.pdf">
-                        <small class="text-muted">Ссылка на полный текст статьи в формате PDF</small>
-                    </div>
-                </div> -->
-
-
                 <!-- Файл статьи -->
                 <h5 class="mb-3">Файл статьи (PDF)</h5>
                 <div class="row g-3">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label class="form-label">Загрузить PDF файл</label>
                         <input type="file" name="pdf_file" class="form-control" accept=".pdf">
                         <small class="text-muted">Поддерживаются файлы в формате PDF (макс. 10 МБ)</small>
                     </div>
-                    <!-- <div class="col-md-6">
-                        <label class="form-label">Или ссылка на PDF</label>
-                        <input type="url" name="pdf_url" class="form-control" value="{{ old('pdf_url') }}" placeholder="https://example.com/article.pdf">
-                        <small class="text-muted">Если загружаете файл, ссылка будет проигнорирована</small>
-                    </div> -->
                 </div>
-
-
 
                 <hr class="my-4">
 
@@ -615,7 +593,7 @@
         // Функция обновления полей
         function updateSectionFields() {
             const selectedValue = sectionSelect.value;
-            
+
             if (selectedValue && sections[selectedValue]) {
                 sectionRu.value = sections[selectedValue].ru;
                 sectionEn.value = sections[selectedValue].en;
