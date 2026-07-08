@@ -210,7 +210,7 @@
                     <div class="col-md-6">
                         <label class="form-label">Загрузить новый PDF файл</label>
                         <input type="file" name="pdf_file" class="form-control" accept=".pdf">
-                        <small class="text-muted">Поддерживаются файлы в формате PDF (макс. 10 МБ)</small>
+                        <small class="text-muted">Поддерживаются файлы в формате PDF (макс. 100 МБ)</small>
                     </div>
 
 

@@ -78,7 +78,7 @@ class IssueController extends Controller
             'edn' => 'nullable|string|max:6',
             'published_at' => 'nullable|date',
             'pdf_url' => 'nullable|url|max:2048',
-            'pdf_file' => 'nullable|file|mimes:pdf|max:10240',
+            'pdf_file' => 'nullable|file|mimes:pdf|max:102400',
             'cover_image' => 'nullable|url|max:2048',
             'cover_image_file' => 'nullable|file|mimes:jpg,jpeg,png,gif,webp|max:5120', // Добавьте
             'publisher' => 'nullable|string|max:255',
@@ -169,7 +169,7 @@ class IssueController extends Controller
             'edn' => 'nullable|string|max:6',
             'published_at' => 'nullable|date',
             'pdf_url' => 'nullable|url|max:2048',
-            'pdf_file' => 'nullable|file|mimes:pdf|max:10240',
+            'pdf_file' => 'nullable|file|mimes:pdf|max:102400',
             'delete_pdf' => 'nullable|boolean',
             'cover_image' => 'nullable|url|max:2048',
             'cover_image_file' => 'nullable|file|mimes:jpg,jpeg,png,gif,webp|max:5120',
