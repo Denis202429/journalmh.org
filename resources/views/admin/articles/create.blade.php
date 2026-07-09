@@ -22,7 +22,7 @@
     </div>
     @endif
 
-    <form action="{{ route('admin.articles.store') }}" method="POST" enctype="multipart/form-data">
+    <form id="article-form" action="{{ route('admin.articles.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="card">
@@ -399,7 +399,7 @@
                 <div class="row g-3">
                     <div class="col-md-12">
                         <label class="form-label">Текст статьи (RU) <span class="text-danger">*обязательно к заполнению</span></label>
-                        <textarea name="text_ru" class="form-control" rows="15" placeholder="Введите полный текст статьи на русском языке..." required>{{ old('text_ru') }}</textarea>
+                        <textarea name="text_ru" id="text_ru" class="form-control" rows="15" placeholder="Введите полный текст статьи на русском языке...">{{ old('text_ru') }}</textarea>
                         <small class="text-muted">Поддерживается HTML форматирование</small>
                     </div>
                     <div class="col-md-12">
@@ -757,24 +757,25 @@
             images_upload_handler: function(blobInfo, success, failure) {
                 var formData = new FormData();
                 formData.append('file', blobInfo.blob());
-                formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+                formData.append('_token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
 
-                $.ajax({
-                    url: '/upload-image',
+                fetch('/upload-image', {
                     method: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        if (response.location) {
-                            success(response.location); // ✅ Теперь TinyMCE вставит ПРАВИЛЬНЫЙ путь
-                        } else {
-                            failure('Ошибка: пустой путь изображения.');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        failure('Ошибка загрузки изображения.');
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
                     }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.location) {
+                        success(data.location); // ✅ Теперь TinyMCE вставит ПРАВИЛЬНЫЙ путь
+                    } else {
+                        failure('Ошибка: пустой путь изображения.');
+                    }
+                })
+                .catch(error => {
+                    failure('Ошибка загрузки изображения.');
                 });
             },
             file_picker_types: 'image',
@@ -792,35 +793,35 @@
 
                         var formData = new FormData();
                         formData.append('file', file);
-                        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+                        formData.append('_token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
 
                         console.log("Отправка AJAX-запроса...");
 
-                        $.ajax({
-                            url: '/upload-image',
+                        fetch('/upload-image', {
                             method: 'POST',
-                            data: formData,
-                            processData: false,
-                            contentType: false,
-                            success: function(response) {
-                                if (response.location) {
-                                    let imageTitle = file.name;
-                                    let altText = file.name;
-                                    let imageUrl = response.location;
-                                    console.error("success");
-                                    // Вставляем изображение
-                                    cb(imageUrl, {
-                                        title: imageTitle,
-                                        alt: altText
-                                    });
-                                } else {
-                                    console.error("Ошибка: пустой путь изображения.");
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                console.error("Ошибка AJAX:", status, error);
-                                console.error("Ответ сервера:", xhr.responseText);
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
                             }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.location) {
+                                let imageTitle = file.name;
+                                let altText = file.name;
+                                let imageUrl = data.location;
+                                console.log("success");
+                                // Вставляем изображение
+                                cb(imageUrl, {
+                                    title: imageTitle,
+                                    alt: altText
+                                });
+                            } else {
+                                console.error("Ошибка: пустой путь изображения.");
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Ошибка AJAX:", error);
                         });
                     };
                     input.click();
@@ -1073,6 +1074,32 @@
             btn.addEventListener('click', function() {
                 removeAuthor(this);
             });
+        });
+    });
+</script>
+
+<script>
+    // Клиентская валидация обязательного поля text_ru (TinyMCE скрывает textarea,
+    // поэтому нативный required ломает отправку формы — делаем проверку вручную)
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('article-form');
+        if (!form) return;
+
+        form.addEventListener('submit', function(e) {
+            const editor = tinymce.get('text_ru');
+            const textarea = document.getElementById('text_ru');
+            const value = editor ? editor.getContent({ format: 'text' }).trim() : (textarea ? textarea.value.trim() : '');
+
+            if (!value) {
+                e.preventDefault();
+                alert('Поле «Текст статьи (RU)» обязательно для заполнения.');
+                if (editor) {
+                    editor.focus();
+                } else if (textarea) {
+                    textarea.focus();
+                }
+                return false;
+            }
         });
     });
 </script>
