@@ -69,7 +69,7 @@ class ArticleController extends Controller
             'date_received' => 'nullable|date',
             'date_accepted' => 'nullable|date',
             'date_publication' => 'nullable|date',
-            'pdf_file' => 'nullable|file|mimes:pdf|max:10240',
+            'pdf_file' => 'nullable|file|mimes:pdf|max:102400',
             'is_published' => 'boolean',
             'sort_order' => 'nullable|integer',
 
@@ -280,7 +280,7 @@ class ArticleController extends Controller
             'date_accepted' => 'nullable|date',
             'date_publication' => 'nullable|date',
             // 'pdf_url' => 'nullable|url|max:2048',
-            'pdf_file' => 'nullable|file|mimes:pdf|max:10240',
+            'pdf_file' => 'nullable|file|mimes:pdf|max:102400',
             'delete_pdf' => 'nullable|boolean',
             'is_published' => 'boolean',
             'sort_order' => 'nullable|integer',

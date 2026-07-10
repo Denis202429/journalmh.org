@@ -54,7 +54,7 @@
                                 <option value="">-- Выберите раздел --</option>
                                 <option value="historical" {{ old('section_select') == 'historical' ? 'selected' : '' }}>Исторические науки</option>
                                 <option value="philological" {{ old('section_select') == 'philological' ? 'selected' : '' }}>Филологические науки</option>
-                                <option value="art" {{ old('section_select') == 'art' ? 'selected' : '' }}>Виды искусств</option>
+                                <option value="art" {{ old('section_select') == 'art' ? 'selected' : '' }}>Виды искусства</option>
                                 <option value="reviews" {{ old('section_select') == 'reviews' ? 'selected' : '' }}>Рецензии</option>
                                 <option value="personalia" {{ old('section_select') == 'personalia' ? 'selected' : '' }}>Персоналии</option>
                                 <option value="scientific_life" {{ old('section_select') == 'scientific_life' ? 'selected' : '' }}>Научная жизнь</option>
@@ -522,7 +522,7 @@
                     <div class="col-md-12">
                         <label class="form-label">Загрузить PDF файл</label>
                         <input type="file" name="pdf_file" class="form-control" accept=".pdf">
-                        <small class="text-muted">Поддерживаются файлы в формате PDF (макс. 10 МБ)</small>
+                        <small class="text-muted">Поддерживаются файлы в формате PDF (макс. 100 МБ)</small>
                     </div>
                 </div>
 
