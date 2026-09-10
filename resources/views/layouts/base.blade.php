@@ -5,12 +5,35 @@
     <meta charset="UTF-8">
     <meta name="language" content="ru">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="@yield('page.description', 'Современная гуманитаристика — научный журнал')">
+    <meta name="description" content="@yield('page.description', 'Современная гуманитаристика — рецензируемый научный журнал Чувашского государственного института гуманитарных наук. Исторические, филологические и искусствоведческие исследования.')">
     <meta name="keywords" content="@yield('page.keywords', 'журнал, гуманитаристика, научные статьи')">
     <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('page.title', config('app.name'))</title>
+    <title>@yield('page.title', 'Современная гуманитаристика — научный журнал')</title>
+    <link rel="canonical" href="{{ url()->current() }}">
+    <meta property="og:site_name" content="Современная гуманитаристика">
+    <meta property="og:title" content="@yield('page.title', 'Современная гуманитаристика — научный журнал')">
+    <meta property="og:description" content="@yield('page.description', 'Современная гуманитаристика — рецензируемый научный журнал Чувашского государственного института гуманитарных наук. Исторические, филологические и искусствоведческие исследования.')">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Современная гуманитаристика",
+    "alternateName": "Journal of Modern Humanities",
+    "url": "https://journalmh.org",
+    "description": "Современная гуманитаристика — рецензируемый научный журнал Чувашского государственного института гуманитарных наук. Исторические, филологические и искусствоведческие исследования.",
+    "inLanguage": "ru",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Чувашский государственный институт гуманитарных наук"
+    }
+}
+    </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 

@@ -1,5 +1,8 @@
 @extends('layouts.base')
 
+@section('page.title', 'Современная гуманитаристика — научный журнал')
+@section('page.description', 'Современная гуманитаристика — рецензируемый научный журнал Чувашского государственного института гуманитарных наук. Исторические, филологические и искусствоведческие исследования.')
+
 @section('content')
 @php
 $authorsSectionTitle = trim($siteContentMap['home_authors_section_title'] ?? '') ?: 'Авторам';
