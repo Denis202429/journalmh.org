@@ -1,8 +1,13 @@
 @servers(['local' => '127.0.0.1', 'beget' => 'human2xn@human2xn.beget.tech'])
 
 @setup
-if (!isset($message)) {
-    throw new Exception("Необходимо передать сообщение для коммита! Например: envoy run deploy --message='Fix bug'");
+// Envoy передаёт имя запускаемой задачи в переменной $__task
+$currentTask = $__task ?? null;
+
+// Сообщение для коммита требуется только задачам, которые коммитят и деплоят
+if (in_array($currentTask, ['push_to_github', 'full_deploy'], true)
+    && (!isset($message) || trim((string) $message) === '')) {
+    throw new Exception("Необходимо передать сообщение для коммита! Например: envoy run full_deploy --message='Fix bug'");
 }
 
 // Каталог проекта на хостинге

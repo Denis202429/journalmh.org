@@ -38,3 +38,6 @@ Thumbs.db
 # Файлы проекта
 chukotkorpus.ru.rar
 php-ext-snappy/
+
+# Служебные файлы при отладке деплоя (дампы вывода, тестовые скрипты)
+/storage/_*
