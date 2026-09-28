@@ -261,7 +261,7 @@ $authorsCard2Text = trim($siteContentMap['home_authors_card2_text'] ?? '') ?: '�
                                 Свидетельство о регистрации СМИ
                             </div>
                             <p class="mb-2" style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">
-                                Издание  зарегистрировано Федеральной службой по надзору в сфере связи,
+                                Издание зарегистрировано Федеральной службой по надзору в сфере связи,
                                 информационных технологий и массовых коммуникаций (Роскомнадзор)
                             </p>
                             <span class="badge rounded-pill px-3 py-2"
